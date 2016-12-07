@@ -2,6 +2,7 @@ package tv.oh.moodnite.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -46,8 +47,12 @@ public class UserController {
 	public String deathProof(Model model) {
 		
 		try {
-			Map value = mapper.readValue(new URL("https://api.themoviedb.org/3/movie/550?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d"), Map.class);
+			Map value = mapper.readValue(new URL("https://api.themoviedb.org/3/movie/301365?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d"), Map.class);
 			model.addAttribute("movie", value);
+			
+			Map cast = mapper.readValue(new URL("http://api.themoviedb.org/3/movie/301365/casts?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d"), Map.class);
+			List<Map> castList = (List<Map>) cast.get("cast");
+			model.addAttribute("cast", castList);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
