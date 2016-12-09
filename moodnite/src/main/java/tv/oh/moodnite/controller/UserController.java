@@ -1,11 +1,8 @@
 package tv.oh.moodnite.controller;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.repository.UserRepository;
+import tv.oh.moodnite.service.TheMovieDataBaseService;
 
 @Controller
 public class UserController {
-	protected final ObjectMapper mapper = new ObjectMapper();
+	
 	
 	@Autowired
 	private UserRepository repo;
+	
+	@Autowired
+	private TheMovieDataBaseService tmdbService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String about() {
@@ -45,17 +46,11 @@ public class UserController {
 	
 	@RequestMapping(value = "/death-proof", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String deathProof(Model model) {
-		
-		try {
-			Map value = mapper.readValue(new URL("https://api.themoviedb.org/3/movie/301365?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d"), Map.class);
-			model.addAttribute("movie", value);
+		Map<?, ?> movieInfo = tmdbService.getMovieInfo("1991");
+		model.addAttribute("movieInfo", movieInfo);
 			
-			Map cast = mapper.readValue(new URL("http://api.themoviedb.org/3/movie/301365/casts?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d"), Map.class);
-			List<Map> castList = (List<Map>) cast.get("cast");
-			model.addAttribute("cast", castList);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		List<Map<?, ?>> castsList = tmdbService.getMovieCasts("1991");
+		model.addAttribute("casts", castsList);
 
 		return "/show";
 	}

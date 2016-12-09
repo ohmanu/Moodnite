@@ -4,17 +4,16 @@
 
 <t:layout>
 	<c:choose>
-		<c:when test="${movie != null}">
-			<h3>${movie.title}</h3>
-			<p><img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"/></p>
+		<c:when test="${movieInfo != null}">
+			<h3>${movieInfo.title}</h3>
+			<p><img src="https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}" alt="${movieInfo.title}"/></p>
 				<c:choose>
-					<c:when test="${not empty cast}">
+					<c:when test="${not empty casts}">
 						<ul>
-							<c:forEach items="${cast}" var="cast">
+							<c:forEach items="${casts}" var="casts">
 								<li>
-									<p>${cast.name}</p>
-									<p><img src="https://image.tmdb.org/t/p/w500/${cast.profile_path}" alt="${cast.name}"/></p>
-									
+									<p>${casts.name}</p>
+									<p><img src="https://image.tmdb.org/t/p/w500/${casts.profile_path}" alt="${casts.name}"/></p>
 								</li>
 							</c:forEach>
 						</ul>
