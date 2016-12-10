@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,9 +25,11 @@ public class UserController {
 	@Autowired
 	private TheMovieDataBaseService tmdbService;
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String about() {
-
+	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String index(Model model) {
+		List<Map<?, ?>> popularMovies = tmdbService.getPopularMovies();
+		model.addAttribute("popularMovies", popularMovies);
+		
 		return "/index";
 	}
 	
@@ -41,17 +44,17 @@ public class UserController {
 	public String savePerson(@ModelAttribute("user") User user) {
 		repo.save(user);
 
-		return "redirect:index";
+		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/death-proof", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String deathProof(Model model) {
-		Map<?, ?> movieInfo = tmdbService.getMovieInfo("1991");
+	@RequestMapping(value = "/movie/{id}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deathProof(Model model, @PathVariable String id) {
+		Map<?, ?> movieInfo = tmdbService.getMovieInfo(id);
 		model.addAttribute("movieInfo", movieInfo);
 			
-		List<Map<?, ?>> castsList = tmdbService.getMovieCasts("1991");
+		List<Map<?, ?>> castsList = tmdbService.getMovieCasts(id);
 		model.addAttribute("casts", castsList);
 
-		return "/show";
+		return "/movie/show";
 	}
 }

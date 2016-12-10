@@ -48,6 +48,14 @@ public class TheMovieDataBaseService {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Map<?, ?>> getPopularMovies() {
+		URL url = buildApiURL("/movie/", "popular", "");
+		Map<?, ?> popularMovies = getJsonDataMap(url);
+		
+		return (List<Map<?, ?>>) popularMovies.get("results");
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Map<?, ?>> getMovieCasts(String movieId) {
 		URL url = buildApiURL("/movie/", movieId, "/casts");
 		Map<?, ?> casts = getJsonDataMap(url);
