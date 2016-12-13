@@ -26,7 +26,7 @@ public class UserController {
 	private TheMovieDataBaseService tmdbService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String index(Model model) {
+	public String showIndex(Model model) {
 		List<Map<?, ?>> popularMovies = tmdbService.getPopularMovies();
 		model.addAttribute("popularMovies", popularMovies);
 		
@@ -47,14 +47,22 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/movie/{id}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String deathProof(Model model, @PathVariable String id) {
-		Map<?, ?> movieInfo = tmdbService.getMovieInfo(id);
+	@RequestMapping(value = "/movie/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showMovieInfo(Model model, @PathVariable String movieId) {
+		Map<?, ?> movieInfo = tmdbService.getMovieInfo(movieId);
 		model.addAttribute("movieInfo", movieInfo);
 			
-		List<Map<?, ?>> castsList = tmdbService.getMovieCasts(id);
+		List<Map<?, ?>> castsList = tmdbService.getMovieCasts(movieId);
 		model.addAttribute("casts", castsList);
 
 		return "/movie/show";
+	}
+	
+	@RequestMapping(value = "/person/{personId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showPersonInfo(Model model, @PathVariable String personId) {
+		Map<?, ?> personInfo = tmdbService.getPersonInfo(personId);
+		model.addAttribute("personInfo", personInfo);
+
+		return "/person/show";
 	}
 }

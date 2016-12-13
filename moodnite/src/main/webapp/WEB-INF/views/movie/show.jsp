@@ -12,7 +12,7 @@
 						<ul>
 							<c:forEach items="${casts}" var="casts">
 								<li>
-									<p>${casts.name}</p>
+									<p><a href="${pageContext.servletContext.contextPath}/person/${casts.id}">${casts.name}</a></p>
 									<p><img src="https://image.tmdb.org/t/p/w500/${casts.profile_path}" alt="${casts.name}"/></p>
 								</li>
 							</c:forEach>

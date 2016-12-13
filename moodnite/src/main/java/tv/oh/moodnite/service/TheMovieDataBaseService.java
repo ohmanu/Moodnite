@@ -47,6 +47,12 @@ public class TheMovieDataBaseService {
 		return getJsonDataMap(url);
 	}
 	
+	public Map<?, ?> getPersonInfo(String personId) {
+		URL url = buildApiURL("/person/", personId, "");
+		
+		return getJsonDataMap(url);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Map<?, ?>> getPopularMovies() {
 		URL url = buildApiURL("/movie/", "popular", "");

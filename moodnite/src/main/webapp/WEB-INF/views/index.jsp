@@ -3,8 +3,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-	<h1>moodnite</h1>
-	
 	<p>
 		<a href="sign-in">Sign-in</a>
 	</p>
