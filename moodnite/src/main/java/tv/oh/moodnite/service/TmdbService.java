@@ -9,13 +9,15 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TheMovieDataBaseService {
+public class TmdbService {
 	private final String URL_BASE = "https://api.themoviedb.org/3";
 	private final String API_KEY = "?api_key=7e5f9a299f1ccb9c13ce6238850bdf7d";
+	private final String MOVIE_KEYWORD = "/movie/";
+	private final String PERSON_KEYWORD = "/person/";
 	
 	private final ObjectMapper MAPPER = new ObjectMapper();
 	
-	public Map<?, ?> getJsonDataMap(URL url) {
+	private Map<?, ?> getJsonDataMap(URL url) {
 		try {
 			Map<?, ?> jsonMap =  MAPPER.readValue(url, Map.class);
 			return jsonMap;
@@ -26,7 +28,7 @@ public class TheMovieDataBaseService {
 		}	
 	}
 	
-	public URL buildApiURL(String entity, String id, String method) {
+	private URL buildApiURL(String entity, String id, String method) {
 		StringBuilder urlString = new StringBuilder(URL_BASE);
 		urlString.append(entity);
 		urlString.append(id);
@@ -42,20 +44,28 @@ public class TheMovieDataBaseService {
 	}
 	
 	public Map<?, ?> getMovieInfo(String movieId) {
-		URL url = buildApiURL("/movie/", movieId, "");
+		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "");
 		
 		return getJsonDataMap(url);
 	}
 	
 	public Map<?, ?> getPersonInfo(String personId) {
-		URL url = buildApiURL("/person/", personId, "");
+		URL url = buildApiURL(PERSON_KEYWORD, personId, "");
 		
 		return getJsonDataMap(url);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<?, ?>> getPopularMovies() {
-		URL url = buildApiURL("/movie/", "popular", "");
+		URL url = buildApiURL(MOVIE_KEYWORD, "popular", "");
+		Map<?, ?> popularMovies = getJsonDataMap(url);
+		
+		return (List<Map<?, ?>>) popularMovies.get("results");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<?, ?>> getUpcomingMovies() {
+		URL url = buildApiURL(MOVIE_KEYWORD, "upcoming", "");
 		Map<?, ?> popularMovies = getJsonDataMap(url);
 		
 		return (List<Map<?, ?>>) popularMovies.get("results");
@@ -63,7 +73,7 @@ public class TheMovieDataBaseService {
 	
 	@SuppressWarnings("unchecked")
 	public List<Map<?, ?>> getMovieCasts(String movieId) {
-		URL url = buildApiURL("/movie/", movieId, "/casts");
+		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/casts");
 		Map<?, ?> casts = getJsonDataMap(url);
 		
 		return (List<Map<?, ?>>) casts.get("cast");

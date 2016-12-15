@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.repository.UserRepository;
-import tv.oh.moodnite.service.TheMovieDataBaseService;
+import tv.oh.moodnite.service.TmdbService;
 
 @Controller
 public class UserController {
@@ -23,12 +23,15 @@ public class UserController {
 	private UserRepository repo;
 	
 	@Autowired
-	private TheMovieDataBaseService tmdbService;
+	private TmdbService tmdbService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
 		List<Map<?, ?>> popularMovies = tmdbService.getPopularMovies();
 		model.addAttribute("popularMovies", popularMovies);
+		
+		List<Map<?, ?>> upcomingMovies = tmdbService.getUpcomingMovies();
+		model.addAttribute("upcomingMovies", upcomingMovies);
 		
 		return "/index";
 	}
