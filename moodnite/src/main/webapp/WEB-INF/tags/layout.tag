@@ -3,14 +3,15 @@
 
 <html>
 <head>
-	<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css" >
 	<title>Moodnite</title>
 </head>
 <body>
-	<h1>moodnite</h1>
-	
-	<a href="${pageContext.servletContext.contextPath}/">Home</a>
-	
+	<header class="moodnite">
+		<nav>
+			<center><a href="${pageContext.servletContext.contextPath}/">moodnite</a></center>
+		</nav>
+	</header>
 	<section class="content">
 		<jsp:doBody />
 	</section>

@@ -9,11 +9,12 @@
 	
 	<c:choose>
 		<c:when test="${not empty popularMovies}">
-			<h1>Popular Movies</h1>
-			<c:forEach items="${popularMovies}" var="pupularMovie">
-				<p><a href="movie/${pupularMovie.id}">${pupularMovie.title}</a></p>
-				<p><img src="https://image.tmdb.org/t/p/w342/${pupularMovie.poster_path}" alt="${pupularMovie.title}"/></p>
-			</c:forEach>
+			<div>
+				<h1>Popular Movies</h1>
+				<c:forEach items="${popularMovies}" var="pupularMovie">
+					<a href="movie/${pupularMovie.id}"><img src="https://image.tmdb.org/t/p/w342/${pupularMovie.backdrop_path}" alt="${pupularMovie.title}"/></a>
+				</c:forEach>
+			</div>
 		</c:when>
 		<c:otherwise>
 			<h2>No popular movies.</h2>
@@ -24,8 +25,7 @@
 		<c:when test="${not empty upcomingMovies}">
 			<h1>Upcoming Movies</h1>
 			<c:forEach items="${upcomingMovies}" var="upcomingMovie">
-				<p><a href="movie/${upcomingMovie.id}">${upcomingMovie.title}</a></p>
-				<p><img src="https://image.tmdb.org/t/p/w342/${upcomingMovie.poster_path}" alt="${upcomingMovie.title}"/></p>
+				<a href="movie/${upcomingMovie.id}"><img src="https://image.tmdb.org/t/p/w342/${upcomingMovie.poster_path}" alt="${upcomingMovie.title}"/></a>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
