@@ -32,7 +32,13 @@ header.moodnite {
 	height: 50px;
 	position: fixed;
 	z-index: 2;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.6);	
+}
+
+header.moodnite .logo {
+	width: 70px;
+	padding-top: 15px;
+	margin: 0 auto;
 }
 
 section.content {

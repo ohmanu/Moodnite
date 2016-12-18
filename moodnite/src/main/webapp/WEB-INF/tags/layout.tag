@@ -9,7 +9,7 @@
 <body>
 	<header class="moodnite">
 		<nav>
-			<center><a href="${pageContext.servletContext.contextPath}/">moodnite</a></center>
+			<div class="logo"><a href="${pageContext.servletContext.contextPath}/">moodnite</a></div>
 		</nav>
 	</header>
 	<section class="content">
