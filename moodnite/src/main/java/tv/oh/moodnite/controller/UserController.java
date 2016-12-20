@@ -54,7 +54,15 @@ public class UserController {
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
 		Map<?, ?> movieInfo = tmdbService.getMovieInfo(movieId);
 		model.addAttribute("movieInfo", movieInfo);
-			
+		
+		String director = "";
+		List<Map<?, ?>> crewList = tmdbService.getMovieCrew(movieId);
+		for(Map<?, ?> a:crewList) {
+			if(a.get("job").toString().equals("Director"))
+				director = (String) a.get("name");
+		}
+		model.addAttribute("director", director);
+		
 		List<Map<?, ?>> castsList = tmdbService.getMovieCasts(movieId);
 		model.addAttribute("casts", castsList);
 

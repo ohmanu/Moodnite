@@ -78,4 +78,18 @@ public class TmdbService {
 		
 		return (List<Map<?, ?>>) casts.get("cast");
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<?, ?>> getMovieCrew(String movieId) {
+		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/credits");
+		Map<?, ?> casts = getJsonDataMap(url);
+		
+		return (List<Map<?, ?>>) casts.get("crew");
+	}
+	
+	public Map<?, ?> getMovieCredits(String movieId) {
+		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/credits");
+		
+		return getJsonDataMap(url);
+	}
 }

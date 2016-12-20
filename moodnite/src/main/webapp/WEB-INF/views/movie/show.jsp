@@ -12,9 +12,9 @@
 				<div class="rug">
 					<header class=title><h1>${movieInfo.title}</h1></header>
 					
-					<div class="data-sheet">${movieInfo.release_date}</div>
+					<div class="data-sheet"><h2>${director}</h2> <h3>${movieInfo.release_date}</h3></div>
 					
-					<div class="synopsis"><p><h2>Overview</h2></p><p>${movieInfo.overview}</p></div>	
+					<div class="synopsis"><h2>Synopsis</h2><p>${movieInfo.overview}</p></div>	
 				</div>
 			</article>
 
