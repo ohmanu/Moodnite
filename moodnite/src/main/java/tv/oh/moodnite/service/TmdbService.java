@@ -71,22 +71,6 @@ public class TmdbService {
 		return (List<Map<?, ?>>) popularMovies.get("results");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Map<?, ?>> getMovieCasts(String movieId) {
-		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/casts");
-		Map<?, ?> casts = getJsonDataMap(url);
-		
-		return (List<Map<?, ?>>) casts.get("cast");
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<?, ?>> getMovieCrew(String movieId) {
-		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/credits");
-		Map<?, ?> casts = getJsonDataMap(url);
-		
-		return (List<Map<?, ?>>) casts.get("crew");
-	}
-	
 	public Map<?, ?> getMovieCredits(String movieId) {
 		URL url = buildApiURL(MOVIE_KEYWORD, movieId, "/credits");
 		

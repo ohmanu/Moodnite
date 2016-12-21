@@ -50,25 +50,6 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/movie/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String showMovieInfo(Model model, @PathVariable String movieId) {
-		Map<?, ?> movieInfo = tmdbService.getMovieInfo(movieId);
-		model.addAttribute("movieInfo", movieInfo);
-		
-		String director = "";
-		List<Map<?, ?>> crewList = tmdbService.getMovieCrew(movieId);
-		for(Map<?, ?> a:crewList) {
-			if(a.get("job").toString().equals("Director"))
-				director = (String) a.get("name");
-		}
-		model.addAttribute("director", director);
-		
-		List<Map<?, ?>> castsList = tmdbService.getMovieCasts(movieId);
-		model.addAttribute("casts", castsList);
-
-		return "/movie/show";
-	}
-	
 	@RequestMapping(value = "/person/{personId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showPersonInfo(Model model, @PathVariable String personId) {
 		Map<?, ?> personInfo = tmdbService.getPersonInfo(personId);
