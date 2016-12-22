@@ -12,23 +12,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tv.oh.moodnite.service.TmdbService;
+import tv.oh.moodnite.service.TmdbMovieService;
 
-
+@RequestMapping(value = "/movie/*")
 @Controller
 public class MovieController {
 	@Autowired
-	private TmdbService tmdbService;
+	private TmdbMovieService tmdbMovieService;
 	
-	@RequestMapping(value = "/movie/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	@RequestMapping(value = "{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
-		Map<?, ?> info = tmdbService.getMovieInfo(movieId);
-		Map<?, ?> credits = tmdbService.getMovieCredits(movieId);
+		Map<?, ?> movieInfo = tmdbMovieService.getMovieInfo(movieId);
+		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);
 		
-		model.addAttribute("info", info);
+		model.addAttribute("movieInfo", movieInfo);
 		model.addAttribute("directors", loadDirectors(credits));
-		model.addAttribute("genres", info.get("genres"));
-		model.addAttribute("production_countries", info.get("production_countries"));
+		model.addAttribute("year", movieInfo.get("release_date").toString().substring(0, 4));
+		model.addAttribute("genres", movieInfo.get("genres"));
+		model.addAttribute("production_countries", movieInfo.get("production_countries"));
 		model.addAttribute("cast", credits.get("cast"));
 
 		return "/movie/show";
