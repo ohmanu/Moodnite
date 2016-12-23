@@ -22,15 +22,16 @@ public class MovieController {
 	
 	@RequestMapping(value = "{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
-		Map<?, ?> movieInfo = tmdbMovieService.getMovieInfo(movieId);
+		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
 		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);
 		
-		model.addAttribute("movieInfo", movieInfo);
+		model.addAttribute("movieDetails", movieDetails);
 		model.addAttribute("directors", loadDirectors(credits));
-		model.addAttribute("year", movieInfo.get("release_date").toString().substring(0, 4));
-		model.addAttribute("genres", movieInfo.get("genres"));
-		model.addAttribute("production_countries", movieInfo.get("production_countries"));
+		model.addAttribute("year", movieDetails.get("release_date").toString().substring(0, 4));
+		model.addAttribute("genres", movieDetails.get("genres"));
+		model.addAttribute("production_countries", movieDetails.get("production_countries"));
 		model.addAttribute("cast", credits.get("cast"));
+		model.addAttribute("related_movies", tmdbMovieService.getRelatedMovies(movieId).get("results"));
 
 		return "/movie/show";
 	}

@@ -1,7 +1,6 @@
 package tv.oh.moodnite.service;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,26 +13,28 @@ public class TmdbMovieService {
 	@Autowired
 	TmdbService tmdbService;
 	
-	public Map<?, ?> getMovieInfo(String movieId) {
+	public Map<?, ?> getMovieDetails(String movieId) {
 		URL url = tmdbService.buildApiURL(MOVIE_PATH, movieId, "");
 		
 		return tmdbService.getJsonDataMap(url);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Map<?, ?>> getPopularMovies() {
+	public Map<?, ?> getPopularMovies() {
 		URL url = tmdbService.buildApiURL(MOVIE_PATH, "popular", "");
-		Map<?, ?> popularMovies = tmdbService.getJsonDataMap(url);
 		
-		return (List<Map<?, ?>>) popularMovies.get("results");
+		return tmdbService.getJsonDataMap(url);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Map<?, ?>> getUpcomingMovies() {
+	public Map<?, ?> getUpcomingMovies() {
 		URL url = tmdbService.buildApiURL(MOVIE_PATH, "upcoming", "");
-		Map<?, ?> popularMovies = tmdbService.getJsonDataMap(url);
 		
-		return (List<Map<?, ?>>) popularMovies.get("results");
+		return tmdbService.getJsonDataMap(url);
+	}
+	
+	public Map<?, ?> getRelatedMovies(String movieId) {
+		URL url = tmdbService.buildApiURL(MOVIE_PATH, movieId, "/recommendations");
+		
+		return tmdbService.getJsonDataMap(url);
 	}
 	
 	public Map<?, ?> getMovieCredits(String movieId) {

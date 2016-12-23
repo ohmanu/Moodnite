@@ -5,6 +5,10 @@ a {
 	color: #000;
 }
 
+a:hover {
+	text-decoration: underline;
+}
+
 p {
 	margin: 0 0 0 0;
 }
@@ -26,8 +30,17 @@ h2 {
 
 h3 {
 	margin: 0 0 0 0;
+	text-transform: uppercase;
 	display:inline;
     font-size: 22px;
+    font-weight: normal;
+}
+
+h4 {
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+	display:inline;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -79,6 +92,11 @@ article.film .rate {
 	float: left;
 }
 
+article.film .rate h3 {
+	font-size: 50px;
+	color: #FFF;
+}
+
 article.film .rug {
 	width: 80%;
 	height: 30%;
@@ -102,4 +120,60 @@ article.film .rug .data-sheet {
 article.film .rug .synopsis {
 	width: 40%;
 	float: left;
+}
+
+article.film .cast {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	background-color: #e4d9cc;
+	float: left;
+}
+
+article.film .cast .area {
+	margin: 0 auto;
+	
+	padding: 10px;
+	float: left;
+}
+
+article.film .cast .person-sheet {
+	width: 185px;
+	margin: 10px;
+	display: inline-block;
+}
+
+article.film .cast .person-sheet .photo {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-color: #000;
+	-webkit-filter: grayscale(100%);
+	width: 100%;
+	height: 250px;
+	float: left;
+}
+
+article.film .cast .person-sheet .data {
+	background-color: #fff;
+	width: 165px;
+	padding: 10px;
+	float:left;
+}
+
+article.film .related-movies {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	background-color: #eab7b3;
+	float: left;
+}
+
+article.film .related-movies .area {
+	padding: 10px;
+	float: left;
+}
+
+article.film .related-movies .area img{
+	margin: 10px;
 }

@@ -1,8 +1,5 @@
 package tv.oh.moodnite.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +15,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
-		List<Map<?, ?>> popularMovies = tmdbMovieService.getPopularMovies();
-		model.addAttribute("popularMovies", popularMovies);
-		
-		List<Map<?, ?>> upcomingMovies = tmdbMovieService.getUpcomingMovies();
-		model.addAttribute("upcomingMovies", upcomingMovies);
+		model.addAttribute("popularMovies", tmdbMovieService.getPopularMovies().get("results"));
+		model.addAttribute("upcomingMovies", tmdbMovieService.getUpcomingMovies().get("results"));
 		
 		return "/index";
 	}
