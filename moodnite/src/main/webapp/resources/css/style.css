@@ -47,7 +47,7 @@ h4 {
 body {
 	margin: 0px;
 	font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
 	color: #000;
 }
 
@@ -60,7 +60,7 @@ header.moodnite {
 }
 
 header.moodnite .logo {
-	width: 70px;
+	width: 71px;
 	padding-top: 15px;
 	margin: 0 auto;
 }
@@ -117,23 +117,66 @@ article.film .rug .data-sheet {
 	float: left;
 }
 
-article.film .rug .synopsis {
-	width: 40%;
+article.film .rug .data-sheet h2.year {
+	font-size: 25px;
+}
+
+article.film .details {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	background-color: #fff;
 	float: left;
+}
+
+article.film .details .details-sheet {
+	width: 28%;
+	padding-right: 2%;
+	float: left;
+}
+
+article.film .details .details-sheet h2 {
+	font-size: 18px;
+}
+
+article.film .details .synopsis {
+	width: 38%;
+	padding-right: 2%;
+	float: left;
+}
+
+article.film .details .synopsis p.tagline {
+	font-weight: bold;
+}
+
+article.film .details .genres {
+	width: 30%;
+	float: left;
+}
+
+article.film .details .genres h3 {
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px #000 solid;
+	border-radius: 5px;
+	margin-right: 2px;
+	font-size: 16px;
+	font-weight: normal;
 }
 
 article.film .cast {
 	width: 80%;
 	padding-left: 10%;
 	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: #e4d9cc;
 	float: left;
 }
 
 article.film .cast .area {
-	margin: 0 auto;
-	
-	padding: 10px;
 	float: left;
 }
 
@@ -165,12 +208,13 @@ article.film .related-movies {
 	width: 80%;
 	padding-left: 10%;
 	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: #eab7b3;
 	float: left;
 }
 
 article.film .related-movies .area {
-	padding: 10px;
 	float: left;
 }
 

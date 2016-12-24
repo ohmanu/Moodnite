@@ -14,15 +14,40 @@
 					<header class=title><h1>${movieDetails.title}</h1></header>
 					
 					<div class="data-sheet">
-						<h2><c:forEach items="${directors}" var="director">
-							<a href="${pageContext.servletContext.contextPath}/person/${director.id}">${director.name}</a>${director.coma} 
-						</c:forEach></h2>
-						<h3>${year}</h3>
+						<c:forEach items="${directors}" var="director">
+							<h2><a href="${pageContext.servletContext.contextPath}/person/${director.id}">${director.name}</a>${director.coma}</h2>
+						</c:forEach>
+						
+						<h2 class="year">${year}</h2>
 					</div>
-					
-					<div class="synopsis"><h2>Synopsis</h2><p>${movieDetails.overview}</p></div>	
 				</div>
 			
+				<div class="details">
+					<div class="details-sheet">
+						<c:forEach items="${production_countries}" var="countrie">
+							<h3>${countrie.name}${countrie.coma}</h3> 
+						</c:forEach>
+						<br>
+						<h3>${movieDetails.runtime} mins</h3> 
+					</div>
+					
+					<div class="synopsis">
+						<c:choose>
+							<c:when test="${not empty movieDetails.tagline}">
+								<p class="tagline">${movieDetails.tagline}</p>
+							</c:when>
+						</c:choose>
+						
+						<p>${movieDetails.overview}</p>
+					</div>
+					
+					<div class="genres">
+						<c:forEach items="${genres}" var="genre">
+							<h3>${genre.name}</h3> 
+						</c:forEach>
+					</div>
+				</div>
+				
 				<c:choose>
 					<c:when test="${not empty cast}">
 						<div class="cast"><div class="area">
@@ -44,8 +69,6 @@
 				<c:choose>
 					<c:when test="${not empty related_movies}">
 						<div class="related-movies"><div class="area">
-						<h2>Related movies</h2>
-						<br>
 						<c:forEach items="${related_movies}" var="related_movie">
 							<a href="${pageContext.servletContext.contextPath}/movie/${related_movie.id}"><img src="https://image.tmdb.org/t/p/w185/${related_movie.poster_path}" alt="${related_movie.title}"/></a>
 						</c:forEach>

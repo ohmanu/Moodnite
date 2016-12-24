@@ -20,6 +20,7 @@ public class MovieController {
 	@Autowired
 	private TmdbMovieService tmdbMovieService;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
 		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
@@ -29,7 +30,7 @@ public class MovieController {
 		model.addAttribute("directors", loadDirectors(credits));
 		model.addAttribute("year", movieDetails.get("release_date").toString().substring(0, 4));
 		model.addAttribute("genres", movieDetails.get("genres"));
-		model.addAttribute("production_countries", movieDetails.get("production_countries"));
+		model.addAttribute("production_countries", formatMapList((List<Map<String, String>>) movieDetails.get("production_countries")));
 		model.addAttribute("cast", credits.get("cast"));
 		model.addAttribute("related_movies", tmdbMovieService.getRelatedMovies(movieId).get("results"));
 
@@ -40,7 +41,6 @@ public class MovieController {
 	private List<Map<String, String>> loadDirectors(Map<?, ?> credits) {
 		List<Map<String, String>> directors = new ArrayList<Map<String, String>>();
 		Map<String, String> aux = new HashMap<String, String>();
-		int numElements = 0;
 		
 		for(Map<?, ?> person:((List<Map<String, String>>) credits.get("crew"))) {
 			if(person.get("job").toString().equals("Director"))
@@ -48,22 +48,27 @@ public class MovieController {
 				aux.put("id", Integer.toString((Integer) (person.get("id"))));
 				aux.put("name", (String) person.get("name"));
 				directors.add(aux);
-				numElements++;
 				aux = new HashMap<String, String>();
 			}
 		}
 		
-		for(Map<String, String> director:directors) {
+		return formatMapList(directors);
+	}
+
+	private List<Map<String, String>> formatMapList(List<Map<String, String>> mapList) {
+		int numElements = mapList.size(); 
+		
+		for(Map<String, String> element:mapList) {
 			if(numElements > 2)
-				director.put("coma", ",");
+				element.put("coma", ",");
 			else if(numElements > 1)
-				director.put("coma", " &");
+				element.put("coma", " &");
 			else
-				director.put("coma", "");
+				element.put("coma", "");
 			
 			numElements--;
 		}
 		
-		return directors;
+		return mapList;
 	}
 }
