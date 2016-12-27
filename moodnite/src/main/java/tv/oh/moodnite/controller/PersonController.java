@@ -19,8 +19,11 @@ public class PersonController {
 	
 	@RequestMapping(value = "{personId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showPersonInfo(Model model, @PathVariable String personId) {
-		Map<?, ?> personInfo = tmdbPersonService.getPersonInfo(personId);
-		model.addAttribute("personInfo", personInfo);
+		Map<?, ?> personMovieService = tmdbPersonService.getPersonMovieCredits(personId);
+		
+		model.addAttribute("personInfo", tmdbPersonService.getPersonInfo(personId));
+		model.addAttribute("personCastCredits", personMovieService.get("cast"));
+		model.addAttribute("personCrewCredits", personMovieService.get("crew"));
 
 		return "/person/show";
 	}

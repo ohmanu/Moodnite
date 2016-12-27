@@ -26,13 +26,13 @@ public class MovieController {
 		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
 		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);
 		
-		model.addAttribute("movieDetails", movieDetails);
+		model.addAttribute("movie_details", movieDetails);
 		model.addAttribute("directors", loadDirectors(credits));
 		model.addAttribute("year", movieDetails.get("release_date").toString().substring(0, 4));
 		model.addAttribute("genres", movieDetails.get("genres"));
 		model.addAttribute("production_countries", formatMapList((List<Map<String, String>>) movieDetails.get("production_countries")));
 		model.addAttribute("cast", credits.get("cast"));
-		model.addAttribute("related_movies", tmdbMovieService.getRelatedMovies(movieId).get("results"));
+		model.addAttribute("similar_movies", tmdbMovieService.getSimilarMovies(movieId).get("results"));
 
 		return "/movie/show";
 	}

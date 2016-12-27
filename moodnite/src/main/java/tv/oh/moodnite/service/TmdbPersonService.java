@@ -18,4 +18,10 @@ public class TmdbPersonService {
 		
 		return tmdbService.getJsonDataMap(url);
 	}
+	
+	public Map<?, ?> getPersonMovieCredits(String personId) {
+		URL url = tmdbService.buildApiURL(PERSON_PATH, personId, "/movie_credits");
+		
+		return tmdbService.getJsonDataMap(url);
+	}
 }

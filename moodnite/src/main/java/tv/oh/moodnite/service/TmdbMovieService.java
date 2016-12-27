@@ -31,6 +31,12 @@ public class TmdbMovieService {
 		return tmdbService.getJsonDataMap(url);
 	}
 	
+	public Map<?, ?> getSimilarMovies(String movieId) {
+		URL url = tmdbService.buildApiURL(MOVIE_PATH, movieId, "/similar");
+		
+		return tmdbService.getJsonDataMap(url);
+	}
+	
 	public Map<?, ?> getRelatedMovies(String movieId) {
 		URL url = tmdbService.buildApiURL(MOVIE_PATH, movieId, "/recommendations");
 		

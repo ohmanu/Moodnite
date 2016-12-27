@@ -13,6 +13,12 @@ p {
 	margin: 0 0 0 0;
 }
 
+ol, ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
 h1 {
 	margin: 0 0 0 0;
 	text-transform: uppercase;
@@ -56,11 +62,11 @@ header.moodnite {
 	height: 50px;
 	position: fixed;
 	z-index: 2;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(204, 198, 198, 0.6);
 }
 
 header.moodnite .logo {
-	width: 71px;
+	width: 74px;
 	padding-top: 15px;
 	margin: 0 auto;
 }
@@ -76,6 +82,52 @@ nav {
 	position: fixed;
 	z-index: 1;
 }
+
+/* index */
+
+article.home {
+	width: 100%;
+	padding-top: 27px;
+	float: left;
+}
+
+article.home .popular-movies {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float: left;
+}
+
+article.home .popular-movies .area {
+	float: left;
+}
+
+article.home .popular-movies .area img{
+	margin: 10px;
+}
+
+article.home .upcoming-movies {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #eab7b3;
+	float: left;
+}
+
+article.home .upcoming-movies .area {
+	float: left;
+}
+
+article.home .upcoming-movies .area img{
+	margin: 10px;
+}
+
+/* movie/show */
 
 article.film {
 	background-repeat: no-repeat;
@@ -204,7 +256,7 @@ article.film .cast .person-sheet .data {
 	float:left;
 }
 
-article.film .related-movies {
+article.film .similar-movies {
 	width: 80%;
 	padding-left: 10%;
 	padding-right: 10%;
@@ -214,10 +266,62 @@ article.film .related-movies {
 	float: left;
 }
 
-article.film .related-movies .area {
+article.film .similar-movies .area {
 	float: left;
 }
 
-article.film .related-movies .area img{
+article.film .similar-movies .area img{
 	margin: 10px;
+}
+
+/* person/show */
+
+article.person {
+	width: 100%;
+	padding-top: 50px;
+	float: left;
+}
+
+article.person .cast-credits {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float: left;
+}
+
+article.person .cast-credits ul.area {
+	float: left;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+article.person .cast-credits li.film {
+	margin: 10px;
+	float: left;
+	display: block;
+}
+
+article.person .crew-credits {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #eab7b3;
+	float: left;
+}
+
+article.person .crew-credits ul.area {
+	float: left;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+article.person .crew-credits li.film {
+	margin: 10px;
+	float: left;
+	display: block;
 }
