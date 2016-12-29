@@ -6,10 +6,20 @@
 	<article class="person">
 		<c:choose>
 			<c:when test="${personInfo != null}">
-				<div class="details">
-					<h3>${personInfo.name}</h3>
-					<p><img src="https://image.tmdb.org/t/p/w500/${personInfo.profile_path}" alt="${personInfo.name}"/></p>
-					<p>${personInfo.biography}</p>
+				<div class="details">					
+					<div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w342/${personInfo.profile_path}');"></div>
+					
+					<div class="info">
+						<h1>${personInfo.name}</h1>
+						<h3>${personInfo.place_of_birth}</h3>
+						<h4>${personInfo.birthday}</h4>
+						<c:choose>
+							<c:when test="${personInfo.deathday != ''}">
+								<h4> - ${personInfo.deathday}</h4>
+							</c:when>
+						</c:choose>
+						<p>${personInfo.biography}</p>
+					</div>
 				</div>
 					
 				<div class="cast-credits">

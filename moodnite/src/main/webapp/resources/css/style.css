@@ -206,6 +206,7 @@ article.film .details .synopsis p.tagline {
 article.film .details .genres {
 	width: 30%;
 	float: left;
+	text-align: center;
 }
 
 article.film .details .genres h3 {
@@ -279,6 +280,40 @@ article.film .similar-movies .area img{
 article.person {
 	width: 100%;
 	padding-top: 50px;
+	float: left;
+}
+
+article.person .details {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 50px;
+	background-color: #fff;
+	float: left;
+}
+
+article.person .details header.name {
+	width: 100%;
+	float: left;
+}
+
+article.person .details .photo {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-color: #eab7b3;
+	-webkit-filter: grayscale(100%);
+	width: 300px;
+	height: 450px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	float: left;
+}
+
+article.person .details .info {
+	width: 500px;
 	float: left;
 }
 
