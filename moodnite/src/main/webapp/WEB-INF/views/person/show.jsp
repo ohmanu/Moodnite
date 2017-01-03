@@ -28,9 +28,13 @@
 							<c:choose>
 								<c:when test="${film.poster_path != null}">
 									<li class="film">
-										<a href="${pageContext.servletContext.contextPath}/movie/${film.id}">
-											<img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/>
-										</a>
+										<div class="poster">
+											<a href="${pageContext.servletContext.contextPath}/movie/${film.id}">
+												<img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/>
+											</a>
+										</div>
+										
+										<div class="character">${film.character}</div>
 									</li>
 								</c:when>
 							</c:choose>
@@ -44,7 +48,11 @@
 							<c:choose>
 								<c:when test="${film.poster_path != null}">
 									<li class="film">
-										<a href="${pageContext.servletContext.contextPath}/movie/${film.id}"><img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/></a>
+										<div class="poster">
+											<a href="${pageContext.servletContext.contextPath}/movie/${film.id}"><img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/></a>
+										</div>
+										
+										<div class="character"><p>${film.job}</p><p>${film.department}</p></div>
 									</li>
 								</c:when>
 							</c:choose>

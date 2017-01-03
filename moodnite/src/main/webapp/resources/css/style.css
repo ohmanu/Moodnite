@@ -334,9 +334,24 @@ article.person .cast-credits ul.area {
 }
 
 article.person .cast-credits li.film {
+	width: 185px;
 	margin: 10px;
 	float: left;
 	display: block;
+}
+
+article.person .cast-credits li.film .poster {
+	width: 185px;
+	float: left;
+}
+
+article.person .cast-credits li.film .character {
+	width: 165px;
+	padding: 10px;
+	float: left;
+	background-color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 article.person .crew-credits {
@@ -356,7 +371,22 @@ article.person .crew-credits ul.area {
 }
 
 article.person .crew-credits li.film {
+	width: 185px;
 	margin: 10px;
 	float: left;
 	display: block;
+}
+
+article.person .crew-credits li.film .poster {
+	width: 185px;
+	float: left;
+}
+
+article.person .crew-credits li.film .character {
+	width: 165px;
+	padding: 10px;
+	float: left;
+	background-color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
 }
