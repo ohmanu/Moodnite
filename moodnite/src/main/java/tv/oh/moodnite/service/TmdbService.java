@@ -39,4 +39,20 @@ public class TmdbService {
 			return null;
 		}
 	}
+	
+	public URL buildApiURL(String entity, String id, String method, String query) {
+		StringBuilder urlString = new StringBuilder(URL_BASE);
+		urlString.append(entity);
+		urlString.append(id);
+		urlString.append(method);
+		urlString.append(API_KEY);
+		urlString.append(query);
+		
+		try {
+			return new URL(urlString.toString());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
