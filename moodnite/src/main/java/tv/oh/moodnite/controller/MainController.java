@@ -5,13 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import tv.oh.moodnite.service.TmdbMovieService;
+import tv.oh.moodnite.service.TmdbSearchService;
 
 @Controller
 public class MainController {
 	@Autowired
 	private TmdbMovieService tmdbMovieService;
+	
+	@Autowired
+	private TmdbSearchService tmdbSearchService;
+	
+	//@ModelAttribute("messages")
+    //public List<Message> messages() {
+      //  return messageRepository.findAll();
+    //}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
@@ -19,5 +29,12 @@ public class MainController {
 		model.addAttribute("upcomingMovies", tmdbMovieService.getUpcomingMovies().get("results"));
 		
 		return "/index";
+	}
+	
+	@RequestMapping(value = "/search", method=RequestMethod.POST, headers = "Accept=text/html")
+	public String submitForm(Model model, @RequestParam String query) {
+	    model.addAttribute("search_results", tmdbSearchService.searchMovie(query).get("results"));
+	    
+	    return "/search/results";
 	}
 }

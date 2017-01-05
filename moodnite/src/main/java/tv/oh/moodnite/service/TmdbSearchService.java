@@ -14,7 +14,7 @@ public class TmdbSearchService {
 	TmdbService tmdbService;
 	
 	public Map<?, ?> searchMovie(String query) {
-		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "multi", "&query=" + query);
+		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "movie", "&query=" + query.replace(" ", "%20"));
 		
 		return tmdbService.getJsonDataMap(url);
 	}
