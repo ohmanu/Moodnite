@@ -13,8 +13,20 @@ public class TmdbSearchService {
 	@Autowired
 	TmdbService tmdbService;
 	
-	public Map<?, ?> searchMovie(String query) {
+	public Map<?, ?> movieSearch(String query) {
 		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "movie", "&query=" + query.replace(" ", "%20"));
+		
+		return tmdbService.getJsonDataMap(url);
+	}
+	
+	public Map<?, ?> personSearch(String query) {
+		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "people", "&query=" + query.replace(" ", "%20"));
+		
+		return tmdbService.getJsonDataMap(url);
+	}
+	
+	public Map<?, ?> multiSearch(String query) {
+		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "multi", "&query=" + query.replace(" ", "%20"));
 		
 		return tmdbService.getJsonDataMap(url);
 	}

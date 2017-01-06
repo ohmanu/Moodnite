@@ -15,7 +15,7 @@
 				</form>
 			</div>
 			
-			<div class="logo"><a href="${pageContext.servletContext.contextPath}/">moodnite v-0.1</a></div>
+			<div class="logo"><a href="${pageContext.servletContext.contextPath}/">moodnite v-0.1.0</a></div>
 		</nav>
 	</header>
 	<section class="content">
