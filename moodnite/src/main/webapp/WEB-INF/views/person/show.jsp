@@ -52,7 +52,7 @@
 											<a href="${pageContext.servletContext.contextPath}/movie/${film.id}"><img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/></a>
 										</div>
 										
-										<div class="character"><p>${film.job}</p><p>${film.department}</p></div>
+										<div class="character">${film.job}</div>
 									</li>
 								</c:when>
 							</c:choose>

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class MoodniteConfig extends Neo4jConfiguration{
 	@Bean
 	public SessionFactory getSessionFactory() {
+		System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "info");
 		return new SessionFactory("tv.oh.moodnite.domain");
 	}
 

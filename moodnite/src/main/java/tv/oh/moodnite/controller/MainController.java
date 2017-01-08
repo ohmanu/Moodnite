@@ -18,11 +18,6 @@ public class MainController {
 	@Autowired
 	private TmdbSearchService tmdbSearchService;
 	
-	//@ModelAttribute("messages")
-    //public List<Message> messages() {
-      //  return messageRepository.findAll();
-    //}
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
 		model.addAttribute("popularMovies", tmdbMovieService.getPopularMovies().get("results"));
