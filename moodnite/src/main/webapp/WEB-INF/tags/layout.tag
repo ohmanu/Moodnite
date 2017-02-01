@@ -11,7 +11,7 @@
 		<nav>
 			<div class="search">
 				<form id="form" method="POST" action="${pageContext.servletContext.contextPath}/search">
-				    <input type="text" name="query"> <input type="submit" value="Submit">
+				    <input type="text" name="query">
 				</form>
 			</div>
 			
