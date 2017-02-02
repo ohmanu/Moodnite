@@ -88,15 +88,15 @@ header.moodnite nav .search input[type=text] {
 	background-color: rgba(204, 198, 198, 0);
 	border: 0;
 	padding-top: 17px;
-	padding-bottom: 17px;
+	padding-bottom: 18px;
 	padding-right: 15px;
 	padding-left: 50px;
 	color: #6d6d6d;
 }
 
 header.moodnite nav .search input[type=text]:hover {
-	width: 400px;
-	background-color: rgba(234, 183, 179, 0.3);
+	width: 600px;
+	background-color: rgba(234, 183, 179, 0.4);
 	transition: width 1s, background 1s;
 	-webkit-transition: width 1s, background 1s;
     -moz-transition: width 1s, background 1s;
@@ -108,8 +108,8 @@ header.moodnite nav .search input[type=text]:hover {
 }
 
 header.moodnite nav .search input[type=text]:focus {
-	width: 400px;
-	background-color: rgba(234, 183, 179, 0.3);
+	width: 600px;
+	background-color: rgba(234, 183, 179, 0.4);
 	transition: width 1s, background 1s;
 	-webkit-transition: width 1s, background 1s;
     -moz-transition: width 1s, background 1s;
@@ -137,7 +137,7 @@ section.content {
 
 article.home {
 	width: 100%;
-	padding-top: 27px;
+	padding-top: 30px;
 	float: left;
 }
 
@@ -151,12 +151,22 @@ article.home .popular-movies {
 	float: left;
 }
 
-article.home .popular-movies .area {
+article.home .popular-movies ul.area {
 	float: left;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-article.home .popular-movies .area img{
+article.home .popular-movies li.film {
+	width: 185px;
 	margin: 10px;
+	float: left;
+	display: block;
+}
+
+article.home .popular-movies li.film .poster {
+	width: 185px;
+	float: left;
 }
 
 article.home .upcoming-movies {
@@ -169,12 +179,22 @@ article.home .upcoming-movies {
 	float: left;
 }
 
-article.home .upcoming-movies .area {
+article.home .upcoming-movies ul.area {
 	float: left;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-article.home .upcoming-movies .area img{
+article.home .upcoming-movies li.film {
+	width: 185px;
 	margin: 10px;
+	float: left;
+	display: block;
+}
+
+article.home .upcoming-movies li.film .poster {
+	width: 185px;
+	float: left;
 }
 
 /* movie/show */
@@ -280,17 +300,20 @@ article.film .cast {
 	float: left;
 }
 
-article.film .cast .area {
+article.film .cast ul.area {
 	float: left;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-article.film .cast .person-sheet {
+article.film .cast li.person-sheet {
 	width: 185px;
 	margin: 10px;
-	display: inline-block;
+	float: left;
+	display: block;
 }
 
-article.film .cast .person-sheet .photo {
+article.film .cast li.person-sheet .photo {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -301,7 +324,7 @@ article.film .cast .person-sheet .photo {
 	float: left;
 }
 
-article.film .cast .person-sheet .data {
+article.film .cast li.person-sheet .data {
 	background-color: #fff;
 	width: 165px;
 	padding: 10px;
@@ -318,12 +341,22 @@ article.film .similar-movies {
 	float: left;
 }
 
-article.film .similar-movies .area {
+article.film .similar-movies ul.area {
 	float: left;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-article.film .similar-movies .area img{
+article.film .similar-movies li.film {
+	width: 185px;
 	margin: 10px;
+	float: left;
+	display: block;
+}
+
+article.film .similar-movies li.film .poster {
+	width: 185px;
+	float: left;
 }
 
 /* person/show */
@@ -433,7 +466,7 @@ article.person .crew-credits li.film .poster {
 	float: left;
 }
 
-article.person .crew-credits li.film .character {
+article.person .crew-credits li.film .job {
 	width: 165px;
 	padding: 10px;
 	float: left;

@@ -50,11 +50,11 @@
 					</div>
 				</div>
 				
-				<c:choose>
-					<c:when test="${not empty cast}">
-						<div class="cast"><div class="area">
+				<c:choose><c:when test="${not empty cast}">
+					<div class="cast">
+						<ul class="area">
 							<c:forEach items="${cast}" var="person">
-								<div class="person-sheet">
+								<li class="person-sheet">
 									<div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
 									</div>
 									<div class="data">
@@ -62,21 +62,28 @@
 										<br>
 										<h4>${person.character}</h4>
 									</div>
-								</div>
+								</li>
 							</c:forEach>
-						</div></div>
-					</c:when>
-				</c:choose>
+						</ul>
+					</div>
+				</c:when></c:choose>
 			
-				<c:choose>
-					<c:when test="${not empty similar_movies}">
-						<div class="similar-movies"><div class="area">
-						<c:forEach items="${similar_movies}" var="similar_movie">
-							<a href="${pageContext.servletContext.contextPath}/movie/${similar_movie.id}"><img src="https://image.tmdb.org/t/p/w185/${similar_movie.poster_path}" alt="${similar_movie.title}"/></a>
-						</c:forEach>
-						</div></div>
-					</c:when>
-				</c:choose>
+				<c:choose><c:when test="${not empty similar_movies}">
+					<div class="similar-movies">
+						<ul class="area">
+							<c:forEach items="${similar_movies}" var="similar_movie">
+								<li class="film">
+									<div class="poster">
+										<a href="${pageContext.servletContext.contextPath}/movie/${similar_movie.id}">
+											<img src="https://image.tmdb.org/t/p/w185/${similar_movie.poster_path}" alt="${similar_movie.title}"/>
+										</a>
+									</div>
+								</li>
+							</c:forEach>
+						</ul>
+					</div>
+				</c:when></c:choose>
+				
 			</article>
 		</c:when>
 	</c:choose>
