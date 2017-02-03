@@ -52,7 +52,7 @@
 				
 				<c:choose><c:when test="${not empty cast}">
 					<div class="cast">
-						<ul class="area">
+						<ul class="people">
 							<c:forEach items="${cast}" var="person">
 								<li class="person-sheet">
 									<div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
@@ -70,7 +70,7 @@
 			
 				<c:choose><c:when test="${not empty similar_movies}">
 					<div class="similar-movies">
-						<ul class="area">
+						<ul class="films">
 							<c:forEach items="${similar_movies}" var="similar_movie">
 								<li class="film">
 									<div class="poster">

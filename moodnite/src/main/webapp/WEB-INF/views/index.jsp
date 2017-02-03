@@ -4,11 +4,10 @@
 
 <t:layout>
 	<article class="home">
-		<p><a href="sign-in">Sign-in</a></p>
-
+	
 		<c:choose><c:when test="${not empty popularMovies}">
 			<div class="popular-movies">
-				<ul class="area">
+				<ul class="films">
 					<c:forEach items="${popularMovies}" var="pupularMovie">
 						<li class="film">
 							<div class="poster">
@@ -24,7 +23,7 @@
 						
 		<c:choose><c:when test="${not empty upcomingMovies}">
 			<div class="upcoming-movies">
-				<ul class="area">
+				<ul class="films">
 					<c:forEach items="${upcomingMovies}" var="upcomingMovie">
 						<li class="film">
 							<div class="poster">

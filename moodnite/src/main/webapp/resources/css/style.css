@@ -137,7 +137,7 @@ section.content {
 
 article.home {
 	width: 100%;
-	padding-top: 30px;
+	padding-top: 50px;
 	float: left;
 }
 
@@ -151,24 +151,6 @@ article.home .popular-movies {
 	float: left;
 }
 
-article.home .popular-movies ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.home .popular-movies li.film {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.home .popular-movies li.film .poster {
-	width: 185px;
-	float: left;
-}
-
 article.home .upcoming-movies {
 	width: 80%;
 	padding-left: 10%;
@@ -176,24 +158,6 @@ article.home .upcoming-movies {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #eab7b3;
-	float: left;
-}
-
-article.home .upcoming-movies ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.home .upcoming-movies li.film {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.home .upcoming-movies li.film .poster {
-	width: 185px;
 	float: left;
 }
 
@@ -300,37 +264,6 @@ article.film .cast {
 	float: left;
 }
 
-article.film .cast ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.film .cast li.person-sheet {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.film .cast li.person-sheet .photo {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	background-color: #000;
-	-webkit-filter: grayscale(100%);
-	width: 100%;
-	height: 250px;
-	float: left;
-}
-
-article.film .cast li.person-sheet .data {
-	background-color: #fff;
-	width: 165px;
-	padding: 10px;
-	float:left;
-}
-
 article.film .similar-movies {
 	width: 80%;
 	padding-left: 10%;
@@ -338,24 +271,6 @@ article.film .similar-movies {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #eab7b3;
-	float: left;
-}
-
-article.film .similar-movies ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.film .similar-movies li.film {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.film .similar-movies li.film .poster {
-	width: 185px;
 	float: left;
 }
 
@@ -411,24 +326,6 @@ article.person .cast-credits {
 	float: left;
 }
 
-article.person .cast-credits ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.person .cast-credits li.film {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.person .cast-credits li.film .poster {
-	width: 185px;
-	float: left;
-}
-
 article.person .cast-credits li.film .character {
 	width: 165px;
 	padding: 10px;
@@ -448,24 +345,6 @@ article.person .crew-credits {
 	float: left;
 }
 
-article.person .crew-credits ul.area {
-	float: left;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-article.person .crew-credits li.film {
-	width: 185px;
-	margin: 10px;
-	float: left;
-	display: block;
-}
-
-article.person .crew-credits li.film .poster {
-	width: 185px;
-	float: left;
-}
-
 article.person .crew-credits li.film .job {
 	width: 165px;
 	padding: 10px;
@@ -473,4 +352,85 @@ article.person .crew-credits li.film .job {
 	background-color: #fff;
 	text-transform: uppercase;
 	font-weight: bold;
+}
+
+/* ul.films */
+
+ul.films {
+	float: left;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul.films li.film {
+	width: 185px;
+	margin: 10px;
+	float: left;
+	display: block;
+}
+
+ul.films li.film .poster {
+	width: 185px;
+	float: left;
+}
+
+/* ul.people */
+
+ul.people {
+	float: left;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul.people li.person-sheet {
+	width: 185px;
+	margin: 10px;
+	float: left;
+	display: block;
+}
+
+ul.people li.person-sheet .photo {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-color: #000;
+	-webkit-filter: grayscale(100%);
+	width: 100%;
+	height: 250px;
+	float: left;
+}
+
+ul.people li.person-sheet .data {
+	background-color: #fff;
+	width: 165px;
+	padding: 10px;
+	float:left;
+}
+
+/* search/result */
+
+article.search {
+	width: 100%;
+	padding-top: 50px;
+	float: left;
+}
+
+article.search .films-results {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float: left;
+}
+
+article.search .people-results {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #eab7b3;
+	float: left;
 }

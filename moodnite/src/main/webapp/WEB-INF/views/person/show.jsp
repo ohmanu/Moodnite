@@ -23,7 +23,7 @@
 				
 			<c:choose><c:when test="${not empty personCastCredits}">
 				<div class="cast-credits">
-					<ul class="area">
+					<ul class="films">
 						<c:forEach items="${personCastCredits}" var="film">
 							<c:choose><c:when test="${film.poster_path != null}">
 								<li class="film">
@@ -43,7 +43,7 @@
 			
 			<c:choose><c:when test="${not empty personCrewCredits}">		
 				<div class="crew-credits">
-					<ul class="area">
+					<ul class="films">
 						<c:forEach items="${personCrewCredits}" var="film">
 							<c:choose><c:when test="${film.poster_path != null}">
 								<li class="film">

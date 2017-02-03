@@ -20,7 +20,7 @@ public class TmdbSearchService {
 	}
 	
 	public Map<?, ?> personSearch(String query) {
-		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "people", "&query=" + query.replace(" ", "%20"));
+		URL url = tmdbService.buildApiURL(SEARCH_PATH, "", "person", "&query=" + query.replace(" ", "%20"));
 		
 		return tmdbService.getJsonDataMap(url);
 	}

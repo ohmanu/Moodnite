@@ -28,7 +28,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/search", method=RequestMethod.POST, headers = "Accept=text/html")
 	public String submitForm(Model model, @RequestParam String query) {
-	    model.addAttribute("search_results", tmdbSearchService.movieSearch(query).get("results"));
+	    model.addAttribute("films_results", tmdbSearchService.movieSearch(query).get("results"));
+	    model.addAttribute("people_results", tmdbSearchService.personSearch(query).get("results"));
 	    
 	    return "/search/results";
 	}
