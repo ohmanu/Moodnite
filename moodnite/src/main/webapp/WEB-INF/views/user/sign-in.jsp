@@ -4,20 +4,20 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-	<h2>Person Form</h2>
-	
-	<form:form action="save" method="POST" modelAttribute="user">		
-			<form:hidden path="id" />
-		<p>
-			<form:label path="login">Login: </form:label>
-			<form:input path="login" />
-		</p>
-		
-		<p>
-			<form:label path="password">Password: </form:label>
-			<form:password path="password" />
-		</p>
-		
-		<input type="submit" value="Save"/>
-	</form:form>
+  <h2>Person Form</h2>
+  
+  <form:form action="save" method="POST" modelAttribute="user">	
+    <form:hidden path="id" />
+      <p>
+        <form:label path="login">Login: </form:label>
+        <form:input path="login" />
+      </p>
+      
+      <p>
+        <form:label path="password">Password: </form:label>
+        <form:password path="password" />
+      </p>
+      
+      <input type="submit" value="Save"/>
+    </form:form>
 </t:layout>
