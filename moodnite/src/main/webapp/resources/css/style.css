@@ -74,7 +74,7 @@ header.moodnite nav {
 }
 
 header.moodnite nav .search {
-	width: 400px;
+	width: 40%;
 	height: 50px;
 	margin-left: 10px;
 	float: left;
@@ -95,7 +95,7 @@ header.moodnite nav .search input[type=text] {
 }
 
 header.moodnite nav .search input[type=text]:hover {
-	width: 600px;
+	width: 100%;
 	background-color: rgba(234, 183, 179, 0.4);
 	transition: width 1s, background 1s;
 	-webkit-transition: width 1s, background 1s;
@@ -108,7 +108,7 @@ header.moodnite nav .search input[type=text]:hover {
 }
 
 header.moodnite nav .search input[type=text]:focus {
-	width: 600px;
+	width: 100%;
 	background-color: rgba(234, 183, 179, 0.4);
 	transition: width 1s, background 1s;
 	-webkit-transition: width 1s, background 1s;
@@ -376,7 +376,11 @@ ul.films li.film .poster {
 
 /* ul.people */
 
-h2.section-title {
+.section-title {
+	width: 100%;
+}
+
+.section-title h2 {
 	font-size: 40px;
 	margin-left: 10px;
 }

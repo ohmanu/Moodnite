@@ -6,6 +6,9 @@
   <article class="search">
     <c:choose><c:when test="${not empty films_results}">
       <div class="films-results">
+        <div class="section-title">
+          <h2>Films</h2>
+        </div>
         <ul class="films">
           <c:forEach items="${films_results}" var="movie">
             <li class="film">
@@ -22,6 +25,9 @@
     
     <c:choose><c:when test="${not empty people_results}">
       <div class="people-results">
+        <div class="section-title">
+          <h2>People</h2>
+        </div>
         <ul class="people">
           <c:forEach items="${people_results}" var="person">
             <li class="person-sheet">

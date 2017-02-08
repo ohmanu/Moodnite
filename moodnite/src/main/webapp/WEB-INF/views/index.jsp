@@ -7,7 +7,9 @@
 	
     <c:choose><c:when test="${not empty popularMovies}">
       <div class="popular-movies">
-        <h2 class="section-title">Popular movies</h2>
+        <div class="section-title">
+          <h2>Popular movies</h2>
+        </div>
         <ul class="films">
           <c:forEach items="${popularMovies}" var="pupularMovie">
             <li class="film">
@@ -24,7 +26,9 @@
 
     <c:choose><c:when test="${not empty upcomingMovies}">
       <div class="upcoming-movies">
-        <h2 class="section-title">Upcoming movies</h2>
+        <div class="section-title">
+          <h2>Upcoming movies</h2>
+        </div>
         <ul class="films">
           <c:forEach items="${upcomingMovies}" var="upcomingMovie">
             <li class="film">
