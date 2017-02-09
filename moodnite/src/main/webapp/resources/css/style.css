@@ -274,6 +274,60 @@ article.film .similar-movies {
 	float: left;
 }
 
+/* movie/credits */
+
+article.credits {
+	width: 100%;
+	padding-top: 50px;
+	float: left;
+}
+
+article.credits li {
+	width: 100%;
+}
+
+article.credits li .left-column {
+	float: left;
+	width: 50%;
+	text-align: right;
+}
+
+article.credits li .right-column {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+article.credits .cast {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float: left;
+	text-align: center;
+}
+
+article.credits li h4.left {
+	padding-right: 10px;
+}
+
+article.credits li h4.right {
+	padding-left: 10px;
+}
+
+article.credits .crew {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float: left;
+	text-align: center;
+}
+
 /* person/show */
 
 article.person {

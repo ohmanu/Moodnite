@@ -37,6 +37,18 @@ public class MovieController {
 		return "/movie/show";
 	}
 	
+	@RequestMapping(value = "{movieId}/credits", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showMovieCredits(Model model, @PathVariable String movieId) {
+		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
+		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);
+		
+		model.addAttribute("movie_details", movieDetails);
+		model.addAttribute("cast", credits.get("cast"));
+		model.addAttribute("crew", credits.get("crew"));
+
+		return "/movie/credits";
+	}
+	
 	@SuppressWarnings("unchecked")
 	private List<Map<String, String>> loadDirectors(Map<?, ?> credits) {
 		List<Map<String, String>> directors = new ArrayList<Map<String, String>>();
