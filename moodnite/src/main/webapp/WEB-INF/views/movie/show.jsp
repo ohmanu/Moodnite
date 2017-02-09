@@ -61,6 +61,13 @@
                 </div>
               </li>
             </c:forEach>
+            <li class="person-sheet">
+              <div class="photo">
+              </div>
+              <div class="data">
+                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${movie_details.id}/credits">Full cast & crew</a></b></h4>
+              </div>
+            </li>
           </ul>
         </div>
       </c:when></c:choose>

@@ -14,10 +14,10 @@
           <c:forEach items="${cast}" var="person">
             <li>
               <div class="left-column">
-                <h4 class="left"><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></h4>
+                <h4 class="left">${person.character}</h4>
               </div>
               <div class="right-column">
-                <h4 class="right">${person.character}</h4>
+                <h4 class="right"><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></h4>
               </div>
             </li>
           </c:forEach>
@@ -32,10 +32,10 @@
           <c:forEach items="${crew}" var="person">
             <li>
               <div class="left-column">
-                <h4 class="left"><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></h4>
+                <h4 class="left">${person.job}</h4>
               </div>
               <div class="right-column">
-                <h4 class="right">${person.job}</h4>
+                <h4 class="right"><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></h4>
               </div>
             </li>
           </c:forEach>

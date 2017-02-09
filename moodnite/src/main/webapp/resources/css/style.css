@@ -280,10 +280,41 @@ article.credits {
 	width: 100%;
 	padding-top: 50px;
 	float: left;
+	color: #fff;
+}
+
+article.credits .cast {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	background-color: #000;
+	float: left;
+	text-align: center;
+}
+
+article.credits .crew {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #000;
+	float: left;
+	text-align: center;
 }
 
 article.credits li {
 	width: 100%;
+}
+
+article.credits a {
+	color: #fff;
+}
+
+article.credits h3 {
+	font-weight: bold;
 }
 
 article.credits li .left-column {
@@ -298,34 +329,12 @@ article.credits li .right-column {
 	text-align: left;
 }
 
-article.credits .cast {
-	width: 80%;
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #e4d9cc;
-	float: left;
-	text-align: center;
-}
-
 article.credits li h4.left {
 	padding-right: 10px;
 }
 
 article.credits li h4.right {
 	padding-left: 10px;
-}
-
-article.credits .crew {
-	width: 80%;
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #e4d9cc;
-	float: left;
-	text-align: center;
 }
 
 /* person/show */
