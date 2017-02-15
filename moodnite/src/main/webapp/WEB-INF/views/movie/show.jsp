@@ -4,20 +4,22 @@
 
 <t:layout>
   <c:choose><c:when test="${movie_details != null}">
-    <article class="film" style="background-image: url('https://image.tmdb.org/t/p/w1280/${movie_details.backdrop_path}');">
-      <div class="rate">
+    <article class="film">
+      <div class="cover" style="background-image: url('https://image.tmdb.org/t/p/w1280/${movie_details.backdrop_path}');">
+        <div class="rate">
         
-      </div>
+        </div>
       
-      <div class="rug">
-        <header class="title"><h1>${movie_details.title}</h1></header>
+        <div class="rug">
+          <header class="title"><h1>${movie_details.title}</h1></header>
         
-        <div class="data-sheet">
-          <c:forEach items="${directors}" var="director">
-            <h2><a href="${pageContext.servletContext.contextPath}/person/${director.id}">${director.name}</a>${director.coma}</h2>
-          </c:forEach>
+          <div class="data-sheet">
+            <c:forEach items="${directors}" var="director">
+              <h2><a href="${pageContext.servletContext.contextPath}/person/${director.id}">${director.name}</a>${director.coma}</h2>
+            </c:forEach>
           		
-          <h2 class="year">${year}</h2>
+            <h2 class="year">${year}</h2>
+          </div>
         </div>
       </div>
       

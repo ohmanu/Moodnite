@@ -20,8 +20,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
-		model.addAttribute("popularMovies", tmdbMovieService.getPopularMovies().get("results"));
-		model.addAttribute("upcomingMovies", tmdbMovieService.getUpcomingMovies().get("results"));
+		model.addAttribute("popular_movies", tmdbMovieService.getPopularMovies().get("results"));
+		model.addAttribute("upcoming_movies", tmdbMovieService.getUpcomingMovies().get("results"));
 		
 		return "/index";
 	}

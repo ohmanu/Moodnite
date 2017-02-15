@@ -10,14 +10,16 @@
           <h2>Films</h2>
         </div>
         <ul class="films">
-          <c:forEach items="${films_results}" var="movie">
-            <li class="film">
-              <div class="poster">
-                <a href="${pageContext.servletContext.contextPath}/movie/${movie.id}">
-                  <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}" alt="${movie.title}"/>
-                </a>
-              </div>
-            </li>
+          <c:forEach items="${films_results}" var="film">
+            <c:choose><c:when test="${film.poster_path != null}">
+              <li class="film">
+                <div class="poster">
+                  <a href="${pageContext.servletContext.contextPath}/movie/${film.id}">
+                    <img src="https://image.tmdb.org/t/p/w185/${film.poster_path}" alt="${film.title}"/>
+                  </a>
+                </div>
+              </li>
+            </c:when></c:choose>
           </c:forEach>
         </ul>
       </div>

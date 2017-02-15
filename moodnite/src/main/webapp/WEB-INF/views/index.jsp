@@ -5,17 +5,17 @@
 <t:layout>
   <article class="home">
 	
-    <c:choose><c:when test="${not empty popularMovies}">
+    <c:choose><c:when test="${not empty popular_movies}">
       <div class="popular-movies">
         <div class="section-title">
           <h2>Popular movies</h2>
         </div>
         <ul class="films">
-          <c:forEach items="${popularMovies}" var="pupularMovie">
+          <c:forEach items="${popular_movies}" var="pupular_movie">
             <li class="film">
               <div class="poster">
-                <a href="${pageContext.servletContext.contextPath}/movie/${pupularMovie.id}">
-                  <img src="https://image.tmdb.org/t/p/w185/${pupularMovie.poster_path}" alt="${pupularMovie.title}"/>
+                <a href="${pageContext.servletContext.contextPath}/movie/${pupular_movie.id}">
+                  <img src="https://image.tmdb.org/t/p/w185/${pupular_movie.poster_path}" alt="${pupular_movie.title}"/>
                 </a>
               </div>
             </li>
@@ -24,17 +24,17 @@
       </div>
     </c:when></c:choose>
 
-    <c:choose><c:when test="${not empty upcomingMovies}">
+    <c:choose><c:when test="${not empty upcoming_movies}">
       <div class="upcoming-movies">
         <div class="section-title">
           <h2>Upcoming movies</h2>
         </div>
         <ul class="films">
-          <c:forEach items="${upcomingMovies}" var="upcomingMovie">
+          <c:forEach items="${upcoming_movies}" var="upcoming_movie">
             <li class="film">
               <div class="poster">
-                <a href="${pageContext.servletContext.contextPath}/movie/${upcomingMovie.id}">
-                  <img src="https://image.tmdb.org/t/p/w185/${upcomingMovie.poster_path}" alt="${upcomingMovie.title}"/>
+                <a href="${pageContext.servletContext.contextPath}/movie/${upcoming_movie.id}">
+                  <img src="https://image.tmdb.org/t/p/w185/${upcoming_movie.poster_path}" alt="${upcoming_movie.title}"/>
                 </a>
               </div>
             </li>
