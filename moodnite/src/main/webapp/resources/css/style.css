@@ -55,6 +55,7 @@ body {
 	font-family: 'Open Sans Condensed', sans-serif;
     font-size: 15px;
 	color: #000;
+	min-width: 640px;
 }
 
 header.moodnite {
@@ -71,6 +72,7 @@ header.moodnite nav {
 	padding-right: 10%;
 	position: fixed;
 	z-index: 1;
+	min-width: 600px;
 }
 
 header.moodnite nav .search {
@@ -148,7 +150,8 @@ article.home .popular-movies {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
-	float: left;
+	
+	margin: 0 auto;
 }
 
 article.home .upcoming-movies {
@@ -424,10 +427,52 @@ article.person .crew-credits li.film .job {
 
 /* ul.films */
 
+@media (min-width: 600px)
+{
+	ul.films {
+		width: 410px;
+	}
+}
+
+@media (min-width: 870px)
+{
+	ul.films {
+		width: 615px;
+	}
+}
+
+@media (min-width: 1200px)
+{
+	ul.films {
+		width: 820px;
+	}
+}
+
+@media (min-width: 1400px)
+{
+	ul.films {
+		width: 1025px;
+	}
+}
+
+@media (min-width: 1600px)
+{
+	ul.films {
+		width: 1230px;
+	}
+}
+
+@media (min-width: 1800px)
+{
+	ul.films {
+		width: 1435px;
+	}
+}
+
 ul.films {
-	float: left;
 	display: flex;
 	flex-wrap: wrap;
+	margin: 0 auto;
 }
 
 ul.films li.film {
