@@ -14,8 +14,12 @@
           <input type="text" name="query">
         </form>
       </div>
+      <div class="user">
+        <img src="${pageContext.request.contextPath}/resources/images/user.png"/>
+      </div>
+      <div class="logo"><a href="${pageContext.servletContext.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/moodnite-logo.png"/></a></div>
       
-      <div class="logo"><a href="${pageContext.servletContext.contextPath}/">moodnite v-0.1.0</a></div>
+      
     </nav>
   </header>
   

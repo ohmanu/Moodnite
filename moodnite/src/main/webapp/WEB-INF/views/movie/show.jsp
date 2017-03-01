@@ -76,10 +76,10 @@
       
       <c:choose><c:when test="${not empty similar_movies}">
         <div class="similar-movies">
-          <div class="section-title">
-            <h2>Similar movies</h2>
-          </div>
           <ul class="films">
+            <li class="separator">
+              <h2>Related movies</h2>
+            </li>
             <c:forEach items="${similar_movies}" var="similar_movie">
               <li class="film">
                 <div class="poster">

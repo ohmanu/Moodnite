@@ -21,10 +21,10 @@
       
       <c:choose><c:when test="${not empty personCastCredits}">
         <div class="cast-credits">
-          <div class="section-title">
-            <h2>Cast</h2>
-          </div>
           <ul class="films">
+            <li class="separator-long" id="pink">
+              <h2>Credits</h2>
+            </li>
             <c:forEach items="${personCastCredits}" var="film">
               <c:choose><c:when test="${film.poster_path != null}">
                 <li class="film">
@@ -43,10 +43,10 @@
       
       <c:choose><c:when test="${not empty personCrewCredits}">
         <div class="crew-credits">
-          <div class="section-title">
-            <h2>Crew</h2>
-          </div>
           <ul class="films">
+            <li class="separator-long">
+              <h2>Crew</h2>
+            </li>
             <c:forEach items="${personCrewCredits}" var="film">
               <c:choose><c:when test="${film.poster_path != null}">
                 <li class="film">

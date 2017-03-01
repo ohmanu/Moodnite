@@ -7,16 +7,19 @@
 	
     <c:choose><c:when test="${not empty popular_movies}">
       <div class="popular-movies">
-        <div class="section-title">
-          <h2>Popular movies</h2>
-        </div>
         <ul class="films">
+          <li class="separator-short" id="pink">
+            <h2>Popular movies</h2>
+          </li>
           <c:forEach items="${popular_movies}" var="pupular_movie">
             <li class="film">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${pupular_movie.id}">
-                  <img src="https://image.tmdb.org/t/p/w185/${pupular_movie.poster_path}" alt="${pupular_movie.title}"/>
+                  <img src="https://image.tmdb.org/t/p/w185/${pupular_movie.backdrop_path}" alt="${pupular_movie.title}"/>
                 </a>
+              </div>
+              <div class="data">
+                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${pupular_movie.id}">${pupular_movie.title}</a></b></h4>
               </div>
             </li>
           </c:forEach>
@@ -26,10 +29,10 @@
 
     <c:choose><c:when test="${not empty upcoming_movies}">
       <div class="upcoming-movies">
-        <div class="section-title">
-          <h2>Upcoming movies</h2>
-        </div>
         <ul class="films">
+          <li class="separator">
+            <h2>Upcoming movies</h2>
+          </li>
           <c:forEach items="${upcoming_movies}" var="upcoming_movie">
             <li class="film">
               <div class="poster">

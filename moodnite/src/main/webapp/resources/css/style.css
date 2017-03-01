@@ -56,6 +56,7 @@ body {
     font-size: 15px;
 	color: #000;
 	min-width: 640px;
+	background-color: #e4d9cc;
 }
 
 header.moodnite {
@@ -125,8 +126,18 @@ header.moodnite nav .search input[type=text]:focus {
 
 header.moodnite nav .logo {
 	width: 100px;
-	padding-top: 15px;
+
 	margin: 0 auto;
+}
+
+header.moodnite nav .user {
+	float: right;
+}
+
+header.moodnite nav .user img {
+	width: 25px;
+	margin-top: 13px;
+	margin-right: 20px;
 }
 
 section.content {
@@ -376,6 +387,7 @@ article.person .details .photo {
 	-webkit-filter: grayscale(100%);
 	width: 300px;
 	height: 450px;
+	margin-left: 40px;
 	margin-right: 50px;
 	margin-bottom: 20px;
 	margin-top: 20px;
@@ -511,6 +523,76 @@ ul.films li.film .poster {
 	float: left;
 }
 
+ul.films li.film .data {
+	background-color: #fff;
+	width: 165px;
+	height: 60px;
+	padding: 10px;
+	float:left;
+}
+
+ul.films li.separator {
+	width: 165px;
+	height: 258;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+	display: block;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+ul.films li.separator-long {
+	width: 165px;
+	height: 298;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+	display: block;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+ul.films #pink {
+	background-color: #eab7b3;
+}
+
+ul.films li.separator-short {
+	width: 165px;
+	height: 164;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+	display: block;
+	background-color: #eab7b3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+ul.films li.separator h2 {
+	color: #eab7b3;
+}
+
+ul.films li.separator-short h2 {
+	color: #fff;
+}
+
+ul.films li.separator-long h2 {
+	color: #eab7b3;
+}
+
+ul.films #pink h2 {
+	color: #fff;
+}
+
 /* ul.people */
 
 .section-title {
@@ -587,8 +669,8 @@ footer {
 	width: 100%;
 	height: 30%;
 	float: left;
-	background-color: #595a66;
-	color: #fff;
+	background-color: rgba(204, 198, 198, 0.6);
+	color: #000;
 }
 
 footer .area {
