@@ -663,6 +663,36 @@ article.search .people-results {
 	float: left;
 }
 
+/* USER */
+
+article.user {
+	width: 100%;
+	padding-top: 50px;
+	float: left;
+}
+
+article.user .sign-in {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
+article.user .log-in {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #fff;
+	
+	margin: 0 auto;
+}
+
 /* FOOTER */
 
 footer {

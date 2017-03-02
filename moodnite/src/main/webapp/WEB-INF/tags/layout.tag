@@ -15,11 +15,14 @@
         </form>
       </div>
       <div class="user">
-        <img src="${pageContext.request.contextPath}/resources/images/user.png"/>
+        <a href="${pageContext.servletContext.contextPath}/sign-in"><img src="${pageContext.request.contextPath}/resources/images/user.png"/></a>
+        
+        <c:choose><c:when test="${not empty loggedInUser.login}">
+          ${loggedInUser.login}
+        </c:when></c:choose>
       </div>
-      <div class="logo"><a href="${pageContext.servletContext.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/moodnite-logo.png"/></a></div>
       
-      
+      <div class="logo"><a href="${pageContext.servletContext.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/moodnite-logo.png"/></a></div>    
     </nav>
   </header>
   

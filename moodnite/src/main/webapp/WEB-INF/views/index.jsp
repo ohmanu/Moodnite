@@ -4,7 +4,6 @@
 
 <t:layout>
   <article class="home">
-	
     <c:choose><c:when test="${not empty popular_movies}">
       <div class="popular-movies">
         <ul class="films">
