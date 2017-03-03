@@ -15,10 +15,10 @@
         </form>
       </div>
       <div class="user">
-        <a href="${pageContext.servletContext.contextPath}/sign-in"><img src="${pageContext.request.contextPath}/resources/images/user.png"/></a>
+        <a href="${pageContext.servletContext.contextPath}/user/reviews"><img src="${pageContext.request.contextPath}/resources/images/user.png"/></a>
         
-        <c:choose><c:when test="${not empty loggedInUser.login}">
-          ${loggedInUser.login}
+        <c:choose><c:when test="${not empty loggedInUser.name}">
+          <a href="${pageContext.servletContext.contextPath}/user/${loggedInUser.id}/reviews">${loggedInUser.name}</a>
         </c:when></c:choose>
       </div>
       

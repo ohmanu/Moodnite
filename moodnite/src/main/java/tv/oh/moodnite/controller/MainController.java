@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import tv.oh.moodnite.service.TmdbMovieService;
-import tv.oh.moodnite.service.TmdbSearchService;
+import tv.oh.moodnite.service.tmdb.TmdbMovieService;
+import tv.oh.moodnite.service.tmdb.TmdbSearchService;
 
 @Controller
 public class MainController {

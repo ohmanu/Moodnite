@@ -1,4 +1,4 @@
-package tv.oh.moodnite.service;
+package tv.oh.moodnite.service.tmdb;
 
 import java.net.URL;
 import java.util.Map;

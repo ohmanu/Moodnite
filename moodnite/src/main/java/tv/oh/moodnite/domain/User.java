@@ -8,15 +8,15 @@ public class User {
 	@GraphId
 	private Long id;
 
-	private String login;
+	private String name;
 	private String password;
 
-	public String getLogin() {
-		return login;
+	public String getName() {
+		return name;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -58,6 +58,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", login=" + login + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + "]";
 	}
 }
