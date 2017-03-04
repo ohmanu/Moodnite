@@ -3,9 +3,11 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <article class="reviews">
-    <c:choose><c:when test="${not empty loggedInUser.name}">
-      ${loggedInUser.name}
-    </c:when></c:choose>
+  <t:user-layout>
+    <article class="reviews">
+      <c:choose><c:when test="${not empty loggedInUser.name}">
+        ${loggedInUser.name}
+      </c:when></c:choose>
   </article>
+  </t:user-layout>
 </t:layout>

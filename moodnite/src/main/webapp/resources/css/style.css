@@ -693,6 +693,52 @@ article.user .login {
 	margin: 0 auto;
 }
 
+article.user .sign-in {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
+article.user nav.menu {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
+article.user nav.menu ul {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
+article.user nav.menu li {
+	width: 185px;
+	margin: 10px;
+	float: left;
+	display: block;
+}
+
+article.reviews {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
 /* FOOTER */
 
 footer {

@@ -21,7 +21,7 @@
         <input type="submit" value="Login"/>
       </form:form>
         
-      <a href="${pageContext.servletContext.contextPath}/user/logout">logout</a>
+      <a href="${pageContext.servletContext.contextPath}/user/sign-in">Sign in</a>
     </div>
   </article>
 </t:layout>
