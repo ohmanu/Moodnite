@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import tv.oh.moodnite.domain.User;
 
-public interface UserRepository extends GraphRepository<User>{
+public interface UserRepository extends GraphRepository<User> {
 
 	@Query("MATCH (user:User) WHERE user.name = {name} RETURN user")
 	User findByName(@Param("name") String name);

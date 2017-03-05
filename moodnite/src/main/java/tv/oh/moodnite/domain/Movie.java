@@ -8,52 +8,60 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
-public class User {
+public class Movie {
 	@GraphId
 	private Long id;
 
-	@Relationship(type = "WATCHED")
-	private Set<Rated> watchedList = new HashSet<>();
-
-	@Relationship(type = "RATED")
+	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	private Set<Rated> ratings = new HashSet<>();
 
-	private String name;
-	private String password;
-	private String photo;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	private String tmdbId;
+	private String title;
+	private String year;
+	private String background;
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getTmdbId() {
+		return tmdbId;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setTmdbId(String tmdbId) {
+		this.tmdbId = tmdbId;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getBackground() {
+		return background;
+	}
+
+	public void setBackground(String background) {
+		this.background = background;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	public Set<Rated> getRatings() {
 		return ratings;
 	}
 
+	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	public void setRatings(Set<Rated> ratings) {
 		this.ratings = ratings;
 	}
@@ -74,17 +82,12 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Movie other = (Movie) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", photo=" + photo + "]";
 	}
 }
