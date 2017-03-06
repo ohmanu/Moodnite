@@ -9,7 +9,7 @@ import tv.oh.moodnite.repository.UserRepository;
 @Service
 public class UserService {
 	@Autowired
-	UserRepository userRepo;
+	private UserRepository userRepo;
 	
 	public User loginUser(String name, String password) {
 		User user = userRepo.findByName(name);

@@ -15,6 +15,15 @@ public class Watched {
 	@EndNode
 	private Movie movie;
 
+	public Watched () {
+		
+	}
+	
+	public Watched(User user, Movie movie) {
+		this.user = user;
+		this.movie = movie;
+	}
+
 	public Long getId() {
 		return id;
 	}

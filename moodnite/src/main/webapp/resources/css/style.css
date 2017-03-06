@@ -211,8 +211,13 @@ article.film .rug {
 }
 
 article.film .rug header.title {
-	width: 100%;
+	width: 80%;
 	float: left;
+	padding-top: 10px;
+}
+
+article.film .rug .actions {
+	float: right;
 	padding-top: 10px;
 }
 

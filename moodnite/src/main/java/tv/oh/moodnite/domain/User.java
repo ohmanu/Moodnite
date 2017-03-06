@@ -13,7 +13,7 @@ public class User {
 	private Long id;
 
 	@Relationship(type = "WATCHED")
-	private Set<Rated> watchedList = new HashSet<>();
+	private Set<Watched> watchedList = new HashSet<>();
 
 	@Relationship(type = "RATED")
 	private Set<Rated> ratings = new HashSet<>();
@@ -56,6 +56,14 @@ public class User {
 
 	public void setRatings(Set<Rated> ratings) {
 		this.ratings = ratings;
+	}
+
+	public Set<Watched> getWatchedList() {
+		return watchedList;
+	}
+
+	public void setWatchedList(Set<Watched> watchedList) {
+		this.watchedList = watchedList;
 	}
 
 	@Override

@@ -6,10 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.User;
+import tv.oh.moodnite.domain.Watched;
+import tv.oh.moodnite.repository.WatchedRepository;
+import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
 
 @RequestMapping(value = "/user/*")
@@ -19,6 +24,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MovieService movieService;
+	
+	@Autowired
+	private WatchedRepository watchedRepo;
 
 	
 	@RequestMapping(value = "sign-in", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -72,5 +83,22 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		return "/user/reviews";
+	}
+	
+	@RequestMapping(value = "watch/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String watchingAMovie(@PathVariable String movieId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.findByTmdbId(movieId);
+		
+		if(movie == null)
+			movie = movieService.addMovie(movieId);
+		
+		watchedRepo.save(new Watched(loggedInUser, movie));
+		
+		return "redirect:/movie/" + movieId;
 	}
 }

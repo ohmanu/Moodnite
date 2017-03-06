@@ -12,7 +12,11 @@
       
         <div class="rug">
           <header class="title"><h1>${movie_details.title}</h1></header>
-        
+          
+          <div class="actions">
+            <a href="${pageContext.servletContext.contextPath}/user/watch/${movie_details.id}">Watch</a>
+          </div>
+          
           <div class="data-sheet">
             <c:forEach items="${directors}" var="director">
               <h2><a href="${pageContext.servletContext.contextPath}/person/${director.id}">${director.name}</a>${director.coma}</h2>
