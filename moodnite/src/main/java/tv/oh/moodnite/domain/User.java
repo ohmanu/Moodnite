@@ -14,9 +14,9 @@ public class User {
 
 	@Relationship(type = "WATCHED")
 	private Set<Watched> watchedList = new HashSet<>();
-
+	
 	@Relationship(type = "RATED")
-	private Set<Rated> ratings = new HashSet<>();
+	private Set<Rated> ratedList = new HashSet<>();
 
 	private String name;
 	private String password;
@@ -50,12 +50,12 @@ public class User {
 		this.photo = photo;
 	}
 
-	public Set<Rated> getRatings() {
-		return ratings;
+	public Set<Rated> getRatedList() {
+		return ratedList;
 	}
 
-	public void setRatings(Set<Rated> ratings) {
-		this.ratings = ratings;
+	public void setRatedList(Set<Rated> ratedList) {
+		this.ratedList = ratedList;
 	}
 
 	public Set<Watched> getWatchedList() {

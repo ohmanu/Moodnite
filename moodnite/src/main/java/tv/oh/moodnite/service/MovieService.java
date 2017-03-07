@@ -26,16 +26,23 @@ public class MovieService {
 			return movie;
 	}
 	
+	/**
+	 * Se añade una película al grafo si esta no ha sido añadida previamente.
+	 * @param tmdbId
+	 * @return El nodo de la película correspondiente al ID que se ha recibido como parámetro. 
+	 */
 	public Movie addMovie(String tmdbId) {
-		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(tmdbId);
-		Movie movie = new Movie();
-		movie.setTmdbId(tmdbId);
-		movie.setTitle((String) movieDetails.get("title"));
-		movie.setYear((String) movieDetails.get("year"));
-		movie.setBackground((String) movieDetails.get("backdrop_path"));
+		Movie movie = movieRepo.findByTmdbId(tmdbId);
 		
-		movieRepo.save(movie);
+		if(movie == null) {
+			Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(tmdbId);
+			movie = new Movie();
+			movie.setTmdbId(tmdbId);
+			movie.setTitle((String) movieDetails.get("title"));
+			movie.setYear((String) movieDetails.get("year"));
+			movie.setBackground((String) movieDetails.get("backdrop_path"));
+		}
 		
-		return movie;
+		return movieRepo.save(movie);
 	}
 }

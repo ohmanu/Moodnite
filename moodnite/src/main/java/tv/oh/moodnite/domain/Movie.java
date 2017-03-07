@@ -12,8 +12,11 @@ public class Movie {
 	@GraphId
 	private Long id;
 
+	@Relationship(type = "WATCHED", direction = Relationship.INCOMING)
+	private Set<Watched> watchedList = new HashSet<>();
+	
 	@Relationship(type = "RATED", direction = Relationship.INCOMING)
-	private Set<Rated> ratings = new HashSet<>();
+	private Set<Rated> ratedList = new HashSet<>();
 
 	private String tmdbId;
 	private String title;
@@ -55,15 +58,25 @@ public class Movie {
 	public void setYear(String year) {
 		this.year = year;
 	}
+	
+	@Relationship(type = "WATCHED", direction = Relationship.INCOMING)
+	public Set<Watched> getWatchedList() {
+		return watchedList;
+	}
 
-	@Relationship(type = "RATED", direction = Relationship.INCOMING)
-	public Set<Rated> getRatings() {
-		return ratings;
+	@Relationship(type = "WATCHED", direction = Relationship.INCOMING)
+	public void setWatchedList(Set<Watched> watchedList) {
+		this.watchedList = watchedList;
 	}
 
 	@Relationship(type = "RATED", direction = Relationship.INCOMING)
-	public void setRatings(Set<Rated> ratings) {
-		this.ratings = ratings;
+	public Set<Rated> getRatedList() {
+		return ratedList;
+	}
+
+	@Relationship(type = "RATED", direction = Relationship.INCOMING)
+	public void setRatedList(Set<Rated> ratedList) {
+		this.ratedList = ratedList;
 	}
 
 	@Override

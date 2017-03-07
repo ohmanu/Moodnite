@@ -1,5 +1,7 @@
 package tv.oh.moodnite.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.User;
-import tv.oh.moodnite.domain.Watched;
-import tv.oh.moodnite.repository.WatchedRepository;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
+import tv.oh.moodnite.service.WatchedService;
 
 @RequestMapping(value = "/user/*")
 @Controller
@@ -29,7 +30,7 @@ public class UserController {
 	private MovieService movieService;
 	
 	@Autowired
-	private WatchedRepository watchedRepo;
+	private WatchedService watchedService;
 
 	
 	@RequestMapping(value = "sign-in", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -92,12 +93,8 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Movie movie = movieService.findByTmdbId(movieId);
-		
-		if(movie == null)
-			movie = movieService.addMovie(movieId);
-		
-		watchedRepo.save(new Watched(loggedInUser, movie));
+		Movie movie = movieService.addMovie(movieId);		
+		watchedService.watchMovie(loggedInUser, movie, new Date(), "I'm watching.");
 		
 		return "redirect:/movie/" + movieId;
 	}
