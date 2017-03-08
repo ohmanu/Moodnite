@@ -18,4 +18,8 @@ public class WatchedService {
 	public Watched watchMovie(User user, Movie movie, Date date, String comment) {
 		return watchedRepo.save(new Watched(user, movie, date, comment));
 	}
+	
+	public void wathes() {
+		//System.out.println(watchedRepo.findOne((long) 0).getMovie().getTitle());
+	}
 }

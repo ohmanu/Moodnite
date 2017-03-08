@@ -13,7 +13,7 @@ public class UserService {
 	
 	public User loginUser(String name, String password) {
 		User user = userRepo.findByName(name);
-		System.out.println("psw1: " + password + " psw2: " + user.getPassword());
+		
 		if(user != null && user.getPassword().equals(password))
 			return user;
 		

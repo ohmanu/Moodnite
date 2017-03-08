@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.User;
+import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
@@ -84,6 +85,20 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		return "/user/reviews";
+	}
+	
+	@RequestMapping(value = "watched", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showWatchedList(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		watchedService.wathes();
+		System.out.println("Number of wathed films: " + loggedInUser.getWatchedList().size());
+		//model.addAttribute("watched_list", loggedInUser.getWatchedList());
+		
+		return "/user/watched";
 	}
 	
 	@RequestMapping(value = "watch/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")

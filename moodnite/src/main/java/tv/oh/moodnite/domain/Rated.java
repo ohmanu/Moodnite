@@ -12,6 +12,7 @@ public class Rated {
 
 	@StartNode
 	private User user;
+	
 	@EndNode
 	private Movie movie;
 	

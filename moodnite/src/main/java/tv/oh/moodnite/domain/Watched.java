@@ -14,6 +14,7 @@ public class Watched {
 
 	@StartNode
 	private User user;
+	
 	@EndNode
 	private Movie movie;
 

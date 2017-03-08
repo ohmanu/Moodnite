@@ -3,6 +3,7 @@ package tv.oh.moodnite;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableNeo4jRepositories(basePackages = "tv.oh.moodnite.repository")
 @EnableTransactionManagement
 public class MoodniteConfig extends Neo4jConfiguration{
+
 	@Bean
 	public SessionFactory getSessionFactory() {
 		System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "info");
