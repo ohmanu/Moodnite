@@ -744,6 +744,17 @@ article.reviews {
 	margin: 0 auto;
 }
 
+article.watched-list {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
 /* FOOTER */
 
 footer {

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.Movie;
+import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
-import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
@@ -33,7 +33,6 @@ public class UserController {
 	@Autowired
 	private WatchedService watchedService;
 
-	
 	@RequestMapping(value = "sign-in", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String createUser(Model model) {
 		model.addAttribute("user", new User());
@@ -78,11 +77,16 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "reviews", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String showUserReviews(HttpSession session) {
+	public String showUserReviews(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
+		
+		//Solución provisional a la carga de relaciones del grafo
+		watchedService.wathes();
+		
+		model.addAttribute("reviews", loggedInUser.getRatedList());
 		
 		return "/user/reviews";
 	}
@@ -94,15 +98,13 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		watchedService.wathes();
-		System.out.println("Number of wathed films: " + loggedInUser.getWatchedList().size());
-		//model.addAttribute("watched_list", loggedInUser.getWatchedList());
+		model.addAttribute("watched_list", loggedInUser.getWatchedList());
 		
 		return "/user/watched";
 	}
 	
 	@RequestMapping(value = "watch/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String watchingAMovie(@PathVariable String movieId, HttpSession session) {
+	public String watchMovie(@PathVariable String movieId, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
@@ -110,6 +112,19 @@ public class UserController {
 		
 		Movie movie = movieService.addMovie(movieId);		
 		watchedService.watchMovie(loggedInUser, movie, new Date(), "I'm watching.");
+		
+		return "redirect:/movie/" + movieId;
+	}
+	
+	@RequestMapping(value = "rate/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String rateMovie(@PathVariable String movieId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.addMovie(movieId);
+		userService.rateMovie(loggedInUser, new Rated(loggedInUser, movie, 5.0, "Bien", "Vale"));
 		
 		return "redirect:/movie/" + movieId;
 	}

@@ -3,7 +3,9 @@ package tv.oh.moodnite.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
+import tv.oh.moodnite.repository.RateRepository;
 import tv.oh.moodnite.repository.UserRepository;
 
 @Service
@@ -24,5 +26,10 @@ public class UserService {
 		userRepo.save(user);
 		
 		return user;
+	}
+	
+	public User rateMovie(User user, Rated rate) {
+		user.getRatedList().add(rate);
+		return userRepo.save(user);
 	}
 }

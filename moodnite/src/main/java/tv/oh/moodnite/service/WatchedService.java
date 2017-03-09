@@ -20,6 +20,6 @@ public class WatchedService {
 	}
 	
 	public void wathes() {
-		//System.out.println(watchedRepo.findOne((long) 0).getMovie().getTitle());
+		watchedRepo.findAll();
 	}
 }

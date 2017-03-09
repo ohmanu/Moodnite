@@ -4,27 +4,28 @@
 
 <t:layout>
   <t:user-layout>
-  <article class="home">
-  
-    <c:choose><c:when test="${not empty watched_list}">
-      <div class="upcoming-movies">
+    <article class="watched-list">
+      <c:choose><c:when test="${not empty watched_list}">
         <ul class="films">
-          <li class="separator">
-            <h2>Watched Movies</h2>
+          <li class="separator-short" id="pink">
+            <h2>${loggedInUser.name} watched list</h2>
           </li>
-          <c:forEach items="${watched_list}" var="watched_movie">
+          <c:forEach items="${watched_list}" var="watched">
             <li class="film">
               <div class="poster">
-                <a href="${pageContext.servletContext.contextPath}/movie/${watched_movie.tmdbId}">
-                  <img src="https://image.tmdb.org/t/p/w185/${watched_movie.poster_path}" alt="${watched_movie.title}"/>
+                <a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">
+                  <img src="https://image.tmdb.org/t/p/w185/${watched.movie.background}" alt="${watched.movie.title}"/>
                 </a>
+              </div>
+              <div class="data">
+                <p>${review.rate}</p>
+                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">${watched.movie.title}</a></b></h4>
+                <p>${watched.comment}</p>
               </div>
             </li>
           </c:forEach>
         </ul>
-      </div>
-    </c:when></c:choose>
-    
-  </article>
+      </c:when></c:choose>
+    </article>
   </t:user-layout>
 </t:layout>

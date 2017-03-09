@@ -58,12 +58,10 @@ public class User {
 		this.ratedList = ratedList;
 	}
 
-	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	public Set<Watched> getWatchedList() {
 		return watchedList;
 	}
 
-	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	public void setWatchedList(Set<Watched> watchedList) {
 		this.watchedList = watchedList;
 	}
