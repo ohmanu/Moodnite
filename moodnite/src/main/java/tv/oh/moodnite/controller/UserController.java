@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
@@ -18,6 +20,7 @@ import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
+import tv.oh.moodnite.service.storage.StorageService;
 
 @RequestMapping(value = "/user/*")
 @Controller
@@ -32,6 +35,9 @@ public class UserController {
 	
 	@Autowired
 	private WatchedService watchedService;
+	
+	@Autowired
+	private StorageService storageService;
 
 	@RequestMapping(value = "sign-in", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String createUser(Model model) {
@@ -67,6 +73,31 @@ public class UserController {
 		session.setAttribute("loggedInUser", loogedInuser);
 
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "avatar", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String updateAvatar(HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+
+		return "/user/avatar";
+	}
+	
+	@RequestMapping(value = "avatar", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String updateAvatar(@RequestParam("file") MultipartFile file, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		String fileName = loggedInUser.getName() + "." + file.getOriginalFilename().split("\\.")[1];
+		storageService.store(file, fileName);
+		loggedInUser.setPhoto(fileName);
+		userService.updateUser(loggedInUser);
+
+		return "/user/avatar";
 	}
 	
 	@RequestMapping(value = "logout", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -124,7 +155,7 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		Movie movie = movieService.addMovie(movieId);
-		userService.rateMovie(loggedInUser, new Rated(loggedInUser, movie, 5.0, "Bien", "Vale"));
+		userService.rateMovie(loggedInUser, new Rated(loggedInUser, movie, 5, "Bien", "Vale"));
 		
 		return "redirect:/movie/" + movieId;
 	}

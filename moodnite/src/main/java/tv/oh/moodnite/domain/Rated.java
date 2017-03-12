@@ -16,7 +16,7 @@ public class Rated {
 	@EndNode
 	private Movie movie;
 	
-	private Double rate;
+	private int rate;
 	private String reviewXS;
 	private String reviewXL;
 
@@ -24,7 +24,7 @@ public class Rated {
 
 	}
 
-	public Rated(User user, Movie movie, Double rate, String reviewXS, String reviewXL) {
+	public Rated(User user, Movie movie, int rate, String reviewXS, String reviewXL) {
 		this.user = user;
 		this.movie = movie;
 		this.rate = rate;
@@ -32,11 +32,11 @@ public class Rated {
 		this.reviewXL = reviewXL;
 	}
 
-	public Double getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(int rate) {
 		this.rate = rate;
 	}
 

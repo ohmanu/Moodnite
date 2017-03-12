@@ -531,9 +531,16 @@ ul.films li.film .poster {
 ul.films li.film .data {
 	background-color: #fff;
 	width: 165px;
-	height: 60px;
+	min-height: 60px;
 	padding: 10px;
 	float:left;
+}
+
+ul.films li.film .data .stars {
+	float:left;
+	font-size: 16px;
+	padding-left: 2px;
+	margin: 0 auto;
 }
 
 ul.films li.separator {

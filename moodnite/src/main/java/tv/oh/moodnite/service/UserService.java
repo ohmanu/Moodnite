@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
-import tv.oh.moodnite.repository.RateRepository;
 import tv.oh.moodnite.repository.UserRepository;
 
 @Service
@@ -23,9 +22,11 @@ public class UserService {
 	}
 	
 	public User signInUser(User user) {
-		userRepo.save(user);
-		
-		return user;
+		return userRepo.save(user);
+	}
+	
+	public User updateUser(User user) {
+		return userRepo.save(user);
 	}
 	
 	public User rateMovie(User user, Rated rate) {

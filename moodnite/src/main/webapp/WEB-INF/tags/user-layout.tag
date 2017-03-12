@@ -6,6 +6,7 @@
     <ul>
       <li><a href="${pageContext.servletContext.contextPath}/user/reviews">Reviews</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/watched">Watched</a></li>
+      <li><a href="${pageContext.servletContext.contextPath}/user/avatar">Avatar</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/logout">Logout</a></li>
     </ul>
   </nav>
