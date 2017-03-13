@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @EnableNeo4jRepositories(basePackages = "tv.oh.moodnite.repository")
@@ -25,5 +26,12 @@ public class MoodniteConfig extends Neo4jConfiguration{
 	@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 	public Session getSession() throws Exception {
 		return super.getSession();
+	}
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+	    CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+	    resolver.setDefaultEncoding("utf-8");
+	    return resolver;
 	}
 }

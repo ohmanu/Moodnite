@@ -20,6 +20,11 @@
             <form:password path="password" />
           </p>
           
+          <p>
+            <form:label path="bio">Bio: </form:label>
+            <form:input path="bio" />
+          </p>
+          
           <input type="submit" value="Save"/>
         </form:form>
       </div>

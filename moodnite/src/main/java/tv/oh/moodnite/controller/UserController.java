@@ -75,14 +75,29 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "avatar", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String updateAvatar(HttpSession session) {
+	@RequestMapping(value = "config", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String updateAvatar(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 
-		return "/user/avatar";
+		model.addAttribute("user", loggedInUser);
+		return "/user/config";
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String updateUserData(@ModelAttribute("user") User user, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		loggedInUser.setName(user.getName());
+		loggedInUser.setBio(user.getBio());
+		userService.updateUser(loggedInUser);
+
+		return "/user/config";
 	}
 	
 	@RequestMapping(value = "avatar", method = RequestMethod.POST, headers = "Accept=text/html")
@@ -97,7 +112,7 @@ public class UserController {
 		loggedInUser.setPhoto(fileName);
 		userService.updateUser(loggedInUser);
 
-		return "/user/avatar";
+		return "/user/config";
 	}
 	
 	@RequestMapping(value = "logout", method = RequestMethod.GET, headers = "Accept=text/html")

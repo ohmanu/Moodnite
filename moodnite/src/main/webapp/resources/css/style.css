@@ -134,6 +134,15 @@ header.moodnite nav .user {
 	float: right;
 }
 
+header.moodnite nav .user img.photo-xs {
+	width: 30px;
+	height: 30px;
+	border-radius: 16px;
+	margin-top: 9px;
+	margin-right: 20px;
+	border: 1px solid #fff;
+}
+
 header.moodnite nav .user img {
 	width: 25px;
 	margin-top: 13px;
@@ -683,6 +692,38 @@ article.user {
 	float: left;
 }
 
+article.user header.profile {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #fff;
+	float:left;
+	
+	margin: 0 auto;
+}
+
+article.user header.profile .avatar {
+	width: 140px;
+	height: 140px;
+	float: left;
+}
+
+article.user header.profile .data {
+	width: 300px;
+	margin-left: 20px;
+	margin-top: 20px;
+	float: left;
+}
+
+article.user header.profile img.photo {
+	width: 140px;
+	height: 140px;
+	border-radius: 70px;
+	float: left;
+}
+
 article.user .sign-in {
 	width: 80%;
 	padding-left: 10%;
@@ -723,7 +764,7 @@ article.user nav.menu {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
-	
+	float: left;
 	margin: 0 auto;
 }
 

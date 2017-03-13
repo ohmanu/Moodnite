@@ -15,6 +15,20 @@
         <input type="submit" value="Upload"/>
       </form:form>
       
+      <form:form action="${pageContext.servletContext.contextPath}/user/update" method="POST" modelAttribute="user">
+        <p>
+          <form:label path="name">Name: </form:label>
+          <form:input path="name" placeholder="${user.name}"/>
+        </p>
+        
+        <p>
+          <form:label path="bio">Bio: </form:label>
+          <form:textarea path="bio" placeholder="${user.bio}" cols="50" rows="3"/>
+        </p>
+        
+        <input type="submit" value="Update"/>
+      </form:form>
+      
     </article>
   </t:user-layout>
 </t:layout>

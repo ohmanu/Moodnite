@@ -14,13 +14,30 @@ public class User {
 
 	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	private Set<Watched> watchedList = new HashSet<>();
-	
+
 	@Relationship(type = "RATED")
 	private Set<Rated> ratedList = new HashSet<>();
 
 	private String name;
 	private String password;
 	private String photo;
+	private String bio;
+
+	public Set<Watched> getWatchedList() {
+		return watchedList;
+	}
+
+	public void setWatchedList(Set<Watched> watchedList) {
+		this.watchedList = watchedList;
+	}
+
+	public Set<Rated> getRatedList() {
+		return ratedList;
+	}
+
+	public void setRatedList(Set<Rated> ratedList) {
+		this.ratedList = ratedList;
+	}
 
 	public String getName() {
 		return name;
@@ -38,10 +55,6 @@ public class User {
 		this.password = password;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
 	public String getPhoto() {
 		return photo;
 	}
@@ -50,20 +63,16 @@ public class User {
 		this.photo = photo;
 	}
 
-	public Set<Rated> getRatedList() {
-		return ratedList;
+	public String getBio() {
+		return bio;
 	}
 
-	public void setRatedList(Set<Rated> ratedList) {
-		this.ratedList = ratedList;
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
-	public Set<Watched> getWatchedList() {
-		return watchedList;
-	}
-
-	public void setWatchedList(Set<Watched> watchedList) {
-		this.watchedList = watchedList;
+	public Long getId() {
+		return id;
 	}
 
 	@Override
@@ -93,6 +102,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", photo=" + photo + "]";
+		return "User [id=" + id + ", watchedList=" + watchedList + ", ratedList=" + ratedList + ", name=" + name
+				+ ", password=" + password + ", photo=" + photo + ", bio=" + bio + "]";
 	}
 }
