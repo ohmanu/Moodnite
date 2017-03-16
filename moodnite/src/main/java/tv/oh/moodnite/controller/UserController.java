@@ -1,5 +1,6 @@
 package tv.oh.moodnite.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.service.MovieService;
+import tv.oh.moodnite.service.RateService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
 import tv.oh.moodnite.service.storage.StorageService;
@@ -35,6 +37,9 @@ public class UserController {
 	
 	@Autowired
 	private WatchedService watchedService;
+	
+	@Autowired
+	private RateService rateService;
 	
 	@Autowired
 	private StorageService storageService;
@@ -129,9 +134,6 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		//Solución provisional a la carga de relaciones del grafo
-		watchedService.wathes();
-		
 		model.addAttribute("reviews", loggedInUser.getRatedList());
 		
 		return "/user/reviews";
@@ -156,22 +158,53 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Movie movie = movieService.addMovie(movieId);		
-		watchedService.watchMovie(loggedInUser, movie, new Date(), "I'm watching.");
+		Movie movie = movieService.addMovie(movieId);
+		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+		watchedService.watchMovie(loggedInUser, movie, formateador.format(new Date()), "I'm watching.");
 		
 		return "redirect:/movie/" + movieId;
 	}
 	
 	@RequestMapping(value = "rate/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String rateMovie(@PathVariable String movieId, HttpSession session) {
+	public String rateMovie(@PathVariable String movieId, Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Movie movie = movieService.addMovie(movieId);
-		userService.rateMovie(loggedInUser, new Rated(loggedInUser, movie, 5, "Bien", "Vale"));
+		model.addAttribute("movieId", movieId);
 		
-		return "redirect:/movie/" + movieId;
+		return "/user/rate-movie";
+	}
+	
+	@RequestMapping(value = "rate/{movieId}/{stars}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String rateMovie(@PathVariable String movieId, @PathVariable int stars, Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Rated rate = rateService.rate(loggedInUser, movieService.addMovie(movieId), stars);
+		
+		model.addAttribute("rate", rate);
+		model.addAttribute("rateId", rate.getId());
+		
+		System.out.println(rate);
+		
+		return "/user/review-movie";
+	}
+	
+	@RequestMapping(value = "review/{rateId}", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String reviewMovie(@PathVariable String rateId, @ModelAttribute("rate") Rated rate, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Rated rateToUpdate = rateService.findByRateId(Long.valueOf(rateId));		
+		rateToUpdate.setReviewXS(rate.getReviewXS());		
+		rateService.updateRate(rateToUpdate);
+		
+		return "redirect:/movie/" + rateToUpdate.getMovie().getTmdbId();
 	}
 }

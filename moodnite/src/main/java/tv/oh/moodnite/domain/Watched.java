@@ -1,7 +1,5 @@
 package tv.oh.moodnite.domain;
 
-import java.util.Date;
-
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.RelationshipEntity;
@@ -18,14 +16,14 @@ public class Watched {
 	@EndNode
 	private Movie movie;
 
-	private Date date;
+	private String date;
 	private String comment;
 
 	public Watched() {
 
 	}
 
-	public Watched(User user, Movie movie, Date date, String comment) {
+	public Watched(User user, Movie movie, String date, String comment) {
 		this.user = user;
 		this.movie = movie;
 		this.date = date;
@@ -52,11 +50,11 @@ public class Watched {
 		this.movie = movie;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

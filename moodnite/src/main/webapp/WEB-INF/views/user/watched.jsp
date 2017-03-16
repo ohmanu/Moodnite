@@ -21,6 +21,7 @@
                 <p>${review.rate}</p>
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">${watched.movie.title}</a></b></h4>
                 <p>${watched.comment}</p>
+                <p>${watched.date}</p>
               </div>
             </li>
           </c:forEach>

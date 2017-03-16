@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tv.oh.moodnite.service.WatchedService;
 import tv.oh.moodnite.service.tmdb.TmdbMovieService;
 import tv.oh.moodnite.service.tmdb.TmdbSearchService;
 
@@ -18,10 +19,16 @@ public class MainController {
 	@Autowired
 	private TmdbSearchService tmdbSearchService;
 	
+	@Autowired
+	private WatchedService watchedService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
 		model.addAttribute("popular_movies", tmdbMovieService.getPopularMovies().get("results"));
 		model.addAttribute("upcoming_movies", tmdbMovieService.getUpcomingMovies().get("results"));
+		
+		//Solución provisional a la carga de relaciones del grafo
+		watchedService.wathes();
 		
 		return "/index";
 	}

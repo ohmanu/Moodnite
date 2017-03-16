@@ -31,6 +31,12 @@ public class Rated {
 		this.reviewXS = reviewXS;
 		this.reviewXL = reviewXL;
 	}
+	
+	public Rated(User user, Movie movie, int rate) {
+		this.user = user;
+		this.movie = movie;
+		this.rate = rate;
+	}
 
 	public int getRate() {
 		return rate;
