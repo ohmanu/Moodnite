@@ -8,12 +8,16 @@
     <article class="reviews">
       
       <form:form action="${pageContext.servletContext.contextPath}/user/review/${rateId}" method="POST" modelAttribute="rate">
-        <p>
-          <form:label path="reviewXS">Micro review: </form:label>
-          <form:input path="reviewXS" placeholder="${rate.reviewXS}"/>
-        </p>
+        <div class="film-about" style="background-image: url('https://image.tmdb.org/t/p/w780/${backdrop_path}');">
+        </div>
         
-        <input type="submit" value="Save"/>
+        <div class="field">
+          <form:textarea path="reviewXS" placeholder="${rate.reviewXS}"/>
+        </div>
+        
+        <div class="field">
+          <input type="submit" value="Save"/>
+         </div>
       </form:form>
       
     </article>

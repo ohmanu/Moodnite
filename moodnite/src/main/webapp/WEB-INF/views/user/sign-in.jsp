@@ -5,28 +5,26 @@
 
 <t:layout>
   <article class="user">
-    <div class="sign-in">
-      <h2>Sign in</h2>
-    
-      <form:form action="${pageContext.servletContext.contextPath}/user/sign-in" method="POST" modelAttribute="user">	
+    <div class="sign-in">    
+      <form:form action="${pageContext.servletContext.contextPath}/user/sign-in" method="POST" modelAttribute="user">
         <form:hidden path="id" />
-          <p>
-            <form:label path="name">Name: </form:label>
-            <form:input path="name" />
-          </p>
-          
-          <p>
-            <form:label path="password">Password: </form:label>
-            <form:password path="password" />
-          </p>
-          
-          <p>
-            <form:label path="bio">Bio: </form:label>
-            <form:input path="bio" />
-          </p>
-          
-          <input type="submit" value="Save"/>
-        </form:form>
-      </div>
-    </article>
+        
+        <div class="field">
+          <form:input path="name" placeholder="Name" />
+        </div>
+        
+        <div class="field">
+          <form:password path="password" placeholder="Password" />
+        </div>
+        
+        <div class="field">
+          <form:textarea path="bio" placeholder="Bio" />
+        </div>
+        
+        <div class="field">
+          <input type="submit" value="Sign in"/>
+        </div>
+      </form:form>
+    </div>
+  </article>
 </t:layout>

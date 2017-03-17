@@ -688,6 +688,7 @@ article.search .people-results {
 
 article.user {
 	width: 100%;
+	min-height: 70%;
 	padding-top: 50px;
 	float: left;
 }
@@ -741,7 +742,7 @@ article.user .login {
 	padding-right: 10%;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background-color: #fff;
+	background-color: #e4d9cc;
 	
 	margin: 0 auto;
 }
@@ -801,6 +802,88 @@ article.watched-list {
 	background-color: #e4d9cc;
 	
 	margin: 0 auto;
+}
+
+/* FORM */
+
+article.user form {
+	width: 400px;
+	padding-top: 20px;
+	margin: 0 auto;
+	display: block;
+}
+
+article.user form .film-about {
+	width: 400px;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+}
+
+article.user form .stars {
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	font-size: 0;
+}
+
+article.user form .stars a {
+	width: 100%;
+	background-color: #fff;
+	font-size: 46px;
+	text-align: center;
+	color: #ddd;
+}
+
+article.user form .stars:hover a {
+	color: #fada15;
+	text-decoration: none;
+}
+
+article.user form .stars > a:hover ~ a {
+	text-decoration: none;
+	color: #ddd;
+}
+
+article.user .field {
+	width: 100%;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+article.user input, textarea {
+	width: 100%;
+	float: left;
+	font-size: 18px;
+	border: none;
+	padding: 10px;
+	margin: 0;
+}
+
+article.user input[type="submit"] {
+	background-color: #eab7b3;
+	color: #fff;
+}
+
+article.user input[type="submit"]:hover {
+	background-color: #eb4f5a;
+	color: #fff;
+	transition-duration: 1s;
+}
+
+.public-announcement {
+	width: 100%;
+	float: left;
+	font-size: 16px;
+	text-align: center;
+}
+
+.public-announcement a{
+	color: #eb4f5a;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /* FOOTER */

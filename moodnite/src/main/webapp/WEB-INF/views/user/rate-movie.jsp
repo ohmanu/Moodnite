@@ -6,16 +6,22 @@
 <t:layout>
   <t:user-layout>
     <article class="reviews">
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${1}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${2}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${3}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${4}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${5}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${6}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${7}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${8}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${9}">&#9733;</a>
-      <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${10}">&#9733;</a>
+      <form:form>
+        <div class="film-about" style="background-image: url('https://image.tmdb.org/t/p/w780/${backdrop_path}');">
+        </div>
+        <div class="stars">
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${1}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${2}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${3}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${4}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${5}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${6}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${7}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${8}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${9}">&#9733;</a>
+          <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${10}">&#9733;</a>
+        </div>
+      </form:form>
     </article>
   </t:user-layout>
 </t:layout>

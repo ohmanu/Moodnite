@@ -6,22 +6,23 @@
 <t:layout>
   <article class="user">    
     <div class="login">
-      <h2>Login</h2>
-      <form:form action="${pageContext.servletContext.contextPath}/user/login" method="POST" modelAttribute="user">	
-        <p>
-          <form:label path="name">Name: </form:label>
-          <form:input path="name" />
-        </p>
+      <form:form action="${pageContext.servletContext.contextPath}/user/login" method="POST" modelAttribute="user">
+        <div class="field">
+          <form:input path="name" placeholder="Name" />
+        </div>
         
-        <p>
-          <form:label path="password">Password: </form:label>
-          <form:password path="password" />
-        </p>
+        <div class="field">
+          <form:password path="password" placeholder="Password" />
+        </div>
         
-        <input type="submit" value="Login"/>
-      </form:form>
+        <div class="field">
+          <input type="submit" value="Login"/>
+        </div>
         
-      <a href="${pageContext.servletContext.contextPath}/user/sign-in">Sign in</a>
+        <div class="field">
+          <div class="public-announcement">New to Moodnite? <a href="${pageContext.servletContext.contextPath}/user/sign-in">CREATE</a> your Moodnite user.</div>
+        </div>
+      </form:form> 
     </div>
   </article>
 </t:layout>

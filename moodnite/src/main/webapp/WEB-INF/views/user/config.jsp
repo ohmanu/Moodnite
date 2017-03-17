@@ -7,26 +7,28 @@
   <t:user-layout>
     <article class="reviews">
     
-      <form:form action="${pageContext.servletContext.contextPath}/user/avatar" method="POST" enctype="multipart/form-data">		
-        <p>
+      <form:form action="${pageContext.servletContext.contextPath}/user/avatar" method="POST" enctype="multipart/form-data">	
+        <div class="field">
           <input type="file" name="file">
-        </p>
+        </div>
         
-        <input type="submit" value="Upload"/>
+        <div class="field">
+          <input type="submit" value="Upload"/>
+        </div>
       </form:form>
       
       <form:form action="${pageContext.servletContext.contextPath}/user/update" method="POST" modelAttribute="user">
-        <p>
-          <form:label path="name">Name: </form:label>
+        <div class="field">
           <form:input path="name" placeholder="${user.name}"/>
-        </p>
+        </div>
         
-        <p>
-          <form:label path="bio">Bio: </form:label>
+        <div class="field">
           <form:textarea path="bio" placeholder="${user.bio}" cols="50" rows="3"/>
-        </p>
+        </div>
         
-        <input type="submit" value="Update"/>
+        <div class="field">
+          <input type="submit" value="Update"/>
+        </div>
       </form:form>
       
     </article>

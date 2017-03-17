@@ -173,6 +173,7 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		model.addAttribute("movieId", movieId);
+		model.addAttribute("backdrop_path", movieService.findByTmdbId(movieId).getBackground());
 		
 		return "/user/rate-movie";
 	}
@@ -188,6 +189,7 @@ public class UserController {
 		
 		model.addAttribute("rate", rate);
 		model.addAttribute("rateId", rate.getId());
+		model.addAttribute("backdrop_path", rate.getMovie().getBackground());
 		
 		System.out.println(rate);
 		
