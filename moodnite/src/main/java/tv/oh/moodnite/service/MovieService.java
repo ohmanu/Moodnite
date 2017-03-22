@@ -34,8 +34,8 @@ public class MovieService {
 		Movie movie = movieRepo.findByTmdbId(tmdbId);
 		
 		if(movie == null)
-			movie = tmdbImporterService.importMovie(tmdbId);
+			return movieRepo.save(tmdbImporterService.importMovie(tmdbId));
 		
-		return movieRepo.save(movie);
+		return movie;
 	}
 }

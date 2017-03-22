@@ -103,4 +103,10 @@ public class Movie {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", tmdbId=" + tmdbId + ", title=" + title + ", year=" + year + ", background="
+				+ background + "]";
+	}
 }

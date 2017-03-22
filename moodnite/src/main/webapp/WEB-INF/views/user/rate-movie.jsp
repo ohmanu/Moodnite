@@ -21,6 +21,10 @@
           <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${9}">&#9733;</a>
           <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${10}">&#9733;</a>
         </div>
+        
+        <div class="field">
+          <div class="public-announcement">Do you want to <a href="${pageContext.servletContext.contextPath}/user/delete/rate/${movieId}">DELETE</a> this review?</div>
+        </div>
       </form:form>
     </article>
   </t:user-layout>

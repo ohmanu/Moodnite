@@ -19,7 +19,6 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.service.MovieService;
-import tv.oh.moodnite.service.RateService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
 import tv.oh.moodnite.service.storage.StorageService;
@@ -37,9 +36,6 @@ public class UserController {
 	
 	@Autowired
 	private WatchedService watchedService;
-	
-	@Autowired
-	private RateService rateService;
 	
 	@Autowired
 	private StorageService storageService;
@@ -134,6 +130,7 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
+		System.out.println("1. LOGGEDIN USER RATES (REVIEW): " + loggedInUser.getRatedList().size());
 		model.addAttribute("reviews", loggedInUser.getRatedList());
 		
 		return "/user/reviews";
@@ -172,8 +169,9 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		model.addAttribute("movieId", movieId);
-		model.addAttribute("backdrop_path", movieService.findByTmdbId(movieId).getBackground());
+		Movie movie = movieService.addMovie(movieId);
+		model.addAttribute("movieId", movie.getTmdbId());
+		model.addAttribute("backdrop_path", movie.getBackground());
 		
 		return "/user/rate-movie";
 	}
@@ -185,28 +183,59 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Rated rate = rateService.rate(loggedInUser, movieService.addMovie(movieId), stars);
+		Movie movie = movieService.addMovie(movieId);
+		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
+		
+		if(rate == null)
+		{
+			rate = new Rated(loggedInUser, movie, stars);
+			loggedInUser.addRate(rate);
+		}
+		else
+		{
+			rate.setRate(stars);
+			loggedInUser.updateRate(rate);
+		}
+		
+		userService.updateUser(loggedInUser);
 		
 		model.addAttribute("rate", rate);
-		model.addAttribute("rateId", rate.getId());
-		model.addAttribute("backdrop_path", rate.getMovie().getBackground());
-		
-		System.out.println(rate);
+		model.addAttribute("backdrop_path", movie.getBackground());
+		model.addAttribute("movieId", movie.getTmdbId());
 		
 		return "/user/review-movie";
 	}
 	
-	@RequestMapping(value = "review/{rateId}", method = RequestMethod.POST, headers = "Accept=text/html")
-	public String reviewMovie(@PathVariable String rateId, @ModelAttribute("rate") Rated rate, HttpSession session) {
+	@RequestMapping(value = "review/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String reviewMovie(@PathVariable String movieId, @ModelAttribute("rate") Rated rate, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Rated rateToUpdate = rateService.findByRateId(Long.valueOf(rateId));		
-		rateToUpdate.setReviewXS(rate.getReviewXS());		
-		rateService.updateRate(rateToUpdate);
+		Movie movie = movieService.addMovie(movieId);
+		Rated rateToUpdate = userService.findUserMovieRate(loggedInUser, movie);
+
+		rateToUpdate.setReviewXS(rate.getReviewXS());
+		loggedInUser.updateRate(rateToUpdate);
+		userService.updateUser(loggedInUser);
 		
-		return "redirect:/movie/" + rateToUpdate.getMovie().getTmdbId();
+		return "redirect:/movie/" + movie.getTmdbId();
+	}
+	
+	@RequestMapping(value = "delete/rate/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deleteMovieRate(@PathVariable String movieId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.addMovie(movieId);
+		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
+		
+		loggedInUser.removeRate(rate);
+		userService.updateUser(loggedInUser);
+		
+		return "redirect:/user/reviews";
 	}
 }

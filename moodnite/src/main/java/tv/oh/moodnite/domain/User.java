@@ -102,7 +102,32 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", watchedList=" + watchedList + ", ratedList=" + ratedList + ", name=" + name
-				+ ", password=" + password + ", photo=" + photo + ", bio=" + bio + "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", photo=" + photo + ", bio=" + bio + "]";
+	}
+	
+	public void addRate(Rated rate) {
+		this.ratedList.add(rate);
+	}
+	
+	public void removeRate(Rated rate) {
+		Rated toRemove = null;
+		for(Rated r : this.ratedList) {
+			if(r.getId() == rate.getId()) {
+				toRemove = r;
+			}
+		}
+		
+		if(toRemove != null)
+			this.ratedList.remove(toRemove);
+	}
+	
+	public void updateRate(Rated rate) {
+		for(Rated r : this.ratedList) {
+			if(r.getId() == rate.getId()) {
+				r.setRate(rate.getRate());
+				r.setReviewXS(rate.getReviewXS());
+				r.setReviewXL(rate.getReviewXL());
+			}
+		}
 	}
 }

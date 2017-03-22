@@ -547,9 +547,17 @@ ul.films li.film .data {
 
 ul.films li.film .data .stars {
 	float:left;
-	font-size: 16px;
 	padding-left: 2px;
 	margin: 0 auto;
+}
+
+ul.films li.film .data .stars a {
+	font-size: 16px;
+}
+
+ul.films li.film .data .stars a:hover {
+	text-decoration: none;
+	color: #fada15;
 }
 
 ul.films li.separator {
