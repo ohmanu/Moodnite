@@ -130,4 +130,20 @@ public class User {
 			}
 		}
 	}
+	
+	public void addWatch(Watched watch) {
+		this.watchedList.add(watch);
+	}
+	
+	public void removeWatch(Watched watch) {
+		Watched toRemove = null;
+		for(Watched w : this.watchedList) {
+			if(w.getId() == watch.getId()) {
+				toRemove = w;
+			}
+		}
+		
+		if(toRemove != null)
+			this.watchedList.remove(toRemove);
+	}
 }

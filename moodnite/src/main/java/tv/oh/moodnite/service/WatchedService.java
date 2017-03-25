@@ -20,4 +20,8 @@ public class WatchedService {
 	public void wathes() {
 		watchedRepo.findAll();
 	}
+	
+	public Watched findById(Long id) {
+		return watchedRepo.findOne(id);
+	}
 }

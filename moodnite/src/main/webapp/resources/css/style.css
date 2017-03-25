@@ -812,6 +812,14 @@ article.watched-list {
 	margin: 0 auto;
 }
 
+a.delete {
+}
+
+a.delete:hover {
+	text-decoration: none;
+	color: red;
+}
+
 /* FORM */
 
 article.user form {

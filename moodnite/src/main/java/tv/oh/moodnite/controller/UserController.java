@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
+import tv.oh.moodnite.domain.Watched;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
@@ -27,7 +28,6 @@ import tv.oh.moodnite.service.storage.StorageService;
 @Controller
 public class UserController {
 	
-	
 	@Autowired
 	private UserService userService;
 	
@@ -35,7 +35,7 @@ public class UserController {
 	private MovieService movieService;
 	
 	@Autowired
-	private WatchedService watchedService;
+	private WatchedService watchService;
 	
 	@Autowired
 	private StorageService storageService;
@@ -84,6 +84,7 @@ public class UserController {
 			return "redirect:/user/login";
 
 		model.addAttribute("user", loggedInUser);
+		
 		return "/user/config";
 	}
 	
@@ -102,7 +103,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "avatar", method = RequestMethod.POST, headers = "Accept=text/html")
-	public String updateAvatar(@RequestParam("file") MultipartFile file, HttpSession session) {
+	public String updateAvatar(@RequestParam("file") MultipartFile file, @ModelAttribute("user") User user, Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
@@ -112,6 +113,8 @@ public class UserController {
 		storageService.store(file, fileName);
 		loggedInUser.setPhoto(fileName);
 		userService.updateUser(loggedInUser);
+		
+		model.addAttribute("user", loggedInUser);
 
 		return "/user/config";
 	}
@@ -121,19 +124,6 @@ public class UserController {
 		session.removeAttribute("loggedInUser");
 
 		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "reviews", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String showUserReviews(Model model, HttpSession session) {
-		User loggedInUser = (User) session.getAttribute("loggedInUser");
-		
-		if(loggedInUser == null)
-			return "redirect:/user/login";
-		
-		System.out.println("1. LOGGEDIN USER RATES (REVIEW): " + loggedInUser.getRatedList().size());
-		model.addAttribute("reviews", loggedInUser.getRatedList());
-		
-		return "/user/reviews";
 	}
 	
 	@RequestMapping(value = "watched", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -149,7 +139,22 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "watch/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String watchMovie(@PathVariable String movieId, HttpSession session) {
+	public String watchMovie(@PathVariable String movieId, Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.addMovie(movieId);
+		model.addAttribute("watch", new Watched());
+		model.addAttribute("movieId", movie.getTmdbId());
+		model.addAttribute("backdrop_path", movie.getBackground());
+		
+		return "/user/watch-movie";
+	}
+	
+	@RequestMapping(value = "watch/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String watchMovie(@PathVariable String movieId, @ModelAttribute("watch") Watched watch, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
@@ -157,9 +162,38 @@ public class UserController {
 		
 		Movie movie = movieService.addMovie(movieId);
 		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-		watchedService.watchMovie(loggedInUser, movie, formateador.format(new Date()), "I'm watching.");
+		loggedInUser.addWatch(new Watched(loggedInUser, movie, formateador.format(new Date()), watch.getComment()));
+		userService.updateUser(loggedInUser);
 		
-		return "redirect:/movie/" + movieId;
+		return "redirect:/user/watched";
+	}
+	
+	@RequestMapping(value = "delete/watch/{watchId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deleteMovieWatch(@PathVariable String watchId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Watched watch = watchService.findById(Long.valueOf(watchId));
+		
+		loggedInUser.removeWatch(watch);
+		userService.updateUser(loggedInUser);
+		
+		return "redirect:/user/watched";
+	}
+
+	@RequestMapping(value = "reviews", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showUserReviews(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		System.out.println("1. LOGGEDIN USER RATES (REVIEW): " + loggedInUser.getRatedList().size());
+		model.addAttribute("reviews", loggedInUser.getRatedList());
+		
+		return "/user/reviews";
 	}
 	
 	@RequestMapping(value = "rate/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -186,13 +220,11 @@ public class UserController {
 		Movie movie = movieService.addMovie(movieId);
 		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
 		
-		if(rate == null)
-		{
+		if(rate == null) {
 			rate = new Rated(loggedInUser, movie, stars);
 			loggedInUser.addRate(rate);
 		}
-		else
-		{
+		else {
 			rate.setRate(stars);
 			loggedInUser.updateRate(rate);
 		}
