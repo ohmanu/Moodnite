@@ -12,16 +12,19 @@ public class User {
 	@GraphId
 	private Long id;
 
+	private String name;
+	private String password;
+	private String photo;
+	private String bio;
+	
 	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	private Set<Watched> watchedList = new HashSet<>();
 
 	@Relationship(type = "RATED")
 	private Set<Rated> ratedList = new HashSet<>();
-
-	private String name;
-	private String password;
-	private String photo;
-	private String bio;
+	
+	@Relationship(type = "FOLLOWS")
+	private Set<User> follows = new HashSet<>();
 
 	public Set<Watched> getWatchedList() {
 		return watchedList;
@@ -73,6 +76,18 @@ public class User {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Set<User> getFollows() {
+		return follows;
+	}
+
+	public void setFollows(Set<User> follows) {
+		this.follows = follows;
+	}
+	
+	public void addFriend(User user) {
+		this.follows.add(user);
 	}
 
 	@Override

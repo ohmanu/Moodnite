@@ -790,6 +790,16 @@ article.user nav.menu li {
 	display: block;
 }
 
+article.user nav.menu li a {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+article.user nav.menu li a:hover {
+	color: eab7b3;
+	text-decoration: none;
+}
+
 article.reviews {
 	width: 80%;
 	padding-left: 10%;

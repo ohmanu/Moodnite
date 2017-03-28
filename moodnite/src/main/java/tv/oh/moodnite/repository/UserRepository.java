@@ -10,4 +10,7 @@ public interface UserRepository extends GraphRepository<User> {
 
 	@Query("MATCH (user:User) WHERE user.name = {name} RETURN user")
 	User findByName(@Param("name") String name);
+	
+	@Query("MATCH (user:User) WHERE user.name=~{0} RETURN user")
+    Iterable<User> findByNameLike(String name);
 }

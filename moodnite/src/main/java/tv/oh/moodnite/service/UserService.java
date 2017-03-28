@@ -46,4 +46,8 @@ public class UserService {
 	public Watched findUserMovieWatch(User user, Movie movie) {
 		return watchRepo.findUserMovieWatch(user.getId(), movie.getTmdbId());
 	}
+	
+	public Iterable<User> findByNameLike(String name) {
+		return userRepo.findByNameLike(name);
+	}
 }
