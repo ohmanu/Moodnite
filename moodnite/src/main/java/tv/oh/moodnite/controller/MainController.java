@@ -41,7 +41,7 @@ public class MainController {
 	public String submitForm(Model model, @RequestParam String query) {
 	    model.addAttribute("films_results", tmdbSearchService.movieSearch(query).get("results"));
 	    model.addAttribute("people_results", tmdbSearchService.personSearch(query).get("results"));
-	    model.addAttribute("users", userService.findByNameLike(query));
+	    model.addAttribute("users_results", userService.findByNameLike(query));
 	    
 	    return "/search/results";
 	}

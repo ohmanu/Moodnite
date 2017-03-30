@@ -11,7 +11,7 @@
     <nav>
       <div class="search">
         <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/search">
-          <input type="text" name="query">
+          <input type="text" name="query" placeholder="Search movies, people and users.">
         </form>
       </div>
       <div class="user">

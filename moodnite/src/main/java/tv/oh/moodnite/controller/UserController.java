@@ -281,7 +281,6 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		System.out.println("1. LOGGEDIN USER RATES (REVIEW): " + loggedInUser.getRatedList().size());
 		model.addAttribute("reviews", loggedInUser.getRatedList());
 		
 		return "/user/reviews";
@@ -392,5 +391,33 @@ public class UserController {
 		userService.updateUser(loggedInUser);
 		
 		return "redirect:/user/reviews";
+	}
+	
+	@RequestMapping(value = "follow/{userId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String followUser(@PathVariable String userId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		User user = userService.findByUserId(Long.valueOf(userId));
+		loggedInUser.addFriend(user);
+		userService.updateUser(loggedInUser);
+		
+		return "redirect:/user/watched";
+	}
+	
+	@RequestMapping(value = "unfollow/{userId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String unfollowUser(@PathVariable String userId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		User user = userService.findByUserId(Long.valueOf(userId));
+		loggedInUser.removeFriend(user);
+		userService.updateUser(loggedInUser);
+		
+		return "redirect:/user/watched";
 	}
 }

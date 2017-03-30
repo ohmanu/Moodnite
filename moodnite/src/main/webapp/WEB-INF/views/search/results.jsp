@@ -39,5 +39,24 @@
         </ul>
       </div>
     </c:when></c:choose>
+    
+    <c:choose><c:when test="${not empty users_results}">
+      <div class="films-results">
+        <ul class="people">
+          <c:forEach items="${users_results}" var="user">
+            <li class="person-sheet">
+              <div class="photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
+                <a href="${pageContext.servletContext.contextPath}/user/unfollow/${user.id}">&#10010;</a>
+              </div>
+              <div class="data">
+                <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${user.name}</a></b></h4>
+                <br>
+                <h4>${user.bio} </h4>
+              </div>
+            </li>
+          </c:forEach>
+        </ul>
+      </div>
+    </c:when></c:choose>
   </article>
 </t:layout>

@@ -22,6 +22,10 @@ public class UserService {
 	@Autowired
 	WatchedRepository watchRepo;
 	
+	public User findByUserId(Long userId) {
+		return userRepo.findOne(userId);
+	}
+	
 	public User loginUser(String name, String password) {
 		User user = userRepo.findByName(name);
 		
