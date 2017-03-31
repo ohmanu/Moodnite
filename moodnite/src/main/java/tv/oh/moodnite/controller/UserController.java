@@ -393,6 +393,18 @@ public class UserController {
 		return "redirect:/user/reviews";
 	}
 	
+	@RequestMapping(value = "friends", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showUserFriends(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		model.addAttribute("friends", loggedInUser.getFollows());
+		
+		return "/user/friends";
+	}
+	
 	@RequestMapping(value = "follow/{userId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String followUser(@PathVariable String userId, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -415,9 +427,12 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		User user = userService.findByUserId(Long.valueOf(userId));
+		user.removeFriend(loggedInUser);
+		userService.updateUser(user);
+		
 		loggedInUser.removeFriend(user);
 		userService.updateUser(loggedInUser);
 		
-		return "redirect:/user/watched";
+		return "redirect:/user/friends";
 	}
 }

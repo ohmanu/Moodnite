@@ -46,7 +46,7 @@
           <c:forEach items="${users_results}" var="user">
             <li class="person-sheet">
               <div class="photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
-                <a href="${pageContext.servletContext.contextPath}/user/unfollow/${user.id}">&#10010;</a>
+                <a href="${pageContext.servletContext.contextPath}/user/follow/${user.id}">&#10010;</a>
               </div>
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${user.name}</a></b></h4>

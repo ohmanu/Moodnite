@@ -132,8 +132,8 @@ public class User {
 		this.follows.add(user);
 	}
 	
-	public void removeFriend(User user) {
-		this.ratedList.remove(user);
+	public void removeFriend(User user) {		
+		this.follows.remove(user);
 	}
 
 	@Override
