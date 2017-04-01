@@ -23,7 +23,7 @@ public class User {
 	@Relationship(type = "RATED")
 	private Set<Rated> ratedList = new HashSet<>();
 	
-	@Relationship(type = "FOLLOWS", direction = Relationship.UNDIRECTED)
+	@Relationship(type = "FOLLOWS", direction = Relationship.OUTGOING)
 	private Set<User> follows = new HashSet<>();
 
 	public Set<Watched> getWatchedList() {
