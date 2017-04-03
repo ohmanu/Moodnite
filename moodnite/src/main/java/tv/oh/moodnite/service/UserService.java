@@ -7,6 +7,7 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
+import tv.oh.moodnite.repository.MovieRepository;
 import tv.oh.moodnite.repository.RateRepository;
 import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.repository.WatchedRepository;
@@ -17,10 +18,13 @@ public class UserService {
 	private UserRepository userRepo;
 	
 	@Autowired
-	RateRepository rateRepo;
+	private MovieRepository movieRepo;
 	
 	@Autowired
-	WatchedRepository watchRepo;
+	private RateRepository rateRepo;
+	
+	@Autowired
+	private WatchedRepository watchRepo;
 	
 	public User findByUserId(Long userId) {
 		return userRepo.findOne(userId);
@@ -35,11 +39,7 @@ public class UserService {
 		return null;
 	}
 	
-	public User signInUser(User user) {
-		return userRepo.save(user);
-	}
-	
-	public User updateUser(User user) {
+	public User saveUser(User user) {
 		return userRepo.save(user);
 	}
 	
@@ -53,5 +53,22 @@ public class UserService {
 	
 	public Iterable<User> findByNameLike(String name) {
 		return userRepo.findByNameLike(name);
+	}
+	
+	public void watchMovie(User user, Movie movie, String date, String comment) {
+		Watched watch = new Watched(user, movie, date, comment);
+		user.addWatch(watch);
+		movie.addWatch(watch);
+
+		userRepo.save(user);
+	}
+	
+	public void removeWatch(User user, Watched watch) {
+		Movie movie = watch.getMovie();
+		
+		user.removeWatch(watch);
+		movie.removeWatch(watch);
+		
+		watchRepo.delete(watch);
 	}
 }

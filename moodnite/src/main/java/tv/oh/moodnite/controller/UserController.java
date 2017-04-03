@@ -61,7 +61,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "sign-in", method = RequestMethod.POST, headers = "Accept=text/html")
 	public String saveUser(@ModelAttribute("user") User user) {
-		User newUser = userService.signInUser(user);
+		User newUser = userService.saveUser(user);
 		
 		if(newUser == null)
 			return "/user/sign-in";
@@ -136,7 +136,7 @@ public class UserController {
 		
 		loggedInUser.setName(user.getName());
 		loggedInUser.setBio(user.getBio());
-		userService.updateUser(loggedInUser);
+		userService.saveUser(loggedInUser);
 
 		return "/user/config";
 	}
@@ -160,7 +160,7 @@ public class UserController {
 		String fileName = loggedInUser.getName() + "." + file.getOriginalFilename().split("\\.")[1];
 		storageService.store(file, fileName);
 		loggedInUser.setPhoto(fileName);
-		userService.updateUser(loggedInUser);
+		userService.saveUser(loggedInUser);
 		
 		model.addAttribute("user", loggedInUser);
 
@@ -238,9 +238,8 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		Movie movie = movieService.addMovie(movieId);
-		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-		loggedInUser.addWatch(new Watched(loggedInUser, movie, formateador.format(new Date()), watch.getComment()));
-		userService.updateUser(loggedInUser);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		userService.watchMovie(loggedInUser, movie, formatter.format(new Date()), watch.getComment());
 		
 		return "redirect:/user/watched";
 	}
@@ -261,8 +260,7 @@ public class UserController {
 		
 		Watched watch = watchService.findById(Long.valueOf(watchId));
 		
-		loggedInUser.removeWatch(watch);
-		userService.updateUser(loggedInUser);
+		userService.removeWatch(loggedInUser, watch);
 		
 		return "redirect:/user/watched";
 	}
@@ -336,7 +334,7 @@ public class UserController {
 			loggedInUser.updateRate(rate);
 		}
 		
-		userService.updateUser(loggedInUser);
+		userService.saveUser(loggedInUser);
 		
 		model.addAttribute("rate", rate);
 		model.addAttribute("backdrop_path", movie.getBackground());
@@ -364,8 +362,10 @@ public class UserController {
 		Rated rateToUpdate = userService.findUserMovieRate(loggedInUser, movie);
 
 		rateToUpdate.setReviewXS(rate.getReviewXS());
+		
 		loggedInUser.updateRate(rateToUpdate);
-		userService.updateUser(loggedInUser);
+		
+		userService.saveUser(loggedInUser);
 		
 		return "redirect:/movie/" + movie.getTmdbId();
 	}
@@ -388,7 +388,8 @@ public class UserController {
 		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
 		
 		loggedInUser.removeRate(rate);
-		userService.updateUser(loggedInUser);
+		movie.removeRate(rate);
+		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/reviews";
 	}
@@ -414,7 +415,7 @@ public class UserController {
 		
 		User user = userService.findByUserId(Long.valueOf(userId));
 		loggedInUser.addFriend(user);
-		userService.updateUser(loggedInUser);
+		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/friends";
 	}
@@ -428,7 +429,7 @@ public class UserController {
 		
 		User user = userService.findByUserId(Long.valueOf(userId));
 		loggedInUser.removeFriend(user);
-		userService.updateUser(loggedInUser);
+		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/friends";
 	}

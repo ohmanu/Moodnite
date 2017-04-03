@@ -91,15 +91,7 @@ public class User {
 	}
 	
 	public void removeRate(Rated rate) {
-		Rated toRemove = null;
-		for(Rated r : this.ratedList) {
-			if(r.getId() == rate.getId()) {
-				toRemove = r;
-			}
-		}
-		
-		if(toRemove != null)
-			this.ratedList.remove(toRemove);
+			this.ratedList.remove(rate);
 	}
 	
 	public void updateRate(Rated rate) {
@@ -117,15 +109,7 @@ public class User {
 	}
 	
 	public void removeWatch(Watched watch) {
-		Watched toRemove = null;
-		for(Watched w : this.watchedList) {
-			if(w.getId() == watch.getId()) {
-				toRemove = w;
-			}
-		}
-		
-		if(toRemove != null)
-			this.watchedList.remove(toRemove);
+		this.watchedList.remove(watch);
 	}
 	
 	public void addFriend(User user) {
@@ -140,7 +124,8 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
 
@@ -153,10 +138,15 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		return true;
 	}

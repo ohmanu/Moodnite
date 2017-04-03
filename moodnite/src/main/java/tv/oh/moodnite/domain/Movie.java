@@ -83,7 +83,8 @@ public class Movie {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((tmdbId == null) ? 0 : tmdbId.hashCode());
 		return result;
 	}
 
@@ -96,10 +97,15 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (title == null) {
+			if (other.title != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!title.equals(other.title))
+			return false;
+		if (tmdbId == null) {
+			if (other.tmdbId != null)
+				return false;
+		} else if (!tmdbId.equals(other.tmdbId))
 			return false;
 		return true;
 	}
@@ -108,5 +114,31 @@ public class Movie {
 	public String toString() {
 		return "Movie [id=" + id + ", tmdbId=" + tmdbId + ", title=" + title + ", year=" + year + ", background="
 				+ background + "]";
+	}
+	
+	public void addRate(Rated rate) {
+		this.ratedList.add(rate);
+	}
+	
+	public void removeRate(Rated rate) {
+			this.ratedList.remove(rate);
+	}
+	
+	public void updateRate(Rated rate) {
+		for(Rated r : this.ratedList) {
+			if(r.getId() == rate.getId()) {
+				r.setRate(rate.getRate());
+				r.setReviewXS(rate.getReviewXS());
+				r.setReviewXL(rate.getReviewXL());
+			}
+		}
+	}
+	
+	public void addWatch(Watched watch) {
+		this.watchedList.add(watch);
+	}
+	
+	public void removeWatch(Watched watch) {
+		this.watchedList.remove(watch);
 	}
 }
