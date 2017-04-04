@@ -300,6 +300,7 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		Movie movie = movieService.addMovie(movieId);
+		
 		model.addAttribute("movieId", movie.getTmdbId());
 		model.addAttribute("backdrop_path", movie.getBackground());
 		
@@ -327,14 +328,12 @@ public class UserController {
 		
 		if(rate == null) {
 			rate = new Rated(loggedInUser, movie, stars);
-			loggedInUser.addRate(rate);
+			userService.rateMovie(loggedInUser, rate);
 		}
 		else {
 			rate.setRate(stars);
-			loggedInUser.updateRate(rate);
+			userService.saveUser(loggedInUser);
 		}
-		
-		userService.saveUser(loggedInUser);
 		
 		model.addAttribute("rate", rate);
 		model.addAttribute("backdrop_path", movie.getBackground());
@@ -362,9 +361,6 @@ public class UserController {
 		Rated rateToUpdate = userService.findUserMovieRate(loggedInUser, movie);
 
 		rateToUpdate.setReviewXS(rate.getReviewXS());
-		
-		loggedInUser.updateRate(rateToUpdate);
-		
 		userService.saveUser(loggedInUser);
 		
 		return "redirect:/movie/" + movie.getTmdbId();
@@ -387,9 +383,7 @@ public class UserController {
 		Movie movie = movieService.addMovie(movieId);
 		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
 		
-		loggedInUser.removeRate(rate);
-		movie.removeRate(rate);
-		userService.saveUser(loggedInUser);
+		userService.removeRate(loggedInUser, rate);
 		
 		return "redirect:/user/reviews";
 	}
@@ -428,6 +422,7 @@ public class UserController {
 			return "redirect:/user/login";
 		
 		User user = userService.findByUserId(Long.valueOf(userId));
+		
 		loggedInUser.removeFriend(user);
 		userService.saveUser(loggedInUser);
 		

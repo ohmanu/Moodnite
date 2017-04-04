@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tv.oh.moodnite.service.RateService;
 import tv.oh.moodnite.service.UserService;
 import tv.oh.moodnite.service.WatchedService;
 import tv.oh.moodnite.service.tmdb.TmdbMovieService;
@@ -24,6 +25,9 @@ public class MainController {
 	private WatchedService watchedService;
 	
 	@Autowired
+	private RateService ratedService;
+	
+	@Autowired
 	private UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -33,6 +37,7 @@ public class MainController {
 		
 		//Solución provisional a la carga de relaciones del grafo
 		watchedService.wathes();
+		ratedService.rates();
 		
 		return "/index";
 	}

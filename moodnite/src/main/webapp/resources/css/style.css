@@ -59,6 +59,34 @@ body {
 	background-color: #e4d9cc;
 }
 
+/* GENERAL */
+
+a.remove {
+	color: #ff0048;
+}
+
+a.remove:hover {
+	text-decoration: none;
+	color: #fc8bab;
+}
+
+a.add {
+	color: #7fd4f0;
+}
+
+a.add:hover {
+	text-decoration: none;
+	color: #b5e1f0;
+}
+
+section.content {
+	width: 100%;
+	position: relative;	
+	float: left;
+}
+
+/* HEADER */
+
 header.moodnite {
 	width: 100%;
 	height: 50px;
@@ -147,12 +175,6 @@ header.moodnite nav .user img {
 	width: 25px;
 	margin-top: 13px;
 	margin-right: 20px;
-}
-
-section.content {
-	width: 100%;
-	position: relative;	
-	float: left;
 }
 
 /* index */
@@ -651,9 +673,22 @@ ul.people li.person-sheet .photo {
 	background-size: cover;
 	background-position: center center;
 	background-color: #000;
+	filter: grayscale(100%);
 	-webkit-filter: grayscale(100%);
 	width: 100%;
 	height: 250px;
+	float: left;
+}
+
+ul.people li.person-sheet .user-photo{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-color: #000;
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	width: 100%;
+	height: 185px;
 	float: left;
 }
 
@@ -689,6 +724,16 @@ article.search .people-results {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #eab7b3;
+	float: left;
+}
+
+article.search .users-results {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
 	float: left;
 }
 
@@ -822,12 +867,15 @@ article.watched-list {
 	margin: 0 auto;
 }
 
-a.delete {
-}
-
-a.delete:hover {
-	text-decoration: none;
-	color: red;
+article.follows {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
 }
 
 /* FORM */

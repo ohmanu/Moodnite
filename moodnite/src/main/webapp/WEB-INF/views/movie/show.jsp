@@ -72,7 +72,7 @@
               <div class="photo">
               </div>
               <div class="data">
-                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${movie_details.id}/credits">Full cast & crew</a></b></h4>
+                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${movie_details.id}/credits">Full cast and crew</a></b></h4>
               </div>
             </li>
           </ul>

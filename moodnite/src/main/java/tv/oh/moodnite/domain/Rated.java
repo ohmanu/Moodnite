@@ -82,8 +82,6 @@ public class Rated {
 		this.movie = movie;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -46,6 +46,10 @@ public class RateService {
 		return rateRepo.findUserMovieRate(user.getId(), movie.getTmdbId());
 	}
 	
+	public void rates() {
+		rateRepo.findAll();
+	}
+	
 	public void deleteRate(Rated rate) {
 		rateRepo.delete(rate);
 	}

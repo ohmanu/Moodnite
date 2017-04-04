@@ -41,15 +41,15 @@
     </c:when></c:choose>
     
     <c:choose><c:when test="${not empty users_results}">
-      <div class="films-results">
+      <div class="users-results">
         <ul class="people">
           <c:forEach items="${users_results}" var="user">
             <li class="person-sheet">
-              <div class="photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
-                <a href="${pageContext.servletContext.contextPath}/user/follow/${user.id}">&#10010;</a>
+              <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
               <div class="data">
-                <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${user.name}</a></b></h4>
+                <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${user.name}</a></b></h4> 
+                <a class="add" href="${pageContext.servletContext.contextPath}/user/follow/${user.id}" title="Follow">&#10010;</a>
                 <br>
                 <h4>${user.bio} </h4>
               </div>

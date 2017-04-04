@@ -21,7 +21,7 @@
                 <p>${review.rate}</p>
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">${watched.movie.title}</a></b></h4>
                 <p>${watched.comment}</p>
-                <p>${watched.date} <a class="delete" href="${pageContext.servletContext.contextPath}/user/delete/watch/${watched.id}" title="Delete">&#10006;</a></p>
+                <p>${watched.date} <a class="remove" href="${pageContext.servletContext.contextPath}/user/delete/watch/${watched.id}" title="Delete">&#10006;</a></p>
               </div>
             </li>
           </c:forEach>

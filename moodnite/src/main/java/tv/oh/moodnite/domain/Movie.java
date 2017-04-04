@@ -124,16 +124,6 @@ public class Movie {
 			this.ratedList.remove(rate);
 	}
 	
-	public void updateRate(Rated rate) {
-		for(Rated r : this.ratedList) {
-			if(r.getId() == rate.getId()) {
-				r.setRate(rate.getRate());
-				r.setReviewXS(rate.getReviewXS());
-				r.setReviewXL(rate.getReviewXL());
-			}
-		}
-	}
-	
 	public void addWatch(Watched watch) {
 		this.watchedList.add(watch);
 	}

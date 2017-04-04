@@ -7,7 +7,6 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
-import tv.oh.moodnite.repository.MovieRepository;
 import tv.oh.moodnite.repository.RateRepository;
 import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.repository.WatchedRepository;
@@ -16,9 +15,6 @@ import tv.oh.moodnite.repository.WatchedRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepo;
-	
-	@Autowired
-	private MovieRepository movieRepo;
 	
 	@Autowired
 	private RateRepository rateRepo;
@@ -70,5 +66,23 @@ public class UserService {
 		movie.removeWatch(watch);
 		
 		watchRepo.delete(watch);
+	}
+	
+	public void rateMovie(User user, Rated rate) {
+		Movie movie = rate.getMovie();
+		
+		user.addRate(rate);
+		movie.addRate(rate);
+
+		userRepo.save(user);
+	}
+	
+	public void removeRate(User user, Rated rate) {
+		Movie movie = rate.getMovie();
+		
+		user.removeRate(rate);
+		movie.removeRate(rate);
+		
+		rateRepo.delete(rate);
 	}
 }
