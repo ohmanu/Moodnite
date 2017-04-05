@@ -1,7 +1,10 @@
 package tv.oh.moodnite.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import tv.oh.moodnite.domain.DateComparator;
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
@@ -194,7 +198,9 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		model.addAttribute("watched_list", loggedInUser.getWatchedList());
+		List<Watched> sortedList = new ArrayList<Watched>(loggedInUser.getWatchedList());
+		Collections.sort(sortedList, new DateComparator());
+		model.addAttribute("watched_list", sortedList);
 		
 		return "/user/watched";
 	}
@@ -239,7 +245,7 @@ public class UserController {
 		
 		Movie movie = movieService.addMovie(movieId);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		userService.watchMovie(loggedInUser, movie, formatter.format(new Date()), watch.getComment());
+		userService.watchMovie(loggedInUser, movie, new Date(), formatter.format(new Date()), watch.getComment());
 		
 		return "redirect:/user/watched";
 	}

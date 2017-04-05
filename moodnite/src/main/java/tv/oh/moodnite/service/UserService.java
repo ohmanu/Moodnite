@@ -1,5 +1,7 @@
 package tv.oh.moodnite.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,8 +53,8 @@ public class UserService {
 		return userRepo.findByNameLike(name);
 	}
 	
-	public void watchMovie(User user, Movie movie, String date, String comment) {
-		Watched watch = new Watched(user, movie, date, comment);
+	public void watchMovie(User user, Movie movie, Date date, String formattedDate, String comment) {
+		Watched watch = new Watched(user, movie, date, formattedDate, comment);
 		user.addWatch(watch);
 		movie.addWatch(watch);
 
