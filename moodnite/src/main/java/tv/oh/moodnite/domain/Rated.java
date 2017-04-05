@@ -1,12 +1,14 @@
 package tv.oh.moodnite.domain;
 
+import java.util.Date;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 @RelationshipEntity(type = "RATED")
-public class Rated {
+public class Rated implements Publication {
 	@GraphId
 	private Long id;
 
@@ -16,6 +18,7 @@ public class Rated {
 	@EndNode
 	private Movie movie;
 	
+	private Date date;
 	private int rate;
 	private String reviewXS;
 	private String reviewXL;
@@ -23,16 +26,9 @@ public class Rated {
 	public Rated() {
 
 	}
-
-	public Rated(User user, Movie movie, int rate, String reviewXS, String reviewXL) {
-		this.user = user;
-		this.movie = movie;
-		this.rate = rate;
-		this.reviewXS = reviewXS;
-		this.reviewXL = reviewXL;
-	}
 	
-	public Rated(User user, Movie movie, int rate) {
+	public Rated(User user, Movie movie, Date date, int rate) {
+		this.date = date;
 		this.user = user;
 		this.movie = movie;
 		this.rate = rate;
@@ -80,6 +76,14 @@ public class Rated {
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override

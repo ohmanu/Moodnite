@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import tv.oh.moodnite.domain.DateComparator;
 import tv.oh.moodnite.domain.Movie;
+import tv.oh.moodnite.domain.Publication;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
@@ -198,8 +199,9 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		List<Watched> sortedList = new ArrayList<Watched>(loggedInUser.getWatchedList());
+		List<Publication> sortedList = new ArrayList<Publication>(loggedInUser.getWatchedList());
 		Collections.sort(sortedList, new DateComparator());
+		
 		model.addAttribute("watched_list", sortedList);
 		
 		return "/user/watched";
@@ -285,7 +287,10 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		model.addAttribute("reviews", loggedInUser.getRatedList());
+		List<Publication> sortedList = new ArrayList<Publication>(loggedInUser.getRatedList());
+		Collections.sort(sortedList, new DateComparator());
+		
+		model.addAttribute("reviews", sortedList);
 		
 		return "/user/reviews";
 	}
@@ -333,11 +338,12 @@ public class UserController {
 		Rated rate = userService.findUserMovieRate(loggedInUser, movie);
 		
 		if(rate == null) {
-			rate = new Rated(loggedInUser, movie, stars);
+			rate = new Rated(loggedInUser, movie, new Date(), stars);
 			userService.rateMovie(loggedInUser, rate);
 		}
 		else {
 			rate.setRate(stars);
+			rate.setDate(new Date());
 			userService.saveUser(loggedInUser);
 		}
 		

@@ -25,19 +25,6 @@ public class RateService {
 		return rateRepo.save(rate);
 	}
 	
-	public Rated rate(User user, Movie movie, int stars) {
-		Rated rate = rateRepo.findUserMovieRate(user.getId(), movie.getTmdbId());
-
-		if(rate != null) {
-			rate.setUser(user);
-			rate.setMovie(movie);
-			rate.setRate(stars);
-			return rateRepo.save(rate);
-		}
-		
-		return rateRepo.save(new Rated(user, movie, stars));
-	}
-	
 	public Rated findByRateId(Long id) {
 		return rateRepo.findOne(id);
 	}

@@ -2,10 +2,10 @@ package tv.oh.moodnite.domain;
 
 import java.util.Comparator;
 
-public class DateComparator implements Comparator<Watched> {
+public class DateComparator implements Comparator<Publication> {
 
 	@Override
-	public int compare(Watched o1, Watched o2) {
-        return o1.getDate().compareTo(o2.getDate());
+	public int compare(Publication o1, Publication o2) {
+        return o2.getDate().compareTo(o1.getDate());
 	}
 }

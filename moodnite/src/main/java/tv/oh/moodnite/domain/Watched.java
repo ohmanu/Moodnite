@@ -8,7 +8,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 @RelationshipEntity(type = "WATCHED")
-public class Watched {
+public class Watched implements Publication {
 	@GraphId
 	private Long id;
 
