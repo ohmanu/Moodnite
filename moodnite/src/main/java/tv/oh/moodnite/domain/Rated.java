@@ -85,6 +85,27 @@ public class Rated implements Publication {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	public String getStars() {
+		StringBuilder stars = new StringBuilder(" ");
+		
+		for(int i=1; i <= (this.rate); i++)
+			stars.append("&#9733; ");
+		for(int i=1; i <= (10 - this.rate); i++)
+			stars.append("&#9734; ");
+		
+		return stars.toString();
+	}
+	
+	@Override
+	public String getText1() {
+		return this.reviewXS;
+	}
+
+	@Override
+	public String getText2() {
+		return this.getStars();
+	}
 
 	@Override
 	public int hashCode() {
@@ -122,6 +143,4 @@ public class Rated implements Publication {
 		return "Rated [id=" + id + ", user=" + user.getName() + ", movie=" + movie.getTitle() + ", rate=" + rate + ", reviewXS=" + reviewXS
 				+ ", reviewXL=" + reviewXL + "]";
 	}
-
-
 }

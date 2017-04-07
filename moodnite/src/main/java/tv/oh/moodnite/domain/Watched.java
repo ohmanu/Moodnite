@@ -78,6 +78,16 @@ public class Watched implements Publication {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	
+	@Override
+	public String getText1() {
+		return this.comment;
+	}
+
+	@Override
+	public String getText2() {
+		return null;
+	}
 
 	@Override
 	public int hashCode() {

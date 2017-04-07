@@ -224,8 +224,7 @@ public class UserController {
 		
 		Movie movie = movieService.addMovie(movieId);
 		model.addAttribute("watch", new Watched());
-		model.addAttribute("movieId", movie.getTmdbId());
-		model.addAttribute("backdrop_path", movie.getBackground());
+		model.addAttribute("movie", movie);
 		
 		return "/user/watch-movie";
 	}
@@ -439,5 +438,27 @@ public class UserController {
 		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/friends";
+	}
+	
+	@RequestMapping(value = "wall", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showWall(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		List<Publication> sortedList = new ArrayList<Publication>();
+		sortedList.addAll(loggedInUser.getWatchedList());
+		sortedList.addAll(loggedInUser.getRatedList());
+		for(User follower : loggedInUser.getFollows())
+		{
+			sortedList.addAll(follower.getRatedList());
+			sortedList.addAll(follower.getWatchedList());
+		}
+		
+		Collections.sort(sortedList, new DateComparator());
+		model.addAttribute("publications", sortedList);
+		
+		return "/user/wall";
 	}
 }

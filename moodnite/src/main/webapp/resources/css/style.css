@@ -582,6 +582,32 @@ ul.films li.film .data .stars a:hover {
 	color: #fada15;
 }
 
+ul.films li.film .user {
+	width: 165px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	background-color: #fff;
+	float: left;
+}
+
+ul.films li.film .user .avatar {
+	float: left;
+}
+
+ul.films li.film .user .avatar img.user-avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 16px;
+	border: 1px solid #fff;
+}
+
+ul.films li.film .user .by {
+	float: left;
+	padding-left: 6px;
+	padding-top: 6px;
+}
+
 ul.films li.separator {
 	width: 165px;
 	height: 258;
