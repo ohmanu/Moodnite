@@ -6,9 +6,9 @@
   <t:user-layout>
     <article class="follows">
       <c:choose><c:when test="${not empty friends}">
-        <ul class="people">
+        <ul class="people" data-masonry='{ "itemSelector": ".masonary", "columnWidth": ".person-sheet" }'>
           <c:forEach items="${friends}" var="user">
-            <li class="person-sheet">
+            <li class="person-sheet masonary">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
               <div class="data">

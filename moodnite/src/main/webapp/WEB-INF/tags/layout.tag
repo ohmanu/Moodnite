@@ -5,6 +5,8 @@
 <head>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
   <title>Moodnite</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </head>
 <body>
   <header class="moodnite">

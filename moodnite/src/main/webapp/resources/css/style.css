@@ -605,7 +605,7 @@ ul.films li.film .user .avatar img.user-avatar {
 ul.films li.film .user .by {
 	float: left;
 	padding-left: 6px;
-	padding-top: 6px;
+	padding-top: 5px;
 }
 
 ul.films li.separator {

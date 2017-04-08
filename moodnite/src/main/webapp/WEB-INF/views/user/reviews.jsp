@@ -6,12 +6,12 @@
   <t:user-layout>
     <article class="reviews">
       <c:choose><c:when test="${not empty reviews}">
-        <ul class="films">
+        <ul class="films" data-masonry='{ "itemSelector": ".masonary", "columnWidth": ".film" }'>
           <li class="separator-short" id="pink">
             <h2>${loggedInUser.name} Microreviews</h2>
           </li>
           <c:forEach items="${reviews}" var="review">
-            <li class="film">
+            <li class="film masonary">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${review.movie.tmdbId}">
                   <img src="https://image.tmdb.org/t/p/w185/${review.movie.background}" alt="${review.movie.title}"/>
