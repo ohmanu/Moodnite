@@ -4,14 +4,14 @@
 
 <t:layout>
   <t:user-layout>
-    <article class="reviews">
+    <article class="wall">
       <c:choose><c:when test="${not empty publications}">
-        <ul class="films" data-masonry='{ "itemSelector": ".masonary", "columnWidth": ".film" }'>
-          <li class="separator-short masonary" id="pink">
+        <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
+          <li class="separator-short masonry" id="pink">
             <h2>Wall</h2>
           </li>
           <c:forEach items="${publications}" var="publication">
-            <li class="film masonary">
+            <li class="film masonry">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${publication.movie.tmdbId}">
                   <img src="https://image.tmdb.org/t/p/w185/${publication.movie.background}" alt="${publication.movie.title}"/>

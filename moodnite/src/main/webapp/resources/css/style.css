@@ -871,6 +871,17 @@ article.user nav.menu li a:hover {
 	text-decoration: none;
 }
 
+article.wall {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
 article.reviews {
 	width: 80%;
 	padding-left: 10%;

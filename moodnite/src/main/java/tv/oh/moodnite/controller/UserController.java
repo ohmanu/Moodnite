@@ -103,7 +103,7 @@ public class UserController {
 		
 		session.setAttribute("loggedInUser", loogedInuser);
 
-		return "redirect:/";
+		return "redirect:/user/wall";
 	}
 	
 	/**
@@ -248,7 +248,7 @@ public class UserController {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		userService.watchMovie(loggedInUser, movie, new Date(), formatter.format(new Date()), watch.getComment());
 		
-		return "redirect:/user/watched";
+		return "redirect:/movie/" + movie.getTmdbId();
 	}
 	
 	/**
@@ -374,7 +374,7 @@ public class UserController {
 		rateToUpdate.setReviewXS(rate.getReviewXS());
 		userService.saveUser(loggedInUser);
 		
-		return "redirect:/movie/" + movie.getTmdbId();
+		return "redirect:/user/reviews";
 	}
 	
 	/**
@@ -420,6 +420,8 @@ public class UserController {
 		
 		User user = userService.findByUserId(Long.valueOf(userId));
 		loggedInUser.addFriend(user);
+		loggedInUser.removeNewFollower(user);
+		user.addNewFollower(loggedInUser);
 		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/friends";
@@ -435,6 +437,33 @@ public class UserController {
 		User user = userService.findByUserId(Long.valueOf(userId));
 		
 		loggedInUser.removeFriend(user);
+		userService.saveUser(loggedInUser);
+		
+		return "redirect:/user/friends";
+	}
+	
+	@RequestMapping(value = "notifications", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showUserNotifications(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		model.addAttribute("notifications", loggedInUser.getNewFollowers());
+		
+		return "/user/notifications";
+	}
+	
+	@RequestMapping(value = "/notification/ignore/{userId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String ignoreNotification(@PathVariable String userId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		User user = userService.findByUserId(Long.valueOf(userId));
+		
+		loggedInUser.removeNewFollower(user);
 		userService.saveUser(loggedInUser);
 		
 		return "redirect:/user/friends";

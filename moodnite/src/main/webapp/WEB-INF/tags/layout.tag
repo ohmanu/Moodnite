@@ -19,10 +19,10 @@
       <div class="user">
         <c:choose>
         <c:when test="${not empty loggedInUser.name}">
-          <a href="${pageContext.servletContext.contextPath}/user/reviews"><img class="photo-xs" src="${pageContext.servletContext.contextPath}/resources/images/avatars/${loggedInUser.photo}" alt="Avatar"/></a>
+          <a href="${pageContext.servletContext.contextPath}/user/wall"><img class="photo-xs" src="${pageContext.servletContext.contextPath}/resources/images/avatars/${loggedInUser.photo}" alt="Avatar"/></a>
         </c:when>
         <c:otherwise>
-          <a href="${pageContext.servletContext.contextPath}/user/reviews"><img src="${pageContext.request.contextPath}/resources/images/user.png"/></a>
+          <a href="${pageContext.servletContext.contextPath}/user/wall"><img src="${pageContext.request.contextPath}/resources/images/user.png"/></a>
         </c:otherwise>
         </c:choose>
       </div>

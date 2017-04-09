@@ -86,7 +86,7 @@ public class Watched implements Publication {
 
 	@Override
 	public String getText2() {
-		return null;
+		return "Watched: " + this.getFormattedDate();
 	}
 
 	@Override

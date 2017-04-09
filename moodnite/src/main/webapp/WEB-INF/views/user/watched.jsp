@@ -6,12 +6,12 @@
   <t:user-layout>
     <article class="watched-list">
       <c:choose><c:when test="${not empty watched_list}">
-        <ul class="films" data-masonry='{ "itemSelector": ".masonary", "columnWidth": ".film" }'>
-          <li class="separator-short" id="pink">
-            <h2>${loggedInUser.name} watched list</h2>
+        <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
+          <li class="separator-short masonry" id="pink">
+            <h2>Watched list</h2>
           </li>
           <c:forEach items="${watched_list}" var="watched">
-            <li class="film masonary">
+            <li class="film masonry">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">
                   <img src="https://image.tmdb.org/t/p/w185/${watched.movie.background}" alt="${watched.movie.title}"/>

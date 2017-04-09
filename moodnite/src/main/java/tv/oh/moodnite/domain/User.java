@@ -25,6 +25,9 @@ public class User {
 	
 	@Relationship(type = "FOLLOWS", direction = Relationship.OUTGOING)
 	private Set<User> follows = new HashSet<>();
+	
+	@Relationship(type = "NOTIFICATION", direction = Relationship.OUTGOING)
+	private Set<User> newFollowers = new HashSet<>();
 
 	public Set<Watched> getWatchedList() {
 		return watchedList;
@@ -86,6 +89,14 @@ public class User {
 		this.follows = follows;
 	}
 	
+	public Set<User> getNewFollowers() {
+		return newFollowers;
+	}
+
+	public void setNewFollowers(Set<User> newFollowers) {
+		this.newFollowers = newFollowers;
+	}
+
 	public void addRate(Rated rate) {
 		this.ratedList.add(rate);
 	}
@@ -108,6 +119,14 @@ public class User {
 	
 	public void removeFriend(User user) {		
 		this.follows.remove(user);
+	}
+	
+	public void addNewFollower(User user) {
+		this.newFollowers.add(user);
+	}
+	
+	public void removeNewFollower(User user) {		
+		this.newFollowers.remove(user);
 	}
 
 	@Override
