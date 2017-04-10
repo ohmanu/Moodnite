@@ -608,7 +608,7 @@ ul.films li.film .user .by {
 	padding-top: 5px;
 }
 
-ul.films li.separator {
+ul li.separator {
 	width: 165px;
 	height: 258;
 	margin: 10px;
@@ -622,7 +622,7 @@ ul.films li.separator {
 	text-align:center;
 }
 
-ul.films li.separator-long {
+ul li.separator-long {
 	width: 165px;
 	height: 298;
 	margin: 10px;
@@ -636,11 +636,11 @@ ul.films li.separator-long {
 	text-align:center;
 }
 
-ul.films #pink {
+ul #pink {
 	background-color: #eab7b3;
 }
 
-ul.films li.separator-short {
+ul li.separator-short {
 	width: 165px;
 	height: 164;
 	margin: 10px;
@@ -654,19 +654,19 @@ ul.films li.separator-short {
 	text-align:center;
 }
 
-ul.films li.separator h2 {
+ul li.separator h2 {
 	color: #eab7b3;
 }
 
-ul.films li.separator-short h2 {
+ul li.separator-short h2 {
 	color: #fff;
 }
 
-ul.films li.separator-long h2 {
+ul li.separator-long h2 {
 	color: #eab7b3;
 }
 
-ul.films #pink h2 {
+ul #pink h2 {
 	color: #fff;
 }
 
