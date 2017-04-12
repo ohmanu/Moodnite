@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
+import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
 import tv.oh.moodnite.repository.RateRepository;
@@ -86,5 +87,13 @@ public class UserService {
 		movie.removeRate(rate);
 		
 		rateRepo.delete(rate);
+	}
+	
+	public void listMovie(User user, Movie movie, String name) {
+		Tag tag = new Tag(user, movie, name);
+		user.addTag(tag);
+		movie.addTag(tag);
+		
+		userRepo.save(user);
 	}
 }

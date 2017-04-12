@@ -17,6 +17,9 @@ public class Movie {
 	
 	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	private Set<Rated> ratedList = new HashSet<>();
+	
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	private Set<Tag> tags = new HashSet<>();
 
 	private String tmdbId;
 	private String title;
@@ -130,5 +133,23 @@ public class Movie {
 	
 	public void removeWatch(Watched watch) {
 		this.watchedList.remove(watch);
+	}
+	
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+	
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
+	public void removeTag(Tag tag) {		
+		this.tags.remove(tag);
 	}
 }

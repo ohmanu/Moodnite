@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,7 @@ import tv.oh.moodnite.domain.DateComparator;
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Publication;
 import tv.oh.moodnite.domain.Rated;
+import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
 import tv.oh.moodnite.service.MovieService;
@@ -489,5 +492,39 @@ public class UserController {
 		model.addAttribute("publications", sortedList);
 		
 		return "/user/wall";
+	}
+	
+	@RequestMapping(value = "list/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String listMovie(@PathVariable String movieId, Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.addMovie(movieId);
+		
+		Set<String> listsNames = new HashSet<>();
+		for(Tag tag : loggedInUser.getTags())
+			listsNames.add(tag.getName());
+		
+		model.addAttribute("movie", movie);
+		model.addAttribute("lists_names", listsNames);
+			
+		
+		return "/user/add-to-list";
+	}
+	
+	@RequestMapping(value = "list/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
+	public String listMovie(@PathVariable String movieId, @RequestParam("listName") String listName, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Movie movie = movieService.addMovie(movieId);
+
+		userService.listMovie(loggedInUser, movie, listName);
+		
+		return "redirect:/user/reviews";
 	}
 }

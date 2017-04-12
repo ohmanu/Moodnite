@@ -28,6 +28,9 @@ public class User {
 	
 	@Relationship(type = "NOTIFICATION", direction = Relationship.OUTGOING)
 	private Set<User> newFollowers = new HashSet<>();
+	
+	@Relationship(type = "TAGGED", direction = Relationship.OUTGOING)
+	private Set<Tag> tags = new HashSet<>();
 
 	public Set<Watched> getWatchedList() {
 		return watchedList;
@@ -127,6 +130,22 @@ public class User {
 	
 	public void removeNewFollower(User user) {		
 		this.newFollowers.remove(user);
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+	
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
+	public void removeTag(Tag tag) {		
+		this.tags.remove(tag);
 	}
 
 	@Override
