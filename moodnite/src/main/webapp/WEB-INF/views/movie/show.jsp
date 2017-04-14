@@ -16,6 +16,7 @@
           <div class="actions">
             <a href="${pageContext.servletContext.contextPath}/user/watch/${movie_details.id}">Watch</a>
             <a href="${pageContext.servletContext.contextPath}/user/rate/${movie_details.id}">Rate</a>
+            <a href="${pageContext.servletContext.contextPath}/user/list/${movie_details.id}">Add to list</a>
           </div>
           
           <div class="data-sheet">

@@ -525,6 +525,22 @@ public class UserController {
 
 		userService.listMovie(loggedInUser, movie, listName);
 		
-		return "redirect:/user/reviews";
+		return "redirect:/user/wall";
+	}
+	
+	@RequestMapping(value = "lists", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showLists(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Set<String> listsNames = new HashSet<>();
+		for(Tag tag : loggedInUser.getTags())
+			listsNames.add(tag.getName());
+		
+		model.addAttribute("lists_names", listsNames);
+		
+		return "/user/lists";
 	}
 }

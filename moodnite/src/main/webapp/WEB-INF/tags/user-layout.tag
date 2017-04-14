@@ -18,6 +18,7 @@
       <li><a href="${pageContext.servletContext.contextPath}/user/wall">Wall</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/reviews">Reviews</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/watched">Watched</a></li>
+      <li><a href="${pageContext.servletContext.contextPath}/user/lists">Lists</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/friends">Friends</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/notifications">Notifications</a></li>
       <li><a href="${pageContext.servletContext.contextPath}/user/config">Config</a></li>
