@@ -7,7 +7,7 @@
   <t:user-layout>
     <article class="reviews">
     
-      <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/list/${movie.tmdbId}">
+      <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/add-to-list/${movie.tmdbId}">
         <div class="field">
           <input type="text" name="listName" placeholder="List name">
         </div>
@@ -18,7 +18,7 @@
       </form>
       
       <c:choose><c:when test="${not empty lists_names}">
-      <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/list/${movie.tmdbId}">
+      <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/add-to-list/${movie.tmdbId}">
         <select id="listName" name="listName">
           <option value="" selected="selected">- select one of your list -</option>
           <c:forEach items="${lists_names}" var="tag">

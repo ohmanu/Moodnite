@@ -494,7 +494,7 @@ public class UserController {
 		return "/user/wall";
 	}
 	
-	@RequestMapping(value = "list/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	@RequestMapping(value = "add-to-list/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String listMovie(@PathVariable String movieId, Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
@@ -514,7 +514,7 @@ public class UserController {
 		return "/user/add-to-list";
 	}
 	
-	@RequestMapping(value = "list/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
+	@RequestMapping(value = "add-to-list/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
 	public String listMovie(@PathVariable String movieId, @RequestParam("listName") String listName, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
@@ -542,5 +542,23 @@ public class UserController {
 		model.addAttribute("lists_names", listsNames);
 		
 		return "/user/lists";
+	}
+	
+	@RequestMapping(value = "list/{listName}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showList(@PathVariable String listName, Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		Set<Movie> movies = new HashSet<>();
+		for(Tag tag : loggedInUser.getTags())
+			if(tag.getName().compareTo(listName) == 0)
+				movies.add(tag.getMovie());
+		
+		model.addAttribute("list_name", listName);
+		model.addAttribute("movies", movies);
+		
+		return "/user/listed-movies";
 	}
 }

@@ -15,7 +15,7 @@
           <form:textarea path="comment" placeholder="Add a comment."/>
         </div>
         
-        <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}">Tweet</a>
+        <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">Tweet</a>
         
         <div class="field">
           <input type="submit" value="Comment"/>

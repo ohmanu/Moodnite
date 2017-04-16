@@ -12,7 +12,7 @@
           </li>
           <c:forEach items="${lists_names}" var="tag">
             <li class="separator-short" id="pink">
-              <h2>${tag}</h2>
+              <h2><a href="${pageContext.servletContext.contextPath}/user/list/${tag}">${tag}</a></h2>
             </li>
           </c:forEach>
         </ul>

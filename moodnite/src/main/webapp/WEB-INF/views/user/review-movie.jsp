@@ -19,6 +19,8 @@
           <input type="submit" value="Save"/>
         </div>
         
+        <a href="https://twitter.com/intent/tweet?text=${rate.movie.title} <c:forEach var="i" begin="1" end="${rate.rate}"> ★</c:forEach><c:forEach var="i" begin="1" end="${10-rate.rate}"> ☆</c:forEach> #moodnite ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">Tweet</a>
+        
         <div class="field">
           <div class="public-announcement">Do you want to <a href="${pageContext.servletContext.contextPath}/user/delete/rate/${movieId}">DELETE</a> this review?</div>
         </div>
