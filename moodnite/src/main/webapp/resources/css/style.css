@@ -670,6 +670,20 @@ ul #pink h2 {
 	color: #fff;
 }
 
+ul li.tag {
+	width: 165px;
+	height: 164;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+	display: block;
+	background-color: #a9e6ca;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
 /* ul.people */
 
 .section-title {
@@ -905,6 +919,17 @@ article.watched-list {
 }
 
 article.follows {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	
+	margin: 0 auto;
+}
+
+article.lists {
 	width: 80%;
 	padding-left: 10%;
 	padding-right: 10%;

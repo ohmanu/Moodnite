@@ -11,6 +11,7 @@ import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
 import tv.oh.moodnite.repository.RateRepository;
+import tv.oh.moodnite.repository.TagRepository;
 import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.repository.WatchedRepository;
 
@@ -25,6 +26,9 @@ public class UserService {
 	@Autowired
 	private WatchedRepository watchRepo;
 	
+	@Autowired
+	private TagRepository tagRepo;
+	
 	public User findByUserId(Long userId) {
 		return userRepo.findOne(userId);
 	}
@@ -33,7 +37,7 @@ public class UserService {
 		User user = userRepo.findByName(name);
 		
 		if(user != null && user.getPassword().equals(password))
-			return user;
+			return userRepo.findOne(user.getId());
 		
 		return null;
 	}
@@ -95,5 +99,15 @@ public class UserService {
 		movie.addTag(tag);
 		
 		userRepo.save(user);
+	}
+	
+	public void removeTag(User user, Long tagId) {
+		Tag tag = tagRepo.findOne(tagId);
+		Movie movie = tag.getMovie();
+		
+		user.removeTag(tag);
+		movie.removeTag(tag);
+		
+		tagRepo.delete(tag);
 	}
 }

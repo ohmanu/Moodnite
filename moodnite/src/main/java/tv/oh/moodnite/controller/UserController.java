@@ -551,14 +551,26 @@ public class UserController {
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		Set<Movie> movies = new HashSet<>();
+		Set<Tag> tagMovies = new HashSet<>();
 		for(Tag tag : loggedInUser.getTags())
 			if(tag.getName().compareTo(listName) == 0)
-				movies.add(tag.getMovie());
+				tagMovies.add(tag);
 		
 		model.addAttribute("list_name", listName);
-		model.addAttribute("movies", movies);
+		model.addAttribute("tag_movies", tagMovies);
 		
 		return "/user/listed-movies";
+	}
+	
+	@RequestMapping(value = "delete/movie-from-list/{tagMovieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deleteFromList(@PathVariable String tagMovieId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		userService.removeTag(loggedInUser, Long.valueOf(tagMovieId));
+		
+		return "redirect:/user/lists";
 	}
 }
