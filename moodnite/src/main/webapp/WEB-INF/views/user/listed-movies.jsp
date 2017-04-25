@@ -20,7 +20,7 @@
               
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${tag_movie.movie.tmdbId}">${tag_movie.movie.title}</a></b></h4>
-                <p><a class="remove" href="${pageContext.servletContext.contextPath}/user/delete/movie-from-list/${tag_movie.id}" title="Delete">&#10006;</a></p>
+                <p><a class="remove" href="${pageContext.servletContext.contextPath}/user/delete/movie-from-list/${list_name}/${tag_movie.id}" title="Delete">&#10006;</a></p>
               </div>
             </li>
           </c:forEach>

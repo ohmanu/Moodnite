@@ -15,7 +15,13 @@
           <form:textarea path="comment" placeholder="Add a comment."/>
         </div>
         
-        <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">Tweet</a>
+        <div class="field">
+          <div class="public-announcement">
+            <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">
+              <img class="photo" src="${pageContext.servletContext.contextPath}/resources/images/icon-tweet.png" alt="Tweet"/>
+            </a>
+          </div>
+        </div>
         
         <div class="field">
           <input type="submit" value="Comment"/>

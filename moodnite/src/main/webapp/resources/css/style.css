@@ -869,8 +869,8 @@ article.user nav.menu ul {
 }
 
 article.user nav.menu li {
-	width: 185px;
-	margin: 10px;
+	width: 180px;
+	margin: 5px;
 	float: left;
 	display: block;
 }
@@ -959,14 +959,17 @@ article.user form .film-about {
 
 article.user form .stars {
 	width: 100%;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	background-color: #fff;
 	text-align: center;
 	font-size: 0;
+	padding-bottom: 5px;
 }
 
 article.user form .stars a {
 	width: 100%;
-	background-color: #fff;
 	font-size: 46px;
 	text-align: center;
 	color: #ddd;
@@ -1020,6 +1023,10 @@ article.user input[type="submit"]:hover {
 	color: #eb4f5a;
 	font-size: 18px;
 	font-weight: bold;
+}
+
+.twitter-share-button {
+	padding: 10px;
 }
 
 /* FOOTER */

@@ -9,6 +9,7 @@
       <form:form>
         <div class="film-about" style="background-image: url('https://image.tmdb.org/t/p/w780/${backdrop_path}');">
         </div>
+        
         <div class="stars">
           <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${1}">&#9733;</a>
           <a href="${pageContext.servletContext.contextPath}/user/rate/${movieId}/${2}">&#9733;</a>

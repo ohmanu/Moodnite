@@ -525,7 +525,7 @@ public class UserController {
 
 		userService.listMovie(loggedInUser, movie, listName);
 		
-		return "redirect:/user/wall";
+		return "redirect:/user/list/" + listName;
 	}
 	
 	@RequestMapping(value = "lists", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -562,8 +562,8 @@ public class UserController {
 		return "/user/listed-movies";
 	}
 	
-	@RequestMapping(value = "delete/movie-from-list/{tagMovieId}", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String deleteFromList(@PathVariable String tagMovieId, HttpSession session) {
+	@RequestMapping(value = "delete/movie-from-list/{listName}/{tagMovieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deleteFromList(@PathVariable String listName, @PathVariable String tagMovieId, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
@@ -571,6 +571,6 @@ public class UserController {
 		
 		userService.removeTag(loggedInUser, Long.valueOf(tagMovieId));
 		
-		return "redirect:/user/lists";
+		return "redirect:/user/list/" + listName;
 	}
 }
