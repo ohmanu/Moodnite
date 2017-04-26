@@ -34,7 +34,7 @@
                   alt="${publication.getUser().name}"/>
                 </div>
                 <div class="by">
-                  by ${publication.getUser().name}
+                  by <a href="${pageContext.servletContext.contextPath}/profile/${publication.getUser().id}/reviews">${publication.getUser().name}</a>
                 </div>
               </div>
             </li>

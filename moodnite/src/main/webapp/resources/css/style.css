@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
+/*
+burgundi 		#eb4f5a
+broke pink 		#eab7b3
+star yellow 	#fada15
+sand gray 		#e4d9cc
+twitter blue 	#7fd4f0
+*/
+
 a {
 	text-decoration: none;
 	color: #000;
@@ -856,7 +864,6 @@ article.user nav.menu {
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-top: 10px;
-	padding-bottom: 10px;
 	background-color: #fff;
 	float: left;
 	margin: 0 auto;
@@ -870,9 +877,15 @@ article.user nav.menu ul {
 
 article.user nav.menu li {
 	width: 180px;
-	margin: 5px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 	float: left;
 	display: block;
+	text-align: center;
+}
+
+article.user nav.menu li.selected {
+	background-color: #e4d9cc;
 }
 
 article.user nav.menu li a {
