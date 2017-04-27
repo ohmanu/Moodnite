@@ -117,7 +117,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "config", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String updateAvatar(Model model, HttpSession session) {
+	public String showConfigForm(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
@@ -147,6 +147,23 @@ public class UserController {
 		userService.saveUser(loggedInUser);
 
 		return "/user/config";
+	}
+	
+	/**
+	 * Carga el formulario de configuración de avatar de usuario.
+	 * 
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "avatar", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showAvatarForm(Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
+		if(loggedInUser == null)
+			return "redirect:/user/login";
+		
+		return "/user/avatar";
 	}
 	
 	/**

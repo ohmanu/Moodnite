@@ -63,7 +63,7 @@ public class UserService {
 		user.addWatch(watch);
 		movie.addWatch(watch);
 
-		userRepo.save(user);
+		watchRepo.save(watch);
 	}
 	
 	public void removeWatch(User user, Watched watch) {
@@ -81,7 +81,7 @@ public class UserService {
 		user.addRate(rate);
 		movie.addRate(rate);
 
-		userRepo.save(user);
+		rateRepo.save(rate);
 	}
 	
 	public void removeRate(User user, Rated rate) {
@@ -98,7 +98,7 @@ public class UserService {
 		user.addTag(tag);
 		movie.addTag(tag);
 		
-		userRepo.save(user);
+		tagRepo.save(tag);
 	}
 	
 	public void removeTag(User user, Long tagId) {

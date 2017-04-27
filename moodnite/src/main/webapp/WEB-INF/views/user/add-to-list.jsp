@@ -5,8 +5,7 @@
 
 <t:layout>
   <t:user-layout>
-    <article class="reviews">
-    
+    <article class="reviews">    
       <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/add-to-list/${movie.tmdbId}">
         <div class="field">
           <input type="text" name="listName" placeholder="List name">

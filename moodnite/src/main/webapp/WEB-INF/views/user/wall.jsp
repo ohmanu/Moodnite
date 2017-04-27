@@ -4,6 +4,19 @@
 
 <t:layout>
   <t:user-layout>
+    <nav class="menu">
+      <ul>
+        <li class="selected"><a href="${pageContext.servletContext.contextPath}/user/wall">Wall</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/reviews">Reviews</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/watched">Watched</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/lists">Lists</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/friends">Friends</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/notifications">Notifications</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/config">Config</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/logout">Logout</a></li>
+      </ul>
+    </nav>
+      
     <article class="wall">
       <c:choose><c:when test="${not empty publications}">
         <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
@@ -34,7 +47,7 @@
                   alt="${publication.getUser().name}"/>
                 </div>
                 <div class="by">
-                  by <a href="${pageContext.servletContext.contextPath}/profile/${publication.getUser().id}/reviews">${publication.getUser().name}</a>
+                  by <a class="user-link" href="${pageContext.servletContext.contextPath}/profile/${publication.getUser().id}/reviews">${publication.getUser().name}</a>
                 </div>
               </div>
             </li>

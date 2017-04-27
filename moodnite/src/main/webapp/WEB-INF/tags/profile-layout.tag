@@ -13,15 +13,6 @@
     </div>
   </header>
   
-  <nav class="menu">
-    <ul>
-      <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/reviews">Reviews</a></li>
-      <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/watched">Watched</a></li>
-      <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/lists">Lists</a></li>
-      <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/friends">Friends</a></li>
-    </ul>
-  </nav>
-  
   <section class="content">
     <jsp:doBody />
   </section>

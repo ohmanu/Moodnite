@@ -3,7 +3,16 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <t:profile-layout>
+    <nav class="menu">
+      <ul>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/reviews">Reviews</a></li>
+        <li class="selected"><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/watched">Watched</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/lists">Lists</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/friends">Friends</a></li>
+      </ul>
+    </nav>
+    
     <article class="watched-list">
       <c:choose><c:when test="${not empty watched_list}">
         <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
@@ -21,12 +30,12 @@
                 <p>${review.rate}</p>
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">${watched.movie.title}</a></b></h4>
                 <p>${watched.comment}</p>
-                <p>${watched.formattedDate} <a class="remove" href="${pageContext.servletContext.contextPath}/user/delete/watch/${watched.id}" title="Delete">&#10006;</a></p>
+                <p>${watched.formattedDate}</p>
               </div>
             </li>
           </c:forEach>
         </ul>
       </c:when></c:choose>
     </article>
-  </t:user-layout>
+  </t:profile-layout>
 </t:layout>

@@ -3,7 +3,16 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <t:profile-layout>
+    <nav class="menu">
+      <ul>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/reviews">Reviews</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/watched">Watched</a></li>
+        <li class="selected"><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/lists">Lists</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/friends">Friends</a></li>
+      </ul>
+    </nav>
+    
     <article class="lists">
       <c:choose><c:when test="${not empty tag_movies}">
         <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
@@ -20,12 +29,11 @@
               
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${tag_movie.movie.tmdbId}">${tag_movie.movie.title}</a></b></h4>
-                <p><a class="remove" href="${pageContext.servletContext.contextPath}/user/delete/movie-from-list/${list_name}/${tag_movie.id}" title="Delete">&#10006;</a></p>
               </div>
             </li>
           </c:forEach>
         </ul>
       </c:when></c:choose>
     </article>
-  </t:user-layout>
+  </t:profile-layout>
 </t:layout>

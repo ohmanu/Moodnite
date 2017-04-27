@@ -4,6 +4,19 @@
 
 <t:layout>
   <t:user-layout>
+    <nav class="menu">
+      <ul>
+        <li><a href="${pageContext.servletContext.contextPath}/user/wall">Wall</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/reviews">Reviews</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/watched">Watched</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/lists">Lists</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/friends">Friends</a></li>
+        <li class="selected"><a href="${pageContext.servletContext.contextPath}/user/notifications">Notifications</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/config">Config</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/user/logout">Logout</a></li>
+      </ul>
+    </nav>
+    
     <article class="follows">
       <c:choose><c:when test="${not empty notifications}">
         <ul class="people" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".person-sheet" }'>
@@ -15,7 +28,7 @@
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
               <div class="data">
-                ${user.name} started following you. <br>
+                <a class="user-link" href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a> started following you. <br>
                 <a class="remove" href="${pageContext.servletContext.contextPath}/user/notification/ignore/${user.id}" title="Ignore">&#10006;</a>
                 <a class="add" href="${pageContext.servletContext.contextPath}/user/follow/${user.id}" title="Follow">&#10010;</a>
               </div>

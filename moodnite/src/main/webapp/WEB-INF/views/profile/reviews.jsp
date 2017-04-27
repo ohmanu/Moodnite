@@ -3,7 +3,16 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <t:profile-layout>
+    <nav class="menu">
+      <ul>
+        <li class="selected"><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/reviews">Reviews</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/watched">Watched</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/lists">Lists</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/profile/${profile.id}/friends">Friends</a></li>
+      </ul>
+    </nav>
+  
     <article class="reviews">
       <c:choose><c:when test="${not empty reviews}">
         <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
@@ -23,14 +32,12 @@
                 <p>${review.reviewXS}</p>
                 
                 <div class="stars">
-                  <a href="${pageContext.servletContext.contextPath}/user/rate/${review.movie.tmdbId}" title="Edit review">
-                    <c:forEach var="i" begin="1" end="${review.rate}">
-                      &#9733;
-                    </c:forEach>
-                    <c:forEach var="i" begin="1" end="${10-review.rate}">
-                      &#9734;
-                    </c:forEach>
-                  </a>
+                  <c:forEach var="i" begin="1" end="${review.rate}">
+                    &#9733;
+                  </c:forEach>
+                  <c:forEach var="i" begin="1" end="${10-review.rate}">
+                    &#9734;
+                  </c:forEach>
                 </div>
               </div>
             </li>
@@ -38,5 +45,5 @@
         </ul>
       </c:when></c:choose>
     </article>
-  </t:user-layout>
+  </t:profile-layout>
 </t:layout>

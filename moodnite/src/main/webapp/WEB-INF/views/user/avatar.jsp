@@ -19,20 +19,15 @@
     </nav>
     
     <article class="reviews">
-      <form:form action="${pageContext.servletContext.contextPath}/user/update" method="POST" modelAttribute="user">
+      <form:form action="${pageContext.servletContext.contextPath}/user/avatar" method="POST" enctype="multipart/form-data">	
         <div class="field">
-          <form:input path="name" placeholder="${user.name}"/>
+          <input type="file" name="file">
         </div>
         
         <div class="field">
-          <form:textarea path="bio" placeholder="${user.bio}" cols="50" rows="3"/>
+          <input type="submit" value="Upload"/>
         </div>
-        
-        <div class="field">
-          <input type="submit" value="Update"/>
-        </div>
-      </form:form>
-      
+      </form:form>      
     </article>
   </t:user-layout>
 </t:layout>

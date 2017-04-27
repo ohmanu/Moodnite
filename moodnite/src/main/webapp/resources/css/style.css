@@ -87,6 +87,10 @@ a.add:hover {
 	color: #b5e1f0;
 }
 
+a.user-link {
+	font-weight: bold;
+}
+
 section.content {
 	width: 100%;
 	position: relative;	
@@ -579,6 +583,7 @@ ul.films li.film .data .stars {
 	float:left;
 	padding-left: 2px;
 	margin: 0 auto;
+	font-size: 16px;
 }
 
 ul.films li.film .data .stars a {
@@ -878,7 +883,7 @@ article.user nav.menu ul {
 article.user nav.menu li {
 	width: 180px;
 	padding-top: 10px;
-	padding-bottom: 5px;
+	padding-bottom: 8px;
 	float: left;
 	display: block;
 	text-align: center;
@@ -905,6 +910,7 @@ article.wall {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	float:left;
 	
 	margin: 0 auto;
 }
@@ -916,6 +922,7 @@ article.reviews {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	float:left;
 	
 	margin: 0 auto;
 }
@@ -927,6 +934,7 @@ article.watched-list {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	float:left;
 	
 	margin: 0 auto;
 }
@@ -938,6 +946,7 @@ article.follows {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	float:left;
 	
 	margin: 0 auto;
 }
@@ -949,6 +958,7 @@ article.lists {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	float:left;
 	
 	margin: 0 auto;
 }
