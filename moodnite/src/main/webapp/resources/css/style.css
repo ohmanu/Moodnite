@@ -261,7 +261,35 @@ article.film .rug header.title {
 
 article.film .rug .actions {
 	float: right;
-	padding-top: 10px;
+	padding-top: 20px;
+}
+
+article.film .rug .actions a {
+	width: 50px;
+	font-size: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #eab7b3;
+	text-transform: uppercase;
+	text-align: center;
+	display: inline-block;
+}
+
+article.film .rug .actions a:HOVER {
+	text-decoration: none;
+	background-color: #eb4f5a;
+}
+
+article.film .rug .actions .action-watch {
+	color: white;
+}
+
+article.film .rug .actions .action-rate {
+	color: white;
+}
+
+article.film .rug .actions .action-add-to-list {
+	color: white;
 }
 
 article.film .rug .data-sheet {
@@ -339,6 +367,18 @@ article.film .similar-movies {
 	padding-bottom: 10px;
 	background-color: #eab7b3;
 	float: left;
+}
+
+.movie-reviews {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #e4d9cc;
+	float:left;
+	
+	margin: 0 auto;
 }
 
 /* movie/credits */
@@ -733,7 +773,7 @@ ul.people li.person-sheet .photo {
 	float: left;
 }
 
-ul.people li.person-sheet .user-photo{
+ul.people li.person-sheet .user-photo {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -1042,7 +1082,7 @@ article.user input[type="submit"]:hover {
 	text-align: center;
 }
 
-.public-announcement a{
+.public-announcement a {
 	color: #eb4f5a;
 	font-size: 18px;
 	font-weight: bold;

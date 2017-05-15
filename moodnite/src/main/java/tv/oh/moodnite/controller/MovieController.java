@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import tv.oh.moodnite.domain.Movie;
+import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.tmdb.TmdbMovieService;
 
 @RequestMapping(value = "/movie/*")
@@ -20,11 +22,15 @@ public class MovieController {
 	@Autowired
 	private TmdbMovieService tmdbMovieService;
 	
+	@Autowired
+	private MovieService movieService;
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
 		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
-		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);
+		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);		
+		Movie movie = movieService.findByTmdbId(movieId);
 		
 		model.addAttribute("movie_details", movieDetails);
 		model.addAttribute("directors", loadDirectors(credits));
@@ -32,6 +38,8 @@ public class MovieController {
 		model.addAttribute("genres", movieDetails.get("genres"));
 		model.addAttribute("production_countries", formatMapList((List<Map<String, String>>) movieDetails.get("production_countries")));
 		model.addAttribute("cast", credits.get("cast"));
+		if(movie != null)
+			model.addAttribute("reviews", movie.getRatedList());
 		model.addAttribute("similar_movies", tmdbMovieService.getSimilarMovies(movieId).get("results"));
 
 		return "/movie/show";

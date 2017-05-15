@@ -14,9 +14,9 @@
           <header class="title"><h1>${movie_details.title}</h1></header>
           
           <div class="actions">
-            <a href="${pageContext.servletContext.contextPath}/user/watch/${movie_details.id}">Watch</a>
-            <a href="${pageContext.servletContext.contextPath}/user/rate/${movie_details.id}">Rate</a>
-            <a href="${pageContext.servletContext.contextPath}/user/add-to-list/${movie_details.id}">Add to list</a>
+            <a class="action-watch" href="${pageContext.servletContext.contextPath}/user/watch/${movie_details.id}">Watch</a>
+            <a class="action-rate" href="${pageContext.servletContext.contextPath}/user/rate/${movie_details.id}">Rate</a>
+            <a class="action-add-to-list" href="${pageContext.servletContext.contextPath}/user/add-to-list/${movie_details.id}">List</a>
           </div>
           
           <div class="data-sheet">
@@ -99,6 +99,44 @@
         </div>
       </c:when></c:choose>
       
+      <c:choose><c:when test="${not empty reviews}">
+        <div class="movie-reviews">
+          <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
+            <li class="separator-short masonry">
+              <h2>Reviews</h2>
+            </li>
+            <c:forEach items="${reviews}" var="review">
+              <li class="film masonry">
+                <div class="poster">
+                  <a href="${pageContext.servletContext.contextPath}/movie/${review.movie.tmdbId}">
+                    <img src="https://image.tmdb.org/t/p/w185/${review.movie.background}" alt="${review.movie.title}"/>
+                  </a>
+                </div>
+                
+                <div class="data">
+                  <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${review.movie.tmdbId}">${review.movie.title}</a></b></h4>
+                  <p>${review.getText1()}</p>
+                  
+                  <div class="stars">
+                    ${review.getText2()}
+                  </div>
+                </div>
+                
+                <div class="user">
+                  <div class= "avatar">
+                    <img class="user-avatar" 
+                    src="${pageContext.servletContext.contextPath}/resources/images/avatars/${review.getUser().photo}" 
+                    alt="${review.getUser().name}"/>
+                  </div>
+                  <div class="by">
+                    by <a class="user-link" href="${pageContext.servletContext.contextPath}/profile/${review.getUser().id}/reviews">${review.getUser().name}</a>
+                  </div>
+                </div>
+              </li>
+            </c:forEach>
+          </ul>
+        </div>
+      </c:when></c:choose>
     </article>
   </c:when></c:choose>
 </t:layout>

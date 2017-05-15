@@ -47,6 +47,8 @@ public class UserController {
 	
 	@Autowired
 	private StorageService storageService;
+	
+	private final static String DEFAULT_AVATAR = "square-logo.jpg";
 
 	/**
 	 * Carga el formulario de registro de usuario.
@@ -69,6 +71,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "sign-in", method = RequestMethod.POST, headers = "Accept=text/html")
 	public String saveUser(@ModelAttribute("user") User user) {
+		user.setPhoto(DEFAULT_AVATAR);
 		User newUser = userService.saveUser(user);
 		
 		if(newUser == null)

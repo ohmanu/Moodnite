@@ -4,7 +4,9 @@
 <article class="user">
   <header class="profile">
     <div class="avatar">
-      <img class="photo" src="${pageContext.servletContext.contextPath}/resources/images/avatars/${loggedInUser.photo}" alt="Avatar"/>
+      <a href="${pageContext.servletContext.contextPath}/user/avatar">
+        <img class="photo" src="${pageContext.servletContext.contextPath}/resources/images/avatars/${loggedInUser.photo}" alt="Avatar"/>
+      </a>
     </div>
     
     <div class="data">
