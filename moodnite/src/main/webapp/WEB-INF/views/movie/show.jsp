@@ -57,7 +57,7 @@
       	
       <c:choose><c:when test="${not empty cast}">
         <div class="cast">
-          <ul class="people">
+          <ul class="people" id="ohList">
             <c:forEach items="${cast}" var="person">
               <li class="person-sheet">
                 <div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
@@ -77,6 +77,10 @@
               </div>
             </li>
           </ul>
+          
+          <div class=sub-actions>
+          	<a id="loadMore">Load more</a>
+          </div>
         </div>
       </c:when></c:choose>
       

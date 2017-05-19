@@ -1,12 +1,11 @@
 <%@ tag description="layout" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
   <title>Moodnite</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </head>
 <body>
   <header class="moodnite">
@@ -39,6 +38,11 @@
     <div class="area">
       @Oh_Manu
     </div>
+    
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/masonry.pkgd.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-show-more.js"></script>
   </footer>
 </body>
 </html>
