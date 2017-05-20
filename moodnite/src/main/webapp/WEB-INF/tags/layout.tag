@@ -41,8 +41,9 @@
     
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/masonry.pkgd.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-show-more.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/masonry.pkgd.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-masonry-load.js"></script>
   </footer>
 </body>
 </html>

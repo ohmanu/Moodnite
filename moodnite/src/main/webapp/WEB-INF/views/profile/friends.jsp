@@ -15,12 +15,12 @@
     
     <article class="follows">
       <c:choose><c:when test="${not empty friends}">
-        <ul class="people" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".person-sheet" }'>
-          <li class="separator-short masonry" id="pink">
+        <ul class="people masonry">
+          <li class="separator-short brick" id="pink">
             <h2>Follows</h2>
           </li>
           <c:forEach items="${friends}" var="user">
-            <li class="person-sheet masonry">
+            <li class="person-sheet brick">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
               <div class="data">

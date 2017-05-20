@@ -19,12 +19,12 @@
       
     <article class="wall">
       <c:choose><c:when test="${not empty publications}">
-        <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
-          <li class="separator-short masonry" id="pink">
+        <ul class="films masonry">
+          <li class="separator-short brick" id="pink">
             <h2>Wall</h2>
           </li>
           <c:forEach items="${publications}" var="publication">
-            <li class="film masonry">
+            <li class="film brick">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${publication.movie.tmdbId}">
                   <img src="https://image.tmdb.org/t/p/w185/${publication.movie.background}" alt="${publication.movie.title}"/>

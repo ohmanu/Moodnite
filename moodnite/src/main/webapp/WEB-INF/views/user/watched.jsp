@@ -19,12 +19,12 @@
     
     <article class="watched-list">
       <c:choose><c:when test="${not empty watched_list}">
-        <ul class="films" data-masonry='{ "itemSelector": ".masonry", "columnWidth": ".film" }'>
-          <li class="separator-short masonry" id="pink">
+        <ul class="films masonry">
+          <li class="separator-short brick" id="pink">
             <h2>Watched list</h2>
           </li>
           <c:forEach items="${watched_list}" var="watched">
-            <li class="film masonry">
+            <li class="film brick">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${watched.movie.tmdbId}">
                   <img src="https://image.tmdb.org/t/p/w185/${watched.movie.background}" alt="${watched.movie.title}"/>

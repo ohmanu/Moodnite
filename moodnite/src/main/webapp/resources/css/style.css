@@ -882,7 +882,7 @@ article.user .sign-in {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
-	
+	float: left;
 	margin: 0 auto;
 }
 
@@ -893,18 +893,7 @@ article.user .login {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
-	
-	margin: 0 auto;
-}
-
-article.user .sign-in {
-	width: 80%;
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #e4d9cc;
-	
+	float: left;
 	margin: 0 auto;
 }
 
@@ -1059,8 +1048,10 @@ article.user .field {
 	margin-bottom: 5px;
 }
 
+
+
 article.user input, textarea {
-	width: 100%;
+	width: 380px;
 	float: left;
 	font-size: 18px;
 	border: none;
@@ -1071,6 +1062,7 @@ article.user input, textarea {
 article.user input[type="submit"] {
 	background-color: #eab7b3;
 	color: #fff;
+	width: 400px;
 }
 
 article.user input[type="submit"]:hover {
