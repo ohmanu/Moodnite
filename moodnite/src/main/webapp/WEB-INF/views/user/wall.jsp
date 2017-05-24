@@ -31,14 +31,38 @@
                 </a>
               </div>
               
-              <div class="data">
-                <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${publication.movie.tmdbId}">${publication.movie.title}</a></b></h4>
-                <p>${publication.getText1()}</p>
+              <c:choose>
+                <c:when test="${publication.getType() == 'RATED'}">
+                  <div class="data">
+                    <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${publication.movie.tmdbId}">${publication.movie.title}</a></b></h4>
+                    <p>${publication.reviewXS}</p>
+                    
+                    <div class="stars">
+                      <c:forEach var="i" begin="1" end="${publication.rate}">
+                        &#9733;
+                      </c:forEach>
+                      <c:forEach var="i" begin="1" end="${10-publication.rate}">
+                        &#9734;
+                      </c:forEach>
+                    </div>
+                  </div>
+                </c:when>
                 
-                <div class="stars">
-                  ${publication.getText2()}
-                </div>
-              </div>
+                <c:when test="${publication.getType() == 'WATCHED'}">
+                  <div class="data">
+                    <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${publication.movie.tmdbId}">${publication.movie.title}</a></b></h4>
+                    <p>${publication.comment}</p>
+                    
+                    <div class="stars">
+                      <p>${publication.formattedDate}</p>
+                    </div>
+                  </div>
+                </c:when>
+                
+                <c:otherwise>
+              	  <p>No posts.</p>
+                </c:otherwise>
+              </c:choose>
               
               <div class="user">
               	<div class= "avatar">

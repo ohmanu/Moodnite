@@ -86,25 +86,8 @@ public class Rated implements Publication {
 		this.date = date;
 	}
 	
-	public String getStars() {
-		StringBuilder stars = new StringBuilder(" ");
-		
-		for(int i=1; i <= (this.rate); i++)
-			stars.append("&#9733; ");
-		for(int i=1; i <= (10 - this.rate); i++)
-			stars.append("&#9734; ");
-		
-		return stars.toString();
-	}
-	
-	@Override
-	public String getText1() {
-		return this.reviewXS;
-	}
-
-	@Override
-	public String getText2() {
-		return this.getStars();
+	public PublicationType getType() {
+		return PublicationType.RATED;
 	}
 
 	@Override

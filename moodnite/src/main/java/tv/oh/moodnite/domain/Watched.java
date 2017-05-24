@@ -78,17 +78,11 @@ public class Watched implements Publication {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public PublicationType getType() {
+		return PublicationType.WATCHED;
+	}
 	
-	@Override
-	public String getText1() {
-		return this.comment;
-	}
-
-	@Override
-	public String getText2() {
-		return "Watched: " + this.getFormattedDate();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -119,10 +119,15 @@
                 
                 <div class="data">
                   <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${review.movie.tmdbId}">${review.movie.title}</a></b></h4>
-                  <p>${review.getText1()}</p>
+                  <p>${review.reviewXS}</p>
                   
                   <div class="stars">
-                    ${review.getText2()}
+                    <c:forEach var="i" begin="1" end="${review.rate}">
+                      &#9733;
+                    </c:forEach>
+                    <c:forEach var="i" begin="1" end="${10-review.rate}">
+                      &#9734;
+                    </c:forEach>
                   </div>
                 </div>
                 

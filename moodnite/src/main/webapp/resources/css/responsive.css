@@ -1,0 +1,69 @@
+@media (min-width: 320px) {
+	ul.films {
+		width: 205px;
+	}
+	
+	ul.people {
+		width: 205px;
+	}
+}
+
+@media (min-width: 600px) {
+	ul.films {
+		width: 410px;
+	}
+	
+	ul.people {
+		width: 410px;
+	}
+}
+
+@media (min-width: 870px) {
+	ul.films {
+		width: 615px;
+	}
+	
+	ul.people {
+		width: 615px;
+	}
+}
+
+@media (min-width: 1200px) {
+	ul.films {
+		width: 820px;
+	}
+	
+	ul.people {
+		width: 820px;
+	}
+}
+
+@media (min-width: 1400px) {
+	ul.films {
+		width: 1025px;
+	}
+	
+	ul.people {
+		width: 1025px;
+	}
+}
+
+@media (min-width: 1600px) {
+	ul.films {
+		width: 1230px;
+	}
+	
+	ul.people {
+		width: 1230px;
+	}
+}
+
+@media (min-width: 1800px) {
+	ul.films {
+		width: 1435px;
+	}
+	
+	ul.people {
+		width: 1435px;
+	}
+}
