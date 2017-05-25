@@ -1,4 +1,4 @@
-<%@ tag description="layout" pageEncoding="UTF-8" %>
+<%@ tag description="movie-layout" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -11,10 +11,8 @@
 <body>
   <%@ include file="/WEB-INF/fragments/header.jspf" %>
   
-  <section class="content">
+  <section class="content movie-content">
     <jsp:doBody />
   </section>
-
-  <%@ include file="/WEB-INF/fragments/footer.jspf" %>
 </body>
 </html>

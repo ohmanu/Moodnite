@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:layout>
+<t:movie-layout>
   <c:choose><c:when test="${movie_details != null}">
     <article class="film">
       <div class="cover" style="background-image: url('https://image.tmdb.org/t/p/w1280/${movie_details.backdrop_path}');">
@@ -146,6 +146,8 @@
           </ul>
         </div>
       </c:when></c:choose>
+      
+      <%@ include file="/WEB-INF/fragments/footer.jspf" %>
     </article>
   </c:when></c:choose>
-</t:layout>
+</t:movie-layout>
