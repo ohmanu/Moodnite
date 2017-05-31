@@ -147,6 +147,21 @@
         </div>
       </c:when></c:choose>
       
+      <c:choose><c:when test="${not empty tags}">
+        <div class="movie-tags">
+          <ul class="films">
+            <li class="separator" id="pink">
+              <h2>People tags</h2>
+            </li>
+            <c:forEach items="${tags}" var="tag">
+              <li class="tag">
+                <h2>#${tag}</h2>
+              </li>
+            </c:forEach>
+          </ul>
+        </div>
+      </c:when></c:choose>
+      
       <%@ include file="/WEB-INF/fragments/footer.jspf" %>
     </article>
   </c:when></c:choose>

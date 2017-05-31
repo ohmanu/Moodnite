@@ -14,12 +14,15 @@ public class Movie {
 
 	@Relationship(type = "WATCHED", direction = Relationship.INCOMING)
 	private Set<Watched> watchedList = new HashSet<>();
-	
+
 	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	private Set<Rated> ratedList = new HashSet<>();
-	
+
 	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
 	private Set<Tag> tags = new HashSet<>();
+
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	private Set<TagFromSource> tagsFromSources = new HashSet<>();
 
 	private String tmdbId;
 	private String title;
@@ -61,7 +64,7 @@ public class Movie {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
+
 	@Relationship(type = "WATCHED", direction = Relationship.INCOMING)
 	public Set<Watched> getWatchedList() {
 		return watchedList;
@@ -80,6 +83,58 @@ public class Movie {
 	@Relationship(type = "RATED", direction = Relationship.INCOMING)
 	public void setRatedList(Set<Rated> ratedList) {
 		this.ratedList = ratedList;
+	}
+
+	public void addRate(Rated rate) {
+		this.ratedList.add(rate);
+	}
+
+	public void removeRate(Rated rate) {
+		this.ratedList.remove(rate);
+	}
+
+	public void addWatch(Watched watch) {
+		this.watchedList.add(watch);
+	}
+
+	public void removeWatch(Watched watch) {
+		this.watchedList.remove(watch);
+	}
+
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+
+	public void removeTag(Tag tag) {
+		this.tags.remove(tag);
+	}
+	
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public Set<TagFromSource> getTagsFromSources() {
+		return tagsFromSources;
+	}
+
+	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	public void setTagsFromSources(Set<TagFromSource> tagsFromSources) {
+		this.tagsFromSources = tagsFromSources;
+	}
+	
+	public void addTagFromSource(TagFromSource tagFromSource) {
+		this.tagsFromSources.add(tagFromSource);
+	}
+
+	public void removeTagFromSource(TagFromSource tagFromSource) {
+		this.tagsFromSources.remove(tagFromSource);
 	}
 
 	@Override
@@ -117,39 +172,5 @@ public class Movie {
 	public String toString() {
 		return "Movie [id=" + id + ", tmdbId=" + tmdbId + ", title=" + title + ", year=" + year + ", background="
 				+ background + "]";
-	}
-	
-	public void addRate(Rated rate) {
-		this.ratedList.add(rate);
-	}
-	
-	public void removeRate(Rated rate) {
-			this.ratedList.remove(rate);
-	}
-	
-	public void addWatch(Watched watch) {
-		this.watchedList.add(watch);
-	}
-	
-	public void removeWatch(Watched watch) {
-		this.watchedList.remove(watch);
-	}
-	
-	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
-	public Set<Tag> getTags() {
-		return tags;
-	}
-
-	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
-	}
-	
-	public void addTag(Tag tag) {
-		this.tags.add(tag);
-	}
-	
-	public void removeTag(Tag tag) {		
-		this.tags.remove(tag);
 	}
 }

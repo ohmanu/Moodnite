@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
@@ -42,22 +43,32 @@ public class UserService {
 		return null;
 	}
 	
+	@Transactional
 	public User saveUser(User user) {
 		return userRepo.save(user);
 	}
 	
 	public Rated findUserMovieRate(User user, Movie movie) {
-		return rateRepo.findUserMovieRate(user.getId(), movie.getTmdbId());
+		for(Rated rated : user.getRatedList())
+			if(rated.getMovie().equals(movie))
+				return rated;
+		
+		return null;
 	}
 	
 	public Watched findUserMovieWatch(User user, Movie movie) {
-		return watchRepo.findUserMovieWatch(user.getId(), movie.getTmdbId());
+		for(Watched watched : user.getWatchedList())
+			if(watched.getMovie().equals(movie))
+				return watched;
+		
+		return null;
 	}
 	
 	public Iterable<User> findByNameLike(String name) {
 		return userRepo.findByNameLike(name);
 	}
 	
+	@Transactional
 	public void watchMovie(User user, Movie movie, Date date, String formattedDate, String comment) {
 		Watched watch = new Watched(user, movie, date, formattedDate, comment);
 		user.addWatch(watch);
@@ -66,6 +77,7 @@ public class UserService {
 		watchRepo.save(watch);
 	}
 	
+	@Transactional
 	public void removeWatch(User user, Watched watch) {
 		Movie movie = watch.getMovie();
 		
@@ -75,6 +87,7 @@ public class UserService {
 		watchRepo.delete(watch);
 	}
 	
+	@Transactional
 	public void rateMovie(User user, Rated rate) {
 		Movie movie = rate.getMovie();
 		
@@ -84,6 +97,7 @@ public class UserService {
 		rateRepo.save(rate);
 	}
 	
+	@Transactional
 	public void removeRate(User user, Rated rate) {
 		Movie movie = rate.getMovie();
 		
@@ -93,6 +107,7 @@ public class UserService {
 		rateRepo.delete(rate);
 	}
 	
+	@Transactional
 	public void listMovie(User user, Movie movie, String name) {
 		Tag tag = new Tag(user, movie, name);
 		user.addTag(tag);
@@ -101,6 +116,7 @@ public class UserService {
 		tagRepo.save(tag);
 	}
 	
+	@Transactional
 	public void removeTag(User user, Long tagId) {
 		Tag tag = tagRepo.findOne(tagId);
 		Movie movie = tag.getMovie();

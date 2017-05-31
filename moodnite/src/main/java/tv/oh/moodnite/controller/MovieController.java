@@ -2,8 +2,10 @@ package tv.oh.moodnite.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.Movie;
+import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.service.MovieService;
 import tv.oh.moodnite.service.tmdb.TmdbMovieService;
 
@@ -30,7 +33,7 @@ public class MovieController {
 	public String showMovieInfo(Model model, @PathVariable String movieId) {
 		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
 		Map<?, ?> credits = tmdbMovieService.getMovieCredits(movieId);		
-		Movie movie = movieService.findByTmdbId(movieId);
+		Movie movieInGraph = movieService.findByTmdbId(movieId);
 		
 		model.addAttribute("movie_details", movieDetails);
 		model.addAttribute("directors", loadDirectors(credits));
@@ -38,8 +41,14 @@ public class MovieController {
 		model.addAttribute("genres", movieDetails.get("genres"));
 		model.addAttribute("production_countries", formatMapList((List<Map<String, String>>) movieDetails.get("production_countries")));
 		model.addAttribute("cast", credits.get("cast"));
-		if(movie != null)
-			model.addAttribute("reviews", movie.getRatedList());
+		if(movieInGraph != null)
+		{
+			model.addAttribute("reviews", movieInGraph.getRatedList());
+			Set<String> tags = new HashSet<>();
+			for(Tag tag : movieInGraph.getTags())
+				tags.add(tag.getName());
+			model.addAttribute("tags", tags);
+		}
 		model.addAttribute("similar_movies", tmdbMovieService.getSimilarMovies(movieId).get("results"));
 
 		return "/movie/show";
