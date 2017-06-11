@@ -10,7 +10,15 @@
         <form:hidden path="id" />
         
         <div class="field">
+          <p class="message">${name_message}</p>
+        </div>
+        
+        <div class="field">
           <form:input path="name" placeholder="Name" />
+        </div>
+        
+        <div class="field">
+          <p class="message">${password_message}</p>
         </div>
         
         <div class="field">

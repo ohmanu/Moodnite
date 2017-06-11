@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.TagFromSource;
-import tv.oh.moodnite.service.TagSourceService;
+import tv.oh.moodnite.service.moodnite.TagSourceService;
 
 @Service
 public class TmdbImporterService {
@@ -20,17 +20,22 @@ public class TmdbImporterService {
 	
 	private Movie movie;
 	
-	@SuppressWarnings("unchecked")
 	public Movie importMovie(String movieId) {
 		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(movieId);
-		movie = new Movie();
-		movie.setTmdbId(movieId);
-		movie.setTitle((String) movieDetails.get("title"));
-		movie.setYear((String) movieDetails.get("year"));
-		movie.setBackground((String) movieDetails.get("backdrop_path"));
-		for(Map<?, ?> genre:((List<Map<String, String>>) movieDetails.get("genres"))) {
-			movie.addTagFromSource(new TagFromSource(tagSourceService.getTmdbTagSource(), movie, (String) genre.get("name")));
-		}
+		this.movie = new Movie();
+		this.movie.setTmdbId(movieId);
+		this.movie.setTitle((String) movieDetails.get("title"));
+		this.movie.setYear((String) movieDetails.get("release_date").toString().substring(0, 4));
+		this.movie.setBackground((String) movieDetails.get("backdrop_path"));
+		loadTagsFromTmdb(movieDetails);
+				
 		return movie;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void loadTagsFromTmdb(Map<?, ?> movieDetails) {
+		for(Map<?, ?> genre:((List<Map<String, String>>) movieDetails.get("genres"))) {
+			this.movie.addTagFromSource(new TagFromSource(tagSourceService.getTmdbTagSource(), movie, (String) genre.get("name")));
+		}
 	}
 }

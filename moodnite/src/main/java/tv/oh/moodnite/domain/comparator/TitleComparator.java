@@ -1,6 +1,8 @@
-package tv.oh.moodnite.domain;
+package tv.oh.moodnite.domain.comparator;
 
 import java.util.Comparator;
+
+import tv.oh.moodnite.domain.Watched;
 
 public class TitleComparator implements Comparator<Watched> {
 

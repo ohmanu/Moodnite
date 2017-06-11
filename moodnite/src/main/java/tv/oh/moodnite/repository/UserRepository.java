@@ -9,12 +9,9 @@ import org.springframework.data.repository.query.Param;
 import tv.oh.moodnite.domain.User;
 
 public interface UserRepository extends GraphRepository<User> {
-
-	@Query("MATCH (user:User) WHERE user.name = {name} RETURN user")
-	User findByName(@Param("name") String name);
 	
-	@Query("MATCH (user:User) WHERE user.name=~{0} RETURN user")
-    Iterable<User> findByNameLike(String name);
+	@Query("MATCH (user:User) where user.name =~ {regularExpression} return user")
+    List<User> findByNameLike(@Param("regularExpression") String regularExpression);
 	
 	@Query("MATCH (user:User {name:{name}})-[:FOLLOWS*1..3]->(f) RETURN f")
 	List<User> findSocialNet(@Param("name") String name);

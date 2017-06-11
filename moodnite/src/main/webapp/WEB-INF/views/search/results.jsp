@@ -4,9 +4,12 @@
 
 <t:layout>
   <article class="search">
-    <c:choose><c:when test="${not empty films_results}">
-      <div class="films-results">
+    <div class="films-results">
+      <c:choose><c:when test="${not empty films_results}">
         <ul class="films">
+          <li class="separator" id="pink">
+            <h2>Movies</h2>
+          </li>
           <c:forEach items="${films_results}" var="film">
             <c:choose><c:when test="${film.poster_path != null}">
               <li class="film">
@@ -19,12 +22,17 @@
             </c:when></c:choose>
           </c:forEach>
         </ul>
-      </div>
-    </c:when></c:choose>
+      </c:when>
+      <c:otherwise><h2>Your search did not match any movies.</h2></c:otherwise>
+      </c:choose>
+    </div>
     
-    <c:choose><c:when test="${not empty people_results}">
-      <div class="people-results">
+    <div class="people-results">
+      <c:choose><c:when test="${not empty people_results}">
         <ul class="people">
+          <li class="separator">
+            <h2>People</h2>
+          </li>
           <c:forEach items="${people_results}" var="person">
             <li class="person-sheet">
               <div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
@@ -37,18 +45,23 @@
             </li>
           </c:forEach>
         </ul>
-      </div>
-    </c:when></c:choose>
+      </c:when>
+      <c:otherwise><h2>Your search did not match any people.</h2></c:otherwise>
+      </c:choose>
+    </div>
     
-    <c:choose><c:when test="${not empty users_results}">
-      <div class="users-results">
+    <div class="users-results">
+      <c:choose><c:when test="${not empty users_results}">
         <ul class="people">
+          <li class="separator" id="pink">
+            <h2>Users</h2>
+          </li>
           <c:forEach items="${users_results}" var="user">
             <li class="person-sheet">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
               <div class="data">
-                <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${user.name}</a></b></h4> 
+                <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4> 
                 <a class="add" href="${pageContext.servletContext.contextPath}/user/follow/${user.id}" title="Follow">&#10010;</a>
                 <br>
                 <h4>${user.bio} </h4>
@@ -56,7 +69,9 @@
             </li>
           </c:forEach>
         </ul>
-      </div>
-    </c:when></c:choose>
+      </c:when>
+      <c:otherwise><h2>Your search did not match any users.</h2></c:otherwise>
+      </c:choose>
+    </div>
   </article>
 </t:layout>

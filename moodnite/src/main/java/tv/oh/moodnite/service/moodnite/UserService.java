@@ -1,7 +1,10 @@
-package tv.oh.moodnite.service;
+package tv.oh.moodnite.service.moodnite;
 
 import java.util.Date;
 
+import org.neo4j.helpers.collection.IteratorUtil;
+import org.neo4j.ogm.cypher.Filter;
+import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +21,11 @@ import tv.oh.moodnite.repository.WatchedRepository;
 
 @Service
 public class UserService {
+	private static int DEPTH = 3;
+
+	@Autowired
+    private Session session;
+	
 	@Autowired
 	private UserRepository userRepo;
 	
@@ -34,12 +42,16 @@ public class UserService {
 		return userRepo.findOne(userId);
 	}
 	
+	public User findByName(String name) {
+		return IteratorUtil.firstOrNull(findUsersByProperty("name", name).iterator());
+	}
+	
 	public User loginUser(String name, String password) {
-		User user = userRepo.findByName(name);
+		User user = findByName(name);		
 		
 		if(user != null && user.getPassword().equals(password))
-			return userRepo.findOne(user.getId());
-		
+			return session.load(User.class, user.getId(), DEPTH);
+
 		return null;
 	}
 	
@@ -65,7 +77,7 @@ public class UserService {
 	}
 	
 	public Iterable<User> findByNameLike(String name) {
-		return userRepo.findByNameLike(name);
+		return userRepo.findByNameLike(".*" + name + ".*");
 	}
 	
 	@Transactional
@@ -126,4 +138,8 @@ public class UserService {
 		
 		tagRepo.delete(tag);
 	}
+	
+	private Iterable<User> findUsersByProperty(String propertyName, Object propertyValue) {
+        return session.loadAll(User.class, new Filter(propertyName, propertyValue));
+    }
 }

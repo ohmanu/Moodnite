@@ -1,4 +1,4 @@
-package tv.oh.moodnite.service;
+package tv.oh.moodnite.service.moodnite;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

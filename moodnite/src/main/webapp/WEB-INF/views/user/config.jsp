@@ -21,7 +21,7 @@
     <article class="reviews">
       <form:form action="${pageContext.servletContext.contextPath}/user/update" method="POST" modelAttribute="user">
         <div class="field">
-          <form:input path="name" placeholder="${user.name}"/>
+          <h2>BIO:</h2>
         </div>
         
         <div class="field">

@@ -8,6 +8,10 @@
     <div class="login">
       <form:form action="${pageContext.servletContext.contextPath}/user/login" method="POST" modelAttribute="user">
         <div class="field">
+          <p class="message">${login_message}</p>
+        </div>
+        
+        <div class="field">
           <form:input path="name" placeholder="Name" />
         </div>
         

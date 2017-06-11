@@ -31,6 +31,9 @@ public class User {
 	
 	@Relationship(type = "TAGGED", direction = Relationship.OUTGOING)
 	private Set<Tag> tags = new HashSet<>();
+	
+	@Relationship(type = "REFUSED", direction = Relationship.OUTGOING)
+	private Set<Movie> refusedList = new HashSet<>();
 
 	public Set<Watched> getWatchedList() {
 		return watchedList;
@@ -146,6 +149,18 @@ public class User {
 	
 	public void removeTag(Tag tag) {		
 		this.tags.remove(tag);
+	}
+
+	public Set<Movie> getRefusedList() {
+		return refusedList;
+	}
+
+	public void setRefusedList(Set<Movie> refusedList) {
+		this.refusedList = refusedList;
+	}
+	
+	public void addRefused(Movie movie) {
+		this.refusedList.add(movie);
 	}
 
 	@Override

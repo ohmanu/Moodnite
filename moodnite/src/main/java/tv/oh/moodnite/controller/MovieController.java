@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Tag;
-import tv.oh.moodnite.service.MovieService;
+import tv.oh.moodnite.service.moodnite.MovieService;
 import tv.oh.moodnite.service.tmdb.TmdbMovieService;
 
 @RequestMapping(value = "/movie/*")

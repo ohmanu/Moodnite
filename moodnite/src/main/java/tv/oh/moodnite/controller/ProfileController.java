@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import tv.oh.moodnite.domain.DateComparator;
 import tv.oh.moodnite.domain.Publication;
 import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.domain.User;
-import tv.oh.moodnite.service.UserService;
+import tv.oh.moodnite.domain.comparator.DateComparator;
+import tv.oh.moodnite.service.moodnite.UserService;
 
 @RequestMapping(value = "/profile/*")
 @Controller

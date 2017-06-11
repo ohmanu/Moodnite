@@ -1,4 +1,4 @@
-package tv.oh.moodnite.service.storage;
+package tv.oh.moodnite.service.storage.exception;
 
 public class StorageException extends RuntimeException {
 	

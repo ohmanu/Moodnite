@@ -1,6 +1,9 @@
   <footer>
     <div class="area">
-      @Oh_Manu
+      <img src="${pageContext.request.contextPath}/resources/images/tmdb.png"/>
+      <img src="${pageContext.request.contextPath}/resources/images/neo4j.png"/>
+      <br>
+      <b>@Oh_Manu</b>
     </div>
     
     <!-- JQUERY -->
