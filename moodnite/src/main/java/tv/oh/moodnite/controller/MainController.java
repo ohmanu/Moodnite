@@ -1,5 +1,8 @@
 package tv.oh.moodnite.controller;
 
+import java.util.Map;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,15 @@ import tv.oh.moodnite.service.tmdb.TmdbSearchService;
 
 @Controller
 public class MainController {
+	private static String[] backgrounds = {
+			  "64690", 
+			  "329865", 
+			  "313369",
+			  "103", 
+			  "126889", 
+			  "18", 
+			  "340666"};
+	
 	@Autowired
 	private TmdbMovieService tmdbMovieService;
 
@@ -35,6 +47,15 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showLanding(Model model) {
+		int backgroundIndex = getRandomFilm();
+		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(backgrounds[backgroundIndex]);
+		model.addAttribute("background", movieDetails.get("backdrop_path"));
+
+		return "/landing";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showIndex(Model model) {
 		model.addAttribute("popular_movies", tmdbMovieService.getPopularMovies().get("results"));
 		model.addAttribute("upcoming_movies", tmdbMovieService.getUpcomingMovies().get("results"));
@@ -51,5 +72,10 @@ public class MainController {
 		}
 
 		return "/search/results";
+	}
+	
+	private int getRandomFilm() {
+		Random rand = new Random();
+		return rand.nextInt(this.backgrounds.length - 1) + 0;
 	}
 }

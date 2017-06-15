@@ -6,6 +6,8 @@
 <head>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jqcloud.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <title>Moodnite</title>
 </head>
 <body>

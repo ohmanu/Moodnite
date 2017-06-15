@@ -66,6 +66,6 @@ public class RecomendationController {
 		loggedInUser.addRefused(movie);
 		userService.saveUser(loggedInUser);
 
-		return "redirect:/user/friends";
+		return "redirect:/recomendation/recomendations";
 	}
 }

@@ -39,6 +39,7 @@ public class RecomendationService {
 		getSocialNetAverageRating();
 		getSocialNetBestRatedMovies();
 		removeWatchedMovies();
+		removeRefusedMovies();
 		addCandidates();
 		takeMoviesLustrumThisYear();
 		getUserFavoriteTags();
@@ -116,6 +117,12 @@ public class RecomendationService {
 		}
 		for (Rated rated : this.user.getRatedList()) {
 			this.recomendationSummary.getSocialNetBestRatedMovies().remove(rated.getMovie());
+		}
+	}
+	
+	private void removeRefusedMovies() {
+		for (Movie movie : this.user.getRefusedList()) {
+			this.recomendationSummary.getSocialNetBestRatedMovies().remove(movie);
 		}
 	}
 

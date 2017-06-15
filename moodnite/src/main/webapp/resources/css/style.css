@@ -233,20 +233,33 @@ article.recomendations {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
+	margin-top: 50px;
 	float:left;
-	
-	margin: 0 auto;
+
 }
 
-li.the-chosen-one {
-	width: 370px;
+li.tag-cloud {
+	width: 350px;
 	margin: 10px;
 	float: left;
 	display: block;
+	background-color: #eab7b3;
+}
+
+li.tag-cloud #cloud {
+	float: left;
+}
+
+li.the-chosen-one {
+	width: 350px;
+	margin: 10px;
+	float: left;
+	display: block;
+	background-color: #eab7b3;
 }
 
 li.the-chosen-one .poster {
-	width: 370px;
+	width: 350px;
 	float: left;
 }
 
@@ -261,6 +274,48 @@ li.the-chosen-one .data {
 	min-height: 120px;
 	padding: 10px;
 	float:left;
+}
+
+
+li.the-chosen-one .top {
+	width: 100%;
+	min-height: 80px;
+	float:left;
+}
+
+li.the-chosen-one .actions {
+	background-color: #fff;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float:left;
+}
+
+li.the-chosen-one .actions a {
+	width: 50px;
+	font-size: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: #eab7b3;
+	text-transform: uppercase;
+	text-align: center;
+	display: inline-block;
+	color: #fff;
+}
+
+li.the-chosen-one .actions a.watch {
+	float: left;
+	margin-left: 20px;
+}
+
+li.the-chosen-one .actions a.refuse {
+	float: right;
+	margin-right: 20px;
+}
+
+li.the-chosen-one .actions a:HOVER {
+	text-decoration: none;
+	background-color: #eb4f5a;
 }
 
 /* movie/show */
@@ -847,6 +902,10 @@ article.user header.profile {
 	float:left;
 	
 	margin: 0 auto;
+}
+
+article.user header.recomendation {
+	background-color: #fff;
 }
 
 article.user header.profile .avatar {

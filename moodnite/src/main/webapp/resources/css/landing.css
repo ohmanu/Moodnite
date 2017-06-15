@@ -1,0 +1,210 @@
+html, body { height: 100%; }
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p {
+	margin: 0 0 0 0;
+}
+
+ol, ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+	font-size: 60px;
+	font-weight: normal;
+}
+
+h2 {
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+	display:inline;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+h3 {
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+	display:inline;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+h4 {
+	margin: 0 0 0 0;
+	text-transform: uppercase;
+	display:inline;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+body {
+	margin: 0px;
+	font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 15px;
+	color: #000;
+	min-width: 640px;
+	background-color: #000;
+}
+
+/* HEADER */
+
+header.moodnite {
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	z-index: 2;
+	background-color: rgba(204, 198, 198, 0.6);
+}
+
+header.moodnite nav {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	position: fixed;
+	z-index: 1;
+	min-width: 600px;
+}
+
+header.moodnite nav .search {
+	width: 40%;
+	height: 50px;
+	margin-left: 10px;
+	float: left;
+	background: url(../images/search.png) no-repeat;
+	background-position: 10px center;
+	background-size: 25px;
+}
+
+header.moodnite nav .search input[type=text] {
+	width: 0px;
+	background-color: rgba(234, 183, 179, 0);
+	border: 0;
+	padding-top: 17px;
+	padding-bottom: 18px;
+	padding-right: 15px;
+	padding-left: 50px;
+	color: #6d6d6d;
+}
+
+header.moodnite nav .search input[type=text]:hover {
+	width: 100%;
+	background-color: rgba(234, 183, 179, 0.4);
+	transition: width 1s, background 1s;
+	-webkit-transition: width 1s, background 1s;
+    -moz-transition: width 1s, background 1s;
+    -o-transition: width 1s, background 1s;
+	-webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+
+header.moodnite nav .search input[type=text]:focus {
+	width: 100%;
+	background-color: rgba(234, 183, 179, 0.4);
+	transition: width 1s, background 1s;
+	-webkit-transition: width 1s, background 1s;
+    -moz-transition: width 1s, background 1s;
+    -o-transition: width 1s, background 1s;
+	-webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+	outline:0px;
+}
+
+header.moodnite nav .logo {
+	width: 100px;
+
+	margin: 0 auto;
+}
+
+header.moodnite nav .user {
+	float: right;
+}
+
+header.moodnite nav .user img.photo-xs {
+	width: 30px;
+	height: 30px;
+	border-radius: 16px;
+	margin-top: 9px;
+	margin-right: 20px;
+	border: 1px solid #fff;
+}
+
+header.moodnite nav .user img {
+	width: 25px;
+	margin-top: 13px;
+	margin-right: 20px;
+}
+
+/* COVER */
+
+article.film {
+	width: 100%;
+	height: 100%;
+}
+
+article.film .cover {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+/* BOX */
+.box {
+	width: 450px;
+	height: 350px;
+	background-color: rgba(204, 198, 198, 0.6);
+}
+
+.box .top {
+	width: 100%;
+	height: 97px;
+	background: url(../images/moodnite-logo-xl.png) no-repeat;
+	background-position: center;
+}
+
+.box .actions {
+	width: 100%;
+	height: 353px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+.box .actions a {
+	width: 100%;
+	color: #fff;
+	font-size: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #eab7b3;
+	text-transform: uppercase;
+	clear: both;
+}
+
+.box .actions a:hover {
+	background-color: #eb4f5a;
+	text-decoration: none;
+}

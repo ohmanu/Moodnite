@@ -10,6 +10,7 @@
           <li class="separator-short" id="pink">
             <h2>Popular movies</h2>
           </li>
+          
           <c:forEach items="${popular_movies}" var="pupular_movie">
             <li class="film">
               <div class="poster">

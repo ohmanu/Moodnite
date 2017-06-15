@@ -11,4 +11,6 @@
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-show-more.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/masonry.pkgd.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-masonry-load.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jqcloud-1.0.4.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jqcloud-1.0.4.min.js"></script>
   </footer>
