@@ -1,22 +1,22 @@
-package tv.oh.moodnite.service.recomendation;
+package tv.oh.moodnite.service.recommendation;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import tv.oh.moodnite.domain.Movie;
 
-public class RecomendationCandidate {
+public class RecommendationCandidate {
 	private Movie movie;
 	private double score;
 	private boolean lustrumThisYear;
 	private int yearsElapsed;
 	private Map<String, Integer> tagValues;
 
-	public RecomendationCandidate() {
+	public RecommendationCandidate() {
 		this.tagValues = new HashMap<String, Integer>();
 	}
 
-	public RecomendationCandidate(Movie movie) {
+	public RecommendationCandidate(Movie movie) {
 		this();
 		this.movie = movie;
 	}

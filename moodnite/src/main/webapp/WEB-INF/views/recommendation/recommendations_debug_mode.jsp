@@ -22,7 +22,7 @@
           <li class="separator-short" id="pink">
             <h2>Candidates</h2>
           </li>
-          <c:forEach items="${recomendation_summary.candidates}" var="candidate">
+          <c:forEach items="${recommendation_summary.candidates}" var="candidate">
             <li class="film">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${candidate.movie.tmdbId}">
@@ -44,14 +44,14 @@
         </ul>   
         
         <ul class="films">
-          <h1>${recomendation_summary.userAverageRating}</h1>
+          <h1>${recommendation_summary.userAverageRating}</h1>
         </ul>
             
         <ul class="films">
           <li class="separator-short" id="pink">
             <h2>User Best rated movies</h2>
           </li>
-          <c:forEach items="${recomendation_summary.userBestRatedMovies}" var="movie">
+          <c:forEach items="${recommendation_summary.userBestRatedMovies}" var="movie">
             <li class="film">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}">
@@ -65,12 +65,12 @@
           </c:forEach>
         </ul>    
     
-      <c:choose><c:when test="${not empty recomendation_summary.socialNet}">
+      <c:choose><c:when test="${not empty recommendation_summary.socialNet}">
         <ul class="people masonry">
           <li class="separator-short brick" id="pink">
             <h2>SocialNet</h2>
           </li>
-          <c:forEach items="${recomendation_summary.socialNet}" var="user">
+          <c:forEach items="${recommendation_summary.socialNet}" var="user">
             <li class="person-sheet brick">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
               </div>
@@ -89,14 +89,14 @@
       </c:when></c:choose>
       
         <ul class="films">
-          <h1>${recomendation_summary.socialNetAverageRating}</h1>
+          <h1>${recommendation_summary.socialNetAverageRating}</h1>
         </ul>
 
         <ul class="films">
           <li class="separator-short" id="pink">
             <h2>Social Net Best rated movies</h2>
           </li>
-          <c:forEach items="${recomendation_summary.socialNetBestRatedMovies}" var="movie">
+          <c:forEach items="${recommendation_summary.socialNetBestRatedMovies}" var="movie">
             <li class="film">
               <div class="poster">
                 <a href="${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}">
@@ -114,7 +114,7 @@
           <li class="separator-short" id="pink">
             <h2>User favorite tags</h2>
           </li>
-          <c:forEach items="${recomendation_summary.userFavoriteTags}" var="tag">
+          <c:forEach items="${recommendation_summary.userFavoriteTags}" var="tag">
             <li class="tag">
               <h2>${tag.key}</h2>
               <p>${tag.value}</p>

@@ -19,7 +19,7 @@ import tv.oh.moodnite.service.tmdb.TmdbSearchService;
 
 @Controller
 public class MainController {
-	private static String[] backgrounds = {
+	private static String[] BACKGROUNDS = {
 			  "64690", 
 			  "329865", 
 			  "313369",
@@ -49,7 +49,7 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showLanding(Model model) {
 		int backgroundIndex = getRandomFilm();
-		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(backgrounds[backgroundIndex]);
+		Map<?, ?> movieDetails = tmdbMovieService.getMovieDetails(BACKGROUNDS[backgroundIndex]);
 		model.addAttribute("background", movieDetails.get("backdrop_path"));
 
 		return "/landing";
@@ -76,6 +76,6 @@ public class MainController {
 	
 	private int getRandomFilm() {
 		Random rand = new Random();
-		return rand.nextInt(this.backgrounds.length - 1) + 0;
+		return rand.nextInt(MainController.BACKGROUNDS.length - 1) + 0;
 	}
 }

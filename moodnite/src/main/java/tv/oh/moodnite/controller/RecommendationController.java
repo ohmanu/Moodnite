@@ -13,15 +13,15 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.service.moodnite.MovieService;
 import tv.oh.moodnite.service.moodnite.UserService;
-import tv.oh.moodnite.service.recomendation.RecomendationService;
-import tv.oh.moodnite.service.recomendation.RecomendationSummary;
+import tv.oh.moodnite.service.recommendation.RecommendationService;
+import tv.oh.moodnite.service.recommendation.RecommendationSummary;
 
-@RequestMapping(value = "/recomendation/*")
+@RequestMapping(value = "/recommendation/*")
 @Controller
-public class RecomendationController {
+public class RecommendationController {
 	
 	@Autowired
-	private RecomendationService recomendationService;
+	private RecommendationService recommendationService;
 	
 	@Autowired
 	private UserService userService;
@@ -29,30 +29,30 @@ public class RecomendationController {
 	@Autowired
 	private MovieService movieService;
 
-	@RequestMapping(value = "recomendations", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String showRecomendations(Model model, HttpSession session) {
+	@RequestMapping(value = "recommendations", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showRecommendations(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		RecomendationSummary recomendationSummary = recomendationService.build(loggedInUser);
-		model.addAttribute("recomendation_summary", recomendationSummary);
-		model.addAttribute("the_chosen_one", recomendationSummary.getTheChosenOne());
+		RecommendationSummary recommendationSummary = recommendationService.build(loggedInUser);
+		model.addAttribute("recommendation_summary", recommendationSummary);
+		model.addAttribute("the_chosen_one", recommendationSummary.getTheChosenOne());
 		
-		return "/recomendation/recomendations";
+		return "/recommendation/recommendations";
 	}
 	
-	@RequestMapping(value = "recomendations_debug_mode", method = RequestMethod.GET, headers = "Accept=text/html")
-	public String showRecomendationsDebugMode(Model model, HttpSession session) {
+	@RequestMapping(value = "recommendations_debug_mode", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String showRecommendationsDebugMode(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if(loggedInUser == null)
 			return "redirect:/user/login";
 		
-		model.addAttribute("recomendation_summary", recomendationService.build(loggedInUser));
+		model.addAttribute("recommendation_summary", recommendationService.build(loggedInUser));
 		
-		return "/recomendation/recomendations-debug-mode";
+		return "/recommendation/recommendations-debug-mode";
 	}
 	
 	@RequestMapping(value = "refuse/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
@@ -66,6 +66,6 @@ public class RecomendationController {
 		loggedInUser.addRefused(movie);
 		userService.saveUser(loggedInUser);
 
-		return "redirect:/recomendation/recomendations";
+		return "redirect:/recommendation/recommendations";
 	}
 }

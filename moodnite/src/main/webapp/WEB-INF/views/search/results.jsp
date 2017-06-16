@@ -23,7 +23,7 @@
           </c:forEach>
         </ul>
       </c:when>
-      <c:otherwise><h2>Your search did not match any movies.</h2></c:otherwise>
+      <c:otherwise><center><h2>Your search did not match any movies.</h2></center></c:otherwise>
       </c:choose>
     </div>
     
@@ -46,7 +46,7 @@
           </c:forEach>
         </ul>
       </c:when>
-      <c:otherwise><h2>Your search did not match any people.</h2></c:otherwise>
+      <c:otherwise><center><h2>Your search did not match any people.</h2></center></c:otherwise>
       </c:choose>
     </div>
     
@@ -70,7 +70,7 @@
           </c:forEach>
         </ul>
       </c:when>
-      <c:otherwise><h2>Your search did not match any users.</h2></c:otherwise>
+      <c:otherwise><center><h2>Your search did not match any users.</h2></center></c:otherwise>
       </c:choose>
     </div>
   </article>

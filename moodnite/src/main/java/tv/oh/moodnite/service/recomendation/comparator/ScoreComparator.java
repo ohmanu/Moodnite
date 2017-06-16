@@ -2,12 +2,12 @@ package tv.oh.moodnite.service.recomendation.comparator;
 
 import java.util.Comparator;
 
-import tv.oh.moodnite.service.recomendation.RecomendationCandidate;
+import tv.oh.moodnite.service.recommendation.RecommendationCandidate;
 
-public class ScoreComparator implements Comparator<RecomendationCandidate>{
+public class ScoreComparator implements Comparator<RecommendationCandidate>{
 
 	@Override
-	public int compare(RecomendationCandidate o1, RecomendationCandidate o2) {
+	public int compare(RecommendationCandidate o1, RecommendationCandidate o2) {
 		return Double.compare(o2.getScore(), o1.getScore());
 	}
 

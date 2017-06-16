@@ -3,8 +3,10 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>  
-    <article class="recomendations">
-      <ul class="films">
+    <article class="recommendations">
+      <c:choose><c:when test="${not empty the_chosen_one}">
+      
+      <ul class="films plus">
         
           <li class="the-chosen-one">
             <div class="poster">
@@ -15,21 +17,21 @@
             
             <div class="data">
               <div class="top">
-                <h2><a href="${pageContext.servletContext.contextPath}/movie/${the_chosen_one.movie.tmdbId}">${the_chosen_one.movie.title}</a></h4>
+                <h2><a href="${pageContext.servletContext.contextPath}/movie/${the_chosen_one.movie.tmdbId}">${the_chosen_one.movie.title}</a></h2>
                 <c:choose><c:when test="${the_chosen_one.lustrumThisYear}">
               	  <p>Turns ${the_chosen_one.yearsElapsed} this year.</p>
                 </c:when></c:choose>
                 <h2>SCORE: ${the_chosen_one.score}</h2>
               </div>
               <div class="actions">
-                <a class="refuse" href="${pageContext.servletContext.contextPath}/recomendation/refuse/${the_chosen_one.movie.tmdbId}">Refuse</a>
-                <a class="watch" href="${pageContext.servletContext.contextPath}/recomendation/refuse/${the_chosen_one.movie.tmdbId}">Watch</a>
+                <a class="refuse" href="${pageContext.servletContext.contextPath}/recommendation/refuse/${the_chosen_one.movie.tmdbId}">Refuse</a>
+                <a class="watch" href="${pageContext.servletContext.contextPath}/recommendation/refuse/${the_chosen_one.movie.tmdbId}">Watch</a>
               </div>
             </div>
           </li>
           
           <li class="tag-cloud" >
-          	<div id="cloud" style="width: 350px; height: 350px;">
+          	<div id="cloud" style="width: 100%; height: 100%;">
           	</div>
           </li>
         </ul>
@@ -39,7 +41,7 @@
             <h2>Candidates</h2>
           </li>
         
-        <c:forEach items="${recomendation_summary.candidates}" var="candidate">
+        <c:forEach items="${recommendation_summary.candidates}" var="candidate">
           <li class="film brick">
             <div class="poster">
               <a href="${pageContext.servletContext.contextPath}/movie/${candidate.movie.tmdbId}">
@@ -48,7 +50,7 @@
             </div>
             <div class="data">
               <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${candidate.movie.tmdbId}">${candidate.movie.title}</a></b></h4>
-              <h2>SCORE: ${candidate.score}</h2>
+              <p>SCORE: ${candidate.score}</p>
             </div>
           </li>
         </c:forEach>
@@ -56,7 +58,7 @@
       
       <script type="text/javascript">
         var tags = [
-        <c:forEach items="${recomendation_summary.userFavoriteTags}" var="tagValue">
+        <c:forEach items="${recommendation_summary.userFavoriteTags}" var="tagValue">
           {text: "${tagValue.key}", weight: ${tagValue.value}},
         </c:forEach>
         ];
@@ -64,5 +66,12 @@
             $("#cloud").jQCloud(tags);
           });
       </script>
+      
+      </c:when>
+      <c:otherwise>
+        <center><h2>Sorry. Moodnite needs to know more about you.</h2></center><br>
+        <center><h2>TIP: Rate movies and follow interesting people.</h2></center><br>
+      </c:otherwise>
+      </c:choose>
     </article>
 </t:layout>

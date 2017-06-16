@@ -1,4 +1,4 @@
-package tv.oh.moodnite.service.recomendation;
+package tv.oh.moodnite.service.recommendation;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,15 +21,15 @@ import tv.oh.moodnite.repository.UserRepository;
 import tv.oh.moodnite.service.recomendation.comparator.ScoreComparator;
 
 @Service
-public class RecomendationService {
+public class RecommendationService {
 	@Autowired
 	private UserRepository userRepo;
 
-	private RecomendationSummary recomendationSummary;
+	private RecommendationSummary recommendationSummary;
 	private User user;
 
-	public RecomendationSummary build(User user) {
-		this.recomendationSummary = new RecomendationSummary();
+	public RecommendationSummary build(User user) {
+		this.recommendationSummary = new RecommendationSummary();
 		this.user = user;
 		
 		getUserAverageRating();
@@ -49,7 +49,7 @@ public class RecomendationService {
 		shortCandidates();
 		selectTheChosenOne();
 
-		return this.recomendationSummary;
+		return this.recommendationSummary;
 	}
 
 	private void getUserAverageRating() {
@@ -61,78 +61,78 @@ public class RecomendationService {
 		}
 		averageRating = sumRating / this.user.getRatedList().size();
 
-		this.recomendationSummary.setUserAverageRating(averageRating);
+		this.recommendationSummary.setUserAverageRating(averageRating);
 	}
 
 	private void getUserBestRatedMovies() {
 		Set<Movie> userBestRatedMovies = new HashSet<>();
 
 		for (Rated rate : this.user.getRatedList()) {
-			if (rate.getRate() >= this.recomendationSummary.getUserAverageRating())
+			if (rate.getRate() >= this.recommendationSummary.getUserAverageRating())
 				userBestRatedMovies.add(rate.getMovie());
 		}
 
-		this.recomendationSummary.setUserBestRatedMovies(userBestRatedMovies);
+		this.recommendationSummary.setUserBestRatedMovies(userBestRatedMovies);
 	}
 
 	private void getSocialNet() {
-		this.recomendationSummary.setSocialNet(userRepo.findSocialNet(this.user.getName()));
+		this.recommendationSummary.setSocialNet(userRepo.findSocialNet(this.user.getName()));
 	}
 
 	private void getSocialNetRates() {
 		List<Rated> socialNetRates = new ArrayList<>();
-		for (User user : this.recomendationSummary.getSocialNet()) {
+		for (User user : this.recommendationSummary.getSocialNet()) {
 			socialNetRates.addAll(user.getRatedList());
 		}
 
-		this.recomendationSummary.setSocialNetRates(socialNetRates);
+		this.recommendationSummary.setSocialNetRates(socialNetRates);
 	}
 
 	private void getSocialNetAverageRating() {
 		double sumRating = 0;
 		double averageRating = 0;
 
-		for (Rated rate : this.recomendationSummary.getSocialNetRates()) {
+		for (Rated rate : this.recommendationSummary.getSocialNetRates()) {
 			sumRating = sumRating + rate.getRate();
 		}
-		averageRating = sumRating / this.recomendationSummary.getSocialNetRates().size();
+		averageRating = sumRating / this.recommendationSummary.getSocialNetRates().size();
 
-		this.recomendationSummary.setSocialNetAverageRating(averageRating);
+		this.recommendationSummary.setSocialNetAverageRating(averageRating);
 	}
 
 	private void getSocialNetBestRatedMovies() {
 		Set<Movie> bestRatedMovies = new HashSet<>();
 
-		for (Rated rate : this.recomendationSummary.getSocialNetRates()) {
-			if (rate.getRate() >= this.recomendationSummary.getSocialNetAverageRating())
+		for (Rated rate : this.recommendationSummary.getSocialNetRates()) {
+			if (rate.getRate() >= this.recommendationSummary.getSocialNetAverageRating())
 				bestRatedMovies.add(rate.getMovie());
 		}
 
-		this.recomendationSummary.setSocialNetBestRatedMovies(bestRatedMovies);
+		this.recommendationSummary.setSocialNetBestRatedMovies(bestRatedMovies);
 	}
 
 	private void removeWatchedMovies() {
 		for (Watched watched : this.user.getWatchedList()) {
-			this.recomendationSummary.getSocialNetBestRatedMovies().remove(watched.getMovie());
+			this.recommendationSummary.getSocialNetBestRatedMovies().remove(watched.getMovie());
 		}
 		for (Rated rated : this.user.getRatedList()) {
-			this.recomendationSummary.getSocialNetBestRatedMovies().remove(rated.getMovie());
+			this.recommendationSummary.getSocialNetBestRatedMovies().remove(rated.getMovie());
 		}
 	}
 	
 	private void removeRefusedMovies() {
 		for (Movie movie : this.user.getRefusedList()) {
-			this.recomendationSummary.getSocialNetBestRatedMovies().remove(movie);
+			this.recommendationSummary.getSocialNetBestRatedMovies().remove(movie);
 		}
 	}
 
 	private void addCandidates() {
-		for (Movie movie : this.recomendationSummary.getSocialNetBestRatedMovies())
-			this.recomendationSummary.getCandidates().add(new RecomendationCandidate(movie));
+		for (Movie movie : this.recommendationSummary.getSocialNetBestRatedMovies())
+			this.recommendationSummary.getCandidates().add(new RecommendationCandidate(movie));
 	}
 
 	private void takeMoviesLustrumThisYear() {
-		for (RecomendationCandidate candidate : this.recomendationSummary.getCandidates()) {
+		for (RecommendationCandidate candidate : this.recommendationSummary.getCandidates()) {
 			if (candidate.getMovie().getYear() != null) {
 				int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 				int yearsElapsed = currentYear - Integer.parseInt(candidate.getMovie().getYear());
@@ -146,7 +146,7 @@ public class RecomendationService {
 	}
 
 	private void getUserFavoriteTags() {
-		for (Movie movie : this.recomendationSummary.getUserBestRatedMovies()) {
+		for (Movie movie : this.recommendationSummary.getUserBestRatedMovies()) {
 			Set<String> movieTagNames = new HashSet<>();
 			for (Tag tag : movie.getTags()) {
 				movieTagNames.add(tag.getName());
@@ -155,13 +155,13 @@ public class RecomendationService {
 				movieTagNames.add(tagFromSource.getName());
 			}
 			for (String tagName : movieTagNames) {
-				this.recomendationSummary.addUserFavoriteTag(tagName);
+				this.recommendationSummary.addUserFavoriteTag(tagName);
 			}
 		}
 	}
 
 	private void getSocialNetTagsFromMovies() {
-		for (RecomendationCandidate candidate : this.recomendationSummary.getCandidates()) {
+		for (RecommendationCandidate candidate : this.recommendationSummary.getCandidates()) {
 			Set<String> movieTagNames = new HashSet<>();
 			for (Tag tag : candidate.getMovie().getTags()) {
 				movieTagNames.add(tag.getName());
@@ -176,8 +176,8 @@ public class RecomendationService {
 	}
 
 	private void calculateCandidatesScore() {
-		for (RecomendationCandidate candidate : this.recomendationSummary.getCandidates()) {
-			for (Map.Entry<String, Integer> userTagValue : this.recomendationSummary.getUserFavoriteTags().entrySet()) {
+		for (RecommendationCandidate candidate : this.recommendationSummary.getCandidates()) {
+			for (Map.Entry<String, Integer> userTagValue : this.recommendationSummary.getUserFavoriteTags().entrySet()) {
 				for (Map.Entry<String, Integer> candidateTagValue : candidate.getTagValues().entrySet()) {
 					if (candidateTagValue.getKey().compareTo(userTagValue.getKey()) == 0)
 						candidateTagValue.setValue(userTagValue.getValue());
@@ -187,7 +187,7 @@ public class RecomendationService {
 	}
 
 	private void calculateCandidatesScores() {
-		for (RecomendationCandidate candidate : this.recomendationSummary.getCandidates()) {
+		for (RecommendationCandidate candidate : this.recommendationSummary.getCandidates()) {
 			for (Map.Entry<String, Integer> candidateTagValue : candidate.getTagValues().entrySet()) {
 				candidate.setScore(candidateTagValue.getValue());
 			}
@@ -195,14 +195,14 @@ public class RecomendationService {
 	}
 	
 	private void shortCandidates() {
-		Collections.sort(this.recomendationSummary.getCandidates(), new ScoreComparator());
+		Collections.sort(this.recommendationSummary.getCandidates(), new ScoreComparator());
 	}
 	
 	private void selectTheChosenOne() {
-		if(!this.recomendationSummary.getCandidates().isEmpty()) {
-			RecomendationCandidate theChosenOne = this.recomendationSummary.getCandidates().get(0);
-			this.recomendationSummary.setTheChosenOne(theChosenOne);
-			this.recomendationSummary.getCandidates().remove(theChosenOne);
+		if(!this.recommendationSummary.getCandidates().isEmpty()) {
+			RecommendationCandidate theChosenOne = this.recommendationSummary.getCandidates().get(0);
+			this.recommendationSummary.setTheChosenOne(theChosenOne);
+			this.recommendationSummary.getCandidates().remove(theChosenOne);
 		}
 	}
 }

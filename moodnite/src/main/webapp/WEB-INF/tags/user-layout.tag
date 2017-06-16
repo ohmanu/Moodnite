@@ -12,7 +12,7 @@
     <div class="data">
       <h2>${loggedInUser.name}</h2>
       <p>${loggedInUser.bio}</p>
-      <a href="${pageContext.servletContext.contextPath}/recomendation/recomendations">Recomendme</a>
+      <a class="recommendation" href="${pageContext.servletContext.contextPath}/recommendation/recommendations">Recommendation</a>
     </div>
   </header>
   

@@ -1,4 +1,4 @@
-package tv.oh.moodnite.service.recomendation;
+package tv.oh.moodnite.service.recommendation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,25 +11,25 @@ import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 
-public class RecomendationSummary {
+public class RecommendationSummary {
 	private List<User> socialNet;
 	private double userAverageRating;
 	private double socialNetAverageRating;
 	private List<Rated> socialNetRates;
 	private Set<Movie> userBestRatedMovies;
 	private Set<Movie> socialNetBestRatedMovies;
-	private List<RecomendationCandidate> candidates;
+	private List<RecommendationCandidate> candidates;
 	private Map<String, Integer> userFavoriteTags;
-	private RecomendationCandidate theChosenOne;
+	private RecommendationCandidate theChosenOne;
 
-	public RecomendationSummary() {
+	public RecommendationSummary() {
 		this.socialNet = new ArrayList<User>();
 		this.userAverageRating = 0.0;
 		this.socialNetAverageRating = 0.0;
 		this.socialNetRates = new ArrayList<Rated>();
 		this.userBestRatedMovies = new HashSet<Movie>();
 		this.socialNetBestRatedMovies = new HashSet<Movie>();
-		this.candidates = new ArrayList<RecomendationCandidate>();
+		this.candidates = new ArrayList<RecommendationCandidate>();
 		this.userFavoriteTags = new HashMap<String, Integer>();
 	}
 
@@ -81,11 +81,11 @@ public class RecomendationSummary {
 		this.userBestRatedMovies = userBestRatedMovies;
 	}
 
-	public List<RecomendationCandidate> getCandidates() {
+	public List<RecommendationCandidate> getCandidates() {
 		return candidates;
 	}
 
-	public void setCandidates(List<RecomendationCandidate> candidates) {
+	public void setCandidates(List<RecommendationCandidate> candidates) {
 		this.candidates = candidates;
 	}
 
@@ -97,11 +97,11 @@ public class RecomendationSummary {
 		return userFavoriteTags;
 	}
 
-	public RecomendationCandidate getTheChosenOne() {
+	public RecommendationCandidate getTheChosenOne() {
 		return theChosenOne;
 	}
 
-	public void setTheChosenOne(RecomendationCandidate theChosenOne) {
+	public void setTheChosenOne(RecommendationCandidate theChosenOne) {
 		this.theChosenOne = theChosenOne;
 	}
 
