@@ -104,7 +104,7 @@ public class RecommendationService {
 		Set<Movie> bestRatedMovies = new HashSet<>();
 
 		for (Rated rate : this.recommendationSummary.getSocialNetRates()) {
-			if (rate.getRate() >= this.recommendationSummary.getSocialNetAverageRating())
+			if (rate.getRate() >= this.recommendationSummary.getSocialNetAverageRating() || rate.getRate() >= 7)
 				bestRatedMovies.add(rate.getMovie());
 		}
 

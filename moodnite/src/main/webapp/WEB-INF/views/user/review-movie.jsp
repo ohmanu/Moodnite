@@ -28,7 +28,7 @@
         
         <div class="field">
           <div class="public-announcement">
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${rate.movie.title} <c:forEach var="i" begin="1" end="${rate.rate}"> ★</c:forEach><c:forEach var="i" begin="1" end="${10-rate.rate}"> ☆</c:forEach> #moodnite ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=${rate.movie.title} <c:forEach var="i" begin="1" end="${rate.rate}"> ★</c:forEach><c:forEach var="i" begin="1" end="${10-rate.rate}"> ☆</c:forEach> ${pageContext.request.serverName}${pageContext.servletContext.contextPath}/movie/${rate.movie.tmdbId}" target="_blank">
         	  <img class="photo" src="${pageContext.servletContext.contextPath}/resources/images/icon-tweet.png" alt="Tweet"/>
         	</a>
           </div>

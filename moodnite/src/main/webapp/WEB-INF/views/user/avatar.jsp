@@ -19,7 +19,11 @@
     </nav>
     
     <article class="reviews">
-      <form:form action="${pageContext.servletContext.contextPath}/user/avatar" method="POST" enctype="multipart/form-data">	
+      <form:form action="${pageContext.servletContext.contextPath}/user/avatar" method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <h2>AVATAR:</h2>
+        </div>
+        
         <div class="field">
           <input type="file" name="file">
         </div>

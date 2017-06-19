@@ -64,12 +64,12 @@ body {
 
 /* COVER */
 
-article.film {
+article.error {
 	width: 100%;
 	height: 100%;
 }
 
-article.film .cover {
+article.error .container {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center top;
@@ -95,27 +95,20 @@ article.film .cover {
 	background-position: center;
 }
 
-.box .actions {
+.box .top a {
 	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.box .error-message {
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
 	height: 256px;
+	display: flex;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	text-align:center;
-}
-
-.box .actions a {
-	width: 100%;
-	color: #fff;
-	font-size: 30px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	background-color: #eab7b3;
-	text-transform: uppercase;
-	clear: both;
-}
-
-.box .actions a:hover {
-	background-color: #eb4f5a;
-	text-decoration: none;
+	text-align:center;	
 }

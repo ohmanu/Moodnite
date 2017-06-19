@@ -30,12 +30,15 @@
             </div>
           </li>
           
+          <c:choose><c:when test="${not empty recommendation_summary.userFavoriteTags}">
           <li class="tag-cloud" >
           	<div id="cloud" style="width: 100%; height: 100%;">
           	</div>
           </li>
+          </c:when></c:choose>
         </ul>
-          
+        
+        <c:choose><c:when test="${not empty recommendation_summary.candidates}">
         <ul class="films masonry"> 
           <li class="separator-short brick" id="pink">
             <h2>Candidates</h2>
@@ -55,6 +58,7 @@
           </li>
         </c:forEach>
       </ul>
+      </c:when></c:choose>
       
       <script type="text/javascript">
         var tags = [

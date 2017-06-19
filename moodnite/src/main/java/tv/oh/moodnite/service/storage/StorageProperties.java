@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 public class StorageProperties {
 	
 	// Folder location for storing files.
-	private String location = "C:/Projects/Moodnite/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/moodnite/resources/images/avatars";
-
+	//private String location = "C:/Projects/Moodnite/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/moodnite/resources/images/avatars";
+	private String location = "/var/lib/tomcat8/webapps/ROOT/resources/images/avatars";
 	public String getLocation() {
 		return location;
 	}

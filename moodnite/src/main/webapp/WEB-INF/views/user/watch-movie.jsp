@@ -17,7 +17,7 @@
         
         <div class="field">
           <div class="public-announcement">
-            <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">
+            <a href="https://twitter.com/intent/tweet?text=I'm watching ${movie.title}. ${pageContext.request.serverName}${pageContext.servletContext.contextPath}/movie/${movie.tmdbId}" target="_blank">
               <img class="photo" src="${pageContext.servletContext.contextPath}/resources/images/icon-tweet.png" alt="Tweet"/>
             </a>
           </div>

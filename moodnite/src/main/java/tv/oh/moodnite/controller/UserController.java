@@ -88,7 +88,7 @@ public class UserController {
 		User newUser = userService.saveUser(user);
 		session.setAttribute("loggedInUser", newUser);
 
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	/**
