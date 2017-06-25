@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/landing.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/responsive.css">
   <title>Moodnite</title>
 </head>
 <body>

@@ -14,7 +14,7 @@ public class TagSource {
 	
 	private String sourceName;
 	
-	@Relationship(type = "TAGGED", direction = Relationship.OUTGOING)
+	@Relationship(type = "TAGGEDFROMSOURCE", direction = Relationship.OUTGOING)
 	private Set<Tag> tags = new HashSet<>();
 
 	public String getSourceName() {

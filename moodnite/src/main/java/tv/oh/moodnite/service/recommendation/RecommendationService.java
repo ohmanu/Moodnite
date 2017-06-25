@@ -17,13 +17,13 @@ import tv.oh.moodnite.domain.Tag;
 import tv.oh.moodnite.domain.TagFromSource;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.Watched;
-import tv.oh.moodnite.repository.UserRepository;
+import tv.oh.moodnite.service.moodnite.UserService;
 import tv.oh.moodnite.service.recomendation.comparator.ScoreComparator;
 
 @Service
 public class RecommendationService {
 	@Autowired
-	private UserRepository userRepo;
+	private UserService userService;
 
 	private RecommendationSummary recommendationSummary;
 	private User user;
@@ -76,7 +76,7 @@ public class RecommendationService {
 	}
 
 	private void getSocialNet() {
-		this.recommendationSummary.setSocialNet(userRepo.findSocialNet(this.user.getName()));
+		this.recommendationSummary.setSocialNet(userService.findSocialNet(this.user.getName()));
 	}
 
 	private void getSocialNetRates() {

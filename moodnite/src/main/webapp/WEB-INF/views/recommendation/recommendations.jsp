@@ -19,9 +19,9 @@
               <div class="top">
                 <h2><a href="${pageContext.servletContext.contextPath}/movie/${the_chosen_one.movie.tmdbId}">${the_chosen_one.movie.title}</a></h2>
                 <c:choose><c:when test="${the_chosen_one.lustrumThisYear}">
-              	  <p>Turns ${the_chosen_one.yearsElapsed} this year.</p>
+              	  <p class="year-bonus">Turns ${the_chosen_one.yearsElapsed} this year.</p>
                 </c:when></c:choose>
-                <h2>SCORE: ${the_chosen_one.score}</h2>
+                <p class="extra-score">EXTRA SCORE: ${the_chosen_one.score}</p>
               </div>
               <div class="actions">
                 <a class="refuse" href="${pageContext.servletContext.contextPath}/recommendation/refuse/${the_chosen_one.movie.tmdbId}">Refuse</a>
@@ -53,7 +53,7 @@
             </div>
             <div class="data">
               <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${candidate.movie.tmdbId}">${candidate.movie.title}</a></b></h4>
-              <p>SCORE: ${candidate.score}</p>
+              <p>EXTRA SCORE: ${candidate.score}</p>
             </div>
           </li>
         </c:forEach>

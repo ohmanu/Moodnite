@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
-@RelationshipEntity(type = "TAGGED")
+@RelationshipEntity(type = "TAGGEDFROMSOURCE")
 public class TagFromSource {
 	@GraphId
 	private Long id;

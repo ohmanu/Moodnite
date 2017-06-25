@@ -46,6 +46,10 @@
 	ul.people {
 		width: 615px;
 	}
+	
+	article.person .details .info {
+		width: 280px;
+	}
 }
 
 @media screen and (max-width: 870px) {
@@ -56,6 +60,41 @@
 	ul.people {
 		width: 410px;
 	}
+	
+	header.moodnite nav {
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100%;
+	}
+	
+	header.moodnite nav .search {
+		width: 30%;
+		margin-left: 10px;
+	}
+	
+	article.person .details .photo {
+		margin-left: 0px;
+	}	
+}
+
+@media screen and (max-width: 640px) {
+	header.moodnite nav {
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100%;
+	}
+	
+	header.moodnite nav .search {
+		width: 30%;
+		margin-left: 10px;
+	}
+	
+	article.user nav.menu ul {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align:center;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -63,7 +102,123 @@
 		width: 205px;
 	}
 	
+	ul.plus {
+		width: 410px;
+	}
+	
 	ul.people {
 		width: 205px;
+	}
+	
+	article.recommendations {
+		width: 80%;
+		padding-left: 5%;
+		padding-right: 5%;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color: #e4d9cc;
+		float:left;
+	
+	}
+}
+
+@media screen and (max-width: 500px) {
+	h1 {
+		font-size: 40px;
+	}
+	
+	h2 {
+		font-size: 20px;
+	}
+	
+	article.film .rug {
+		height: 70%;
+	}
+	
+	article.film .rate {
+		height: 30%;
+	}
+	
+	/* BOX */
+	.box {
+		width: 320px;
+		height: 220px;
+	}
+	
+	.box .top {
+		height: 70px;
+	}
+	
+	.box .actions {
+		height: 150px;
+	}
+	
+	article.user form {
+		width: 300px;
+		padding-top: 20px;
+	}
+
+	article.user form .film-about {
+		width: 300px;
+		height: 200px;
+	}
+	
+	article.user input, textarea {
+		width: 280px;
+	}
+	
+	select {
+		width: 300px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		font-size: 18px;
+	}
+
+	article.user input[type="submit"] {
+		width: 300px;
+	}
+	
+	article.user form .stars a {
+		font-size: 35px;
+	}
+	
+	article.user header.profile .data {
+		width: 250px;
+		margin-left: 0px;
+	}
+	
+	article.user .sign-in {
+		width: 94%;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+	
+	article.user .login {
+		width: 94%;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+	
+	article.reviews {
+		width: 94%;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+	
+	article.watched-list {
+		width: 94%;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	
+	article.person .details {
+		width: 80%;
+	}
+	
+	article.person .details .photo {
+		width: 250px;
 	}
 }

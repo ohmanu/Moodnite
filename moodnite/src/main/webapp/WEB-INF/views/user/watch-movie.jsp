@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <article class="user">
     <article class="watched-list">
       
       <form:form action="${pageContext.servletContext.contextPath}/user/watch/${movie.tmdbId}" method="POST" modelAttribute="watch">
@@ -28,5 +28,5 @@
         </div>
       </form:form>      
     </article>
-  </t:user-layout>
+  </article>
 </t:layout>

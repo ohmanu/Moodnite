@@ -7,10 +7,10 @@
     </div>
     
     <!-- JQUERY -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-show-more.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/masonry.pkgd.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/oh-masonry-load.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jqcloud-1.0.4.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jqcloud-1.0.4.min.js"></script>
   </footer>

@@ -43,7 +43,7 @@ public class RecommendationController {
 		return "/recommendation/recommendations";
 	}
 	
-	@RequestMapping(value = "recommendations_debug_mode", method = RequestMethod.GET, headers = "Accept=text/html")
+	@RequestMapping(value = "recommendations-debug-mode", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showRecommendationsDebugMode(Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		

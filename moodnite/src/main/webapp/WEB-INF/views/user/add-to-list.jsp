@@ -4,9 +4,12 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <article class="user">
     <article class="reviews">    
       <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/add-to-list/${movie.tmdbId}">
+        <div class="film-about" style="background-image: url('https://image.tmdb.org/t/p/w780/${backdrop_path}');">
+        </div>
+        
         <div class="field">
           <input type="text" name="listName" placeholder="List name">
         </div>
@@ -32,5 +35,5 @@
       </c:when></c:choose>
       
     </article>
-  </t:user-layout>
+  </article>
 </t:layout>

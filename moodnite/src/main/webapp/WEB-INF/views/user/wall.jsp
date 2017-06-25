@@ -19,7 +19,7 @@
       
     <article class="wall">
       <c:choose><c:when test="${not empty publications}">
-        <ul class="films masonry">
+        <ul class="films masonry" id="ohList">
           <li class="separator-short brick" id="pink">
             <h2>Wall</h2>
           </li>
@@ -77,6 +77,9 @@
             </li>
           </c:forEach>
         </ul>
+        <div class=sub-actions>
+         <a id="loadMore">Load more</a>
+        </div>
       </c:when></c:choose>
     </article>
   </t:user-layout>

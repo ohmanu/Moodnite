@@ -8,7 +8,7 @@
     </div>
     
     <div class="data">
-      <h2>${profile.name}</h2>
+      <h2>${profile.name} <a class="add" href="${pageContext.servletContext.contextPath}/user/follow/${profile.id}" title="Follow">&#10010;</a></h2>
       <p>${profile.bio}</p>
     </div>
   </header>

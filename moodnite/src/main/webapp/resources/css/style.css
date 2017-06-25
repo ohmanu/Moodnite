@@ -65,7 +65,7 @@ body {
 	font-family: 'Open Sans Condensed', sans-serif;
     font-size: 15px;
 	color: #000;
-	min-width: 640px;
+	min-width: 320px;
 	background-color: #e4d9cc;
 }
 
@@ -120,7 +120,7 @@ header.moodnite nav {
 	padding-right: 10%;
 	position: fixed;
 	z-index: 1;
-	min-width: 600px;
+	min-width: 320px;
 }
 
 header.moodnite nav .search {
@@ -233,7 +233,7 @@ article.recommendations {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #e4d9cc;
-	margin-top: 50px;
+	margin-top: 80px;
 	float:left;
 
 }
@@ -282,6 +282,22 @@ li.the-chosen-one .data {
 	min-height: 120px;
 	padding: 5%;
 	float:left;
+}
+
+li.the-chosen-one .data .year-bonus {
+	font-size: 1.2em;
+	font-color: #37a26f;
+}
+
+li.the-chosen-one .top {
+	background-color: #fff;
+	width: 100%;
+	min-height: 101px;
+	float:left;
+}
+
+li.the-chosen-one .data .extra-score {
+	font-size: 1.2em;
 }
 
 li.the-chosen-one .actions {
@@ -755,7 +771,7 @@ ul li.separator-short {
 	float: left;
 	display: block;
 	background-color: #eab7b3;
-	display: flex;
+	display: flex !important;
 	justify-content: center;
 	align-items: center;
 	text-align:center;
@@ -1142,6 +1158,13 @@ article.user input[type="submit"]:hover {
 	transition-duration: 1s;
 }
 
+select {
+	width: 400px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-size: 18px;
+}
+
 .public-announcement {
 	width: 100%;
 	float: left;
@@ -1203,6 +1226,10 @@ footer .area img {
 }
 
 #ohList li { 
+	display: none;
+}
+
+#ohShowMoreMasonry li {
 	display: none;
 }
 

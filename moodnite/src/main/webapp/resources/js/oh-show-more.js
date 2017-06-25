@@ -1,4 +1,5 @@
-$(document).ready(function () {
+jQuery( document ).ready(function( $ ) {
+ $('#ohList').imagesLoaded( function(){
 	size_li = $("#ohList li").length;
 	width = $('.people').width();
 	
@@ -36,10 +37,30 @@ $(document).ready(function () {
 		if (shown >= size_li) {
 			$('#loadMore').hide();
 		}
+		
+		jQuery( document ).ready(function( $ ) {
+		 $('.masonry').imagesLoaded( function(){
+		    $('.masonry').masonry({
+		        itemSelector: '.brick',
+		        columnWidth: '.brick',
+		        isAnimated: true,
+		        isFitWidth: true
+		    });
+		 });
+
+		 $(window).resize(function() {
+		    $('.masonry').masonry({
+		        itemSelector: '.brick',
+		        isAnimated: true
+		    }, 'reload');
+		 });
+		});
 	});
 	
     $('#showLess').click(function () {
     	shown = (shown - row < 0) ? shown : shown - row;
         $('#ohList li').not(':lt('+ shown +')').hide();
-    });
+    }); 
+    
+ });
 });

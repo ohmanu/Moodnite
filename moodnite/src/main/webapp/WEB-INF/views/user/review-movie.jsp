@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-  <t:user-layout>
+  <article class="user">
     <article class="reviews">      
       <form:form action="${pageContext.servletContext.contextPath}/user/review/${movieId}" method="POST" modelAttribute="rate">
         <div class="film-about" style="background-image: url('https://image.tmdb.org/t/p/w780/${backdrop_path}');">
@@ -39,5 +39,5 @@
         </div>
       </form:form>      
     </article>
-  </t:user-layout>
+  </article>
 </t:layout>

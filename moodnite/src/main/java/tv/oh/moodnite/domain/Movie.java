@@ -119,12 +119,12 @@ public class Movie {
 		this.tags.remove(tag);
 	}
 	
-	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	@Relationship(type = "TAGGEDFROMSOURCE", direction = Relationship.INCOMING)
 	public Set<TagFromSource> getTagsFromSources() {
 		return tagsFromSources;
 	}
 
-	@Relationship(type = "TAGGED", direction = Relationship.INCOMING)
+	@Relationship(type = "TAGGEDFROMSOURCE", direction = Relationship.INCOMING)
 	public void setTagsFromSources(Set<TagFromSource> tagsFromSources) {
 		this.tagsFromSources = tagsFromSources;
 	}

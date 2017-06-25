@@ -1,6 +1,7 @@
 package tv.oh.moodnite.service.moodnite;
 
 import java.util.Date;
+import java.util.List;
 
 import org.neo4j.helpers.collection.IteratorUtil;
 import org.neo4j.ogm.cypher.Filter;
@@ -137,6 +138,15 @@ public class UserService {
 		movie.removeTag(tag);
 		
 		tagRepo.delete(tag);
+	}
+	
+	public List<User> findSocialNet(String name) {
+		List<User> socialNet = userRepo.findSocialNet(name);
+		for(User user : socialNet) {
+			findByName(user.getName());
+		}
+		
+		return socialNet;
 	}
 	
 	private Iterable<User> findUsersByProperty(String propertyName, Object propertyValue) {

@@ -552,6 +552,7 @@ public class UserController {
 
 		model.addAttribute("movie", movie);
 		model.addAttribute("lists_names", listsNames);
+		model.addAttribute("backdrop_path", movie.getBackground());
 
 		return "/user/add-to-list";
 	}
