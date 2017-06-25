@@ -121,6 +121,9 @@ header.moodnite nav {
 	position: fixed;
 	z-index: 1;
 	min-width: 320px;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
 }
 
 header.moodnite nav .search {
@@ -142,6 +145,7 @@ header.moodnite nav .search input[type=text] {
 	padding-right: 15px;
 	padding-left: 50px;
 	color: #6d6d6d;
+	float: left;
 }
 
 header.moodnite nav .search input[type=text]:hover {
@@ -172,12 +176,14 @@ header.moodnite nav .search input[type=text]:focus {
 }
 
 header.moodnite nav .logo {
-	width: 100px;
+	width: 40%;
+	min-width: 100px;
 
 	margin: 0 auto;
 }
 
 header.moodnite nav .user {
+	width: 40%;
 	float: right;
 }
 
@@ -188,6 +194,7 @@ header.moodnite nav .user img.photo-xs {
 	margin-top: 9px;
 	margin-right: 20px;
 	border: 1px solid #fff;
+	float: right;
 }
 
 header.moodnite nav .user img {

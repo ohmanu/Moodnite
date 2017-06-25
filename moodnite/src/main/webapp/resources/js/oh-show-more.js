@@ -1,7 +1,7 @@
 jQuery( document ).ready(function( $ ) {
  $('#ohList').imagesLoaded( function(){
 	size_li = $("#ohList li").length;
-	width = $('.people').width();
+	width = $('#ohList').width();
 	
 	if(width == 410) {
 		shown = 4;

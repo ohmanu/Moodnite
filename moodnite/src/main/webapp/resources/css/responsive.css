@@ -72,6 +72,11 @@
 		margin-left: 10px;
 	}
 	
+	header.moodnite nav .user {
+		width: 30%;
+		margin-left: 10px;
+	}
+	
 	article.person .details .photo {
 		margin-left: 0px;
 	}	
@@ -82,11 +87,6 @@
 		padding-left: 10px;
 		padding-right: 10px;
 		width: 100%;
-	}
-	
-	header.moodnite nav .search {
-		width: 30%;
-		margin-left: 10px;
 	}
 	
 	article.user nav.menu ul {
@@ -129,14 +129,6 @@
 	
 	h2 {
 		font-size: 20px;
-	}
-	
-	article.film .rug {
-		height: 70%;
-	}
-	
-	article.film .rate {
-		height: 30%;
 	}
 	
 	/* BOX */
@@ -220,5 +212,41 @@
 	
 	article.person .details .photo {
 		width: 250px;
+	}
+	
+	header.moodnite nav .search {
+		width: 25%;
+	}
+	
+	header.moodnite nav .user {
+		width: 25%;
+	}
+	
+	ul.films li.film .data .stars {
+		text-align: center;
+		width: 100%;
+	}
+	
+	ul.films li.film .data .stars a {
+		font-size: 14px;
+	}
+	
+	article.film .rug {
+		height: 60%;
+	}
+	
+	article.film .rate {
+		height: 40%;
+	}
+}
+
+@media screen and (max-height: 400px) {
+	
+	article.film .rug {
+		height: 70%;
+	}
+	
+	article.film .rate {
+		height: 30%;
 	}
 }
