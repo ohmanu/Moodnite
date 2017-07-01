@@ -26,6 +26,7 @@
           <c:forEach items="${friends}" var="user">
             <li class="person-sheet brick">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
+                <a class="person-photo" href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews"></a>
               </div>
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4>

@@ -15,4 +15,7 @@ public interface UserRepository extends GraphRepository<User> {
 	
 	@Query("MATCH (user:User {name:{name}})-[:FOLLOWS*1..3]->(f) RETURN f")
 	List<User> findSocialNet(@Param("name") String name);
+	
+	@Query("MATCH (user:User) RETURN user LIMIT {limit}")
+	List<User> findUsersLimit(@Param("limit") Integer limit);
 }

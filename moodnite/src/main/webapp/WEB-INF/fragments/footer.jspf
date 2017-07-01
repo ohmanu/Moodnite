@@ -3,7 +3,7 @@
       <img src="${pageContext.request.contextPath}/resources/images/tmdb.png"/>
       <img src="${pageContext.request.contextPath}/resources/images/neo4j.png"/>
       <br>
-      <b>@Oh_Manu</b>
+      <b>Created by Manuel Casas - UO227701</b>
     </div>
     
     <!-- JQUERY -->

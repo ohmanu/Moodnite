@@ -36,6 +36,7 @@
           <c:forEach items="${people_results}" var="person">
             <li class="person-sheet">
               <div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
+                <a class="person-photo" href="${pageContext.servletContext.contextPath}/person/${person.id}"></a>
               </div>
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></b></h4>
@@ -59,6 +60,7 @@
           <c:forEach items="${users_results}" var="user">
             <li class="person-sheet">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
+                <a class="person-photo" href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews"></a>
               </div>
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4> 

@@ -523,6 +523,7 @@ public class UserController {
 		if (loggedInUser == null)
 			return "redirect:/user/login";
 
+		loggedInUser = userService.findByUserId(loggedInUser.getId());
 		List<Publication> sortedList = new ArrayList<Publication>();
 		sortedList.addAll(loggedInUser.getWatchedList());
 		sortedList.addAll(loggedInUser.getRatedList());
@@ -559,7 +560,7 @@ public class UserController {
 
 	@RequestMapping(value = "add-to-list/{movieId}", method = RequestMethod.POST, headers = "Accept=text/html")
 	public String listMovie(@PathVariable String movieId, @RequestParam("listName") String listName,
-			HttpSession session) {
+			Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
 		if (loggedInUser == null)
@@ -599,6 +600,9 @@ public class UserController {
 		for (Tag tag : loggedInUser.getTags())
 			if (tag.getName().compareTo(listName) == 0)
 				tagMovies.add(tag);
+		
+		if(tagMovies.size() == 0)
+			return "redirect:/user/lists";
 
 		model.addAttribute("list_name", listName);
 		model.addAttribute("tag_movies", tagMovies);

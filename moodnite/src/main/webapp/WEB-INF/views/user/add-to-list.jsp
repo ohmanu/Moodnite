@@ -11,6 +11,10 @@
         </div>
         
         <div class="field">
+          <p class="message">${list_name_error_message}</p>
+        </div>
+        
+        <div class="field">
           <input type="text" name="listName" placeholder="List name">
         </div>
         
@@ -22,7 +26,6 @@
       <c:choose><c:when test="${not empty lists_names}">
       <form id="form" method="POST" action="${pageContext.servletContext.contextPath}/user/add-to-list/${movie.tmdbId}">
         <select id="listName" name="listName">
-          <option value="" selected="selected">- select one of your list -</option>
           <c:forEach items="${lists_names}" var="tag">
             <option value="${tag}">Add to ${tag}</option>
           </c:forEach>

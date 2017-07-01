@@ -39,6 +39,7 @@ public class RecommendationController {
 		RecommendationSummary recommendationSummary = recommendationService.build(loggedInUser);
 		model.addAttribute("recommendation_summary", recommendationSummary);
 		model.addAttribute("the_chosen_one", recommendationSummary.getTheChosenOne());
+		model.addAttribute("people_you_should_follow", userService.findUsersLimit(6));
 		
 		return "/recommendation/recommendations";
 	}

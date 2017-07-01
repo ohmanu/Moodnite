@@ -22,7 +22,7 @@ import tv.oh.moodnite.repository.WatchedRepository;
 
 @Service
 public class UserService {
-	private static int DEPTH = 3;
+	private static int DEPTH = 2;
 
 	@Autowired
     private Session session;
@@ -79,6 +79,10 @@ public class UserService {
 	
 	public Iterable<User> findByNameLike(String name) {
 		return userRepo.findByNameLike(".*" + name + ".*");
+	}
+	
+	public Iterable<User> findUsersLimit(Integer limit) {
+		return userRepo.findUsersLimit(limit);
 	}
 	
 	@Transactional

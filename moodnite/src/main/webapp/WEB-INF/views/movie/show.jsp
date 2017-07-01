@@ -61,6 +61,7 @@
             <c:forEach items="${cast}" var="person">
               <li class="person-sheet">
                 <div class="photo" style="background-image: url('https://image.tmdb.org/t/p/w185/${person.profile_path}');">
+                  <a class="person-photo" href="${pageContext.servletContext.contextPath}/person/${person.id}"></a>
                 </div>
                 <div class="data">
                   <h4><b><a href="${pageContext.servletContext.contextPath}/person/${person.id}">${person.name}</a></b></h4>

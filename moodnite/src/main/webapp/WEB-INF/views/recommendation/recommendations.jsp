@@ -75,6 +75,29 @@
       <c:otherwise>
         <center><h2>Sorry. Moodnite needs to know more about you.</h2></center><br>
         <center><h2>TIP: Rate movies and follow interesting people.</h2></center><br>
+        
+        <div class="users-results">
+          <c:choose><c:when test="${not empty people_you_should_follow}">
+            <ul class="people">
+              <li class="separator" id="pink">
+                <h2>PEOPLE YOU SHOULD FOLLOW</h2>
+              </li>
+              <c:forEach items="${people_you_should_follow}" var="user">
+              <li class="person-sheet">
+                <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
+                  <a class="person-photo" href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews"></a>
+                </div>
+                <div class="data">
+                  <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4> 
+                  <a class="add" href="${pageContext.servletContext.contextPath}/user/follow/${user.id}" title="Follow">&#10010;</a>
+                  <br>
+                  <h4>${user.bio} </h4>
+                </div>
+              </li>
+              </c:forEach>
+            </ul>
+          </c:when></c:choose>
+        </div>
       </c:otherwise>
       </c:choose>
     </article>
