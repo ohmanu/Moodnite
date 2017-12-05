@@ -39,6 +39,10 @@ public class UserService {
 	@Autowired
 	private TagRepository tagRepo;
 	
+	public Iterable<User> findAll() {
+		return userRepo.findAll();
+	}
+	
 	public User findByUserId(Long userId) {
 		return userRepo.findOne(userId);
 	}

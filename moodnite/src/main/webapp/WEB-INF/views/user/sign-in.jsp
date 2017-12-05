@@ -33,6 +33,8 @@
           <input type="submit" value="SIGN IN"/>
         </div>
         
+        
+        
         <div class="field">
           <div class="public-announcement">Already have an account? <a href="${pageContext.servletContext.contextPath}/user/login">LOGIN</a></div>
         </div>

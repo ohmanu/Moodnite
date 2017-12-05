@@ -48,7 +48,7 @@ public class UserController {
 
 	@Autowired
 	private StorageService storageService;
-
+	
 	/**
 	 * Carga el formulario de registro de usuario.
 	 * 

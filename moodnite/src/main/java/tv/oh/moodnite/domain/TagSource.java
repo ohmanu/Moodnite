@@ -15,7 +15,7 @@ public class TagSource {
 	private String sourceName;
 	
 	@Relationship(type = "TAGGEDFROMSOURCE", direction = Relationship.OUTGOING)
-	private Set<Tag> tags = new HashSet<>();
+	private Set<TagFromSource> tagsFromSource = new HashSet<>();
 
 	public String getSourceName() {
 		return sourceName;
@@ -25,12 +25,12 @@ public class TagSource {
 		this.sourceName = sourceName;
 	}
 
-	public Set<Tag> getTags() {
-		return tags;
+	public Set<TagFromSource> getTags() {
+		return tagsFromSource;
 	}
 
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
+	public void setTags(Set<TagFromSource> tagsFromSource) {
+		this.tagsFromSource = tagsFromSource;
 	}
 
 	public Long getId() {

@@ -16,6 +16,7 @@ public class User {
 	private String password;
 	private String photo;
 	private String bio;
+	private boolean admin;
 	
 	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	private Set<Watched> watchedList = new HashSet<>();
@@ -81,6 +82,14 @@ public class User {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public Long getId() {

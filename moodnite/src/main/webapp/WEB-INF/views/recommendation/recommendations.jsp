@@ -25,7 +25,7 @@
               </div>
               <div class="actions">
                 <a class="refuse" href="${pageContext.servletContext.contextPath}/recommendation/refuse/${the_chosen_one.movie.tmdbId}">Refuse</a>
-                <a class="watch" href="${pageContext.servletContext.contextPath}/recommendation/refuse/${the_chosen_one.movie.tmdbId}">Watch</a>
+                <a class="watch" href="${pageContext.servletContext.contextPath}/recommendation/watch/${the_chosen_one.movie.tmdbId}">Watch</a>
               </div>
             </div>
           </li>
