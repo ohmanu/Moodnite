@@ -65,6 +65,10 @@ public class UserService {
 		return userRepo.save(user);
 	}
 	
+	public void removeUserById(Long userId) {
+		userRepo.delete(userId);
+	}
+	
 	public Rated findUserMovieRate(User user, Movie movie) {
 		for(Rated rated : user.getRatedList())
 			if(rated.getMovie().equals(movie))

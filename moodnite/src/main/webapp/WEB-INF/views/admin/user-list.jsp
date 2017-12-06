@@ -18,7 +18,7 @@
               </div>
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4>
-                <a class="remove" href="${pageContext.servletContext.contextPath}/user/unfollow/${user.id}" title="Unfollow">&#10006;</a>
+                <a class="remove" href="${pageContext.servletContext.contextPath}/admin/user/delete/${user.id}" title="Ban">&#10006;</a>
                 <br>
                 <h4>${user.bio} </h4>
               </div>
