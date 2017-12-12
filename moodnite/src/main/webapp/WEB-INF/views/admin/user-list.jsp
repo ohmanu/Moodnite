@@ -14,10 +14,10 @@
           <c:forEach items="${users}" var="user">
             <li class="person-sheet brick">
               <div class="user-photo" style="background-image: url('${pageContext.servletContext.contextPath}/resources/images/avatars/${user.photo}');">
-                <a class="person-photo" href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews"></a>
+                <a class="person-photo" href="${pageContext.servletContext.contextPath}/admin/${user.id}/reviews"></a>
               </div>
               <div class="data">
-                <h4><b><a href="${pageContext.servletContext.contextPath}/profile/${user.id}/reviews">${user.name}</a></b></h4>
+                <h4><b><a href="${pageContext.servletContext.contextPath}/admin/${user.id}/reviews">${user.name}</a></b></h4>
                 <a class="remove" href="${pageContext.servletContext.contextPath}/admin/user/delete/${user.id}" title="Ban">&#10006;</a>
                 <br>
                 <h4>${user.bio} </h4>
