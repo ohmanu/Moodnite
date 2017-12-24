@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import tv.oh.moodnite.domain.Movie;
 import tv.oh.moodnite.domain.Publication;
+import tv.oh.moodnite.domain.Rated;
 import tv.oh.moodnite.domain.User;
 import tv.oh.moodnite.domain.comparator.DateComparator;
+import tv.oh.moodnite.service.moodnite.MovieService;
 import tv.oh.moodnite.service.moodnite.UserService;
 
 @RequestMapping(value = "/admin/*")
@@ -24,6 +27,9 @@ public class AdminController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MovieService movieService;
 	
 	@RequestMapping(value = "user-list", method = RequestMethod.GET, headers = "Accept=text/html")
 	public String showUsers(Model model, HttpSession session) {
@@ -65,5 +71,21 @@ public class AdminController {
 		model.addAttribute("reviews", sortedList);
 
 		return "/admin/user-reviews";
+	}
+	
+	@RequestMapping(value = "delete/rate/{userId}/{movieId}", method = RequestMethod.GET, headers = "Accept=text/html")
+	public String deleteMovieRate(@PathVariable String userId, @PathVariable String movieId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+		if (loggedInUser == null)
+			return "redirect:/user/login";
+
+		User user = userService.findByUserId(Long.valueOf(userId));
+		Movie movie = movieService.addMovie(movieId);
+		Rated rate = userService.findUserMovieRate(user, movie);
+
+		userService.removeRate(user, rate);
+
+		return "redirect:/admin/" + userId + "/reviews";
 	}
 }

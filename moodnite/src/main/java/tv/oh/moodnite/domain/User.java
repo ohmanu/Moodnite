@@ -17,6 +17,7 @@ public class User {
 	private String photo;
 	private String bio;
 	private boolean admin;
+	private boolean active;
 	
 	@Relationship(type = "WATCHED", direction = Relationship.OUTGOING)
 	private Set<Watched> watchedList = new HashSet<>();
@@ -90,6 +91,14 @@ public class User {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public Long getId() {
@@ -199,6 +208,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", photo=" + photo + ", bio=" + bio + "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", photo=" + photo + ", bio=" + bio
+				+ ", admin=" + admin + ", active=" + active + "]";
 	}
 }

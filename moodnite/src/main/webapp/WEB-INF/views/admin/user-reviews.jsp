@@ -20,17 +20,17 @@
               
               <div class="data">
                 <h4><b><a href="${pageContext.servletContext.contextPath}/movie/${review.movie.tmdbId}">${review.movie.title}</a></b></h4>
+                <a class="remove" href="${pageContext.servletContext.contextPath}/admin/delete/rate/${user.id}/${review.movie.tmdbId}" title="Remove">&#10006;</a>
+                <br>
                 <p>${review.reviewXS}</p>
                 
                 <div class="stars">
-                  <a href="${pageContext.servletContext.contextPath}/user/rate/${review.movie.tmdbId}" title="Edit review">
                     <c:forEach var="i" begin="1" end="${review.rate}">
                       &#9733;
                     </c:forEach>
                     <c:forEach var="i" begin="1" end="${10-review.rate}">
                       &#9734;
                     </c:forEach>
-                  </a>
                 </div>
               </div>
             </li>
