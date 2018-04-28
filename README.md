@@ -1,3 +1,3 @@
 # Moodnite
 Cinema social net.
-http://sample-env-2.upwnpqydtv.us-west-2.elasticbeanstalk.com/
+http://moodnite-env-1.j9vndce4fg.us-west-2.elasticbeanstalk.com/
